@@ -1,0 +1,868 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Lalezar&family=Rubik+Moonrocks&display=swap');
+
+
+
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html{
+
+}
+
+body {
+
+}
+
+/*HEADER  SOCIALES*/
+
+.sociales {
+  width: 100%;
+  height: 100px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  background-color: black;
+}
+
+.sociales a {
+  text-decoration: none;
+  padding: 1rem;
+  color: pink;
+  font-size: 1.4rem;
+  font-family: 'Rubik Moonrocks', cursive;
+}
+
+.sociales a:hover {
+  color: rgb(181, 83, 160);
+  transition: 1s;
+}
+
+/* Main */
+
+.logo img {
+}
+
+main {
+  text-align: center;
+  background-color: rgb(11, 8, 8);
+}
+
+/* SECTION INTEGRANTES */
+
+section {
+  text-align: center;
+}
+
+.integrantes {
+  width: 100%;
+  height: 900px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-content: center;
+  row-gap: 2rem;
+  background-color: palevioletred;
+}
+
+section img {
+  border: solid;
+  padding: 20px;
+  
+ 
+  padding: 2.5rem;
+  width: 250px;
+  height: 250px;
+  background-color: black;
+
+
+}
+
+ section img{
+
+    animation: floatImage 9s ease-in-out infinite;
+}
+
+@keyframes floatImage{
+
+    0%{
+        transform: scaleX(1);
+    }
+    50%{
+        transform: scaleX(-1.1);
+    }
+    100%{
+        transform:scaleX(1);
+    }
+}
+
+.musica{
+    width: 100%;
+    height:900px ;
+    line-height: 900px;
+   background-color:  rgb(11, 8, 8);
+}
+
+.bobo{
+display: flex;
+justify-content: center;
+align-items: center;
+margin-bottom: 5rem;
+padding-top: 5rem;
+text-align: center;
+}
+
+.bebe{
+    display: flex;
+justify-content: center;
+align-items: center;
+margin-bottom: 2rem;
+text-align: center;
+
+}
+
+
+/* Video */
+
+.video2{
+width: 100%;
+height: 900px;
+background-color: palevioletred;
+display: flex;
+justify-content: center;
+align-items: center;
+
+
+}
+
+
+.imgenes h2{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: palevioletred;
+  font-size: 7rem;
+color: pink;
+
+
+
+  }
+
+
+  /* TOUR*/
+
+
+  .tour{
+    width: 100%;
+    height: 900px;
+    display: flex;
+justify-content: center;
+align-items: center;
+background-color:  rgb(2, 1, 9);
+  }
+
+  .bolero-gifvbolero-gifv-processedplaying{
+    background-color:  rgb(2, 1, 9);
+  }
+
+  /* LOGIN */
+
+  form{
+ 
+  color: black;
+  background-color: palevioletred;
+
+
+  
+  }
+  
+h2{
+
+font-size: 7rem;
+color: pink;
+padding-top: 9rem;
+padding-bottom: 6rem;
+text-align: center;
+font-family: 'Rubik Moonrocks', cursive;
+
+}
+
+h2:hover{
+
+}
+
+  .login{
+    width:100%;
+    height:900px;
+  font-size: 1.5rem;
+
+  background-color: palevioletred;
+  text-align: center;
+ 
+  
+  }
+
+ 
+  
+  input{
+    background-color: rgba(95, 29, 65, 0.508);
+    font-size:1.4rem ;
+   width: 625px;
+   text-align: left;
+  margin-bottom: 1rem;
+  border: white;
+  margin-top: 10px;
+  border-radius:10px ;
+  color: white;
+  }
+  
+  
+  
+  select{
+  
+    background-color: rgba(95, 29, 65, 0.508);
+    font-size:1.4rem ;
+   width: 625px;
+   text-align: left;
+   color: white;
+   margin-bottom: 1rem;
+   cursor: pointer;
+   border: white;
+   margin-top: 10px;
+   border-radius:10px ;
+  }
+  
+  option{
+  background-color:white;
+  color: gray;
+  
+  }
+  
+  .check{
+    
+    width: 90px;
+    height: 10px;
+    margin-bottom: 1rem;
+  
+   cursor: pointer;
+
+   
+  
+
+   
+   
+   }
+  button  {
+  background-color: rgba(95, 29, 65, 0.508);
+  width: 625px;
+  height: 40px;
+  font-size: 1.2rem;
+  color: black;
+  border-radius: 25px;
+  border: solid 1px var(---bg---terceario);
+  margin-top:1rem ;
+  cursor: pointer;
+ 
+  }
+  
+  button:hover{
+  background-color: rgb(220, 65, 124);
+  transition: 5s;
+  }
+  
+  
+  
+  label{
+   
+   font-size:1.5rem;
+   text-justify: distribute;
+  }
+  
+  h5{
+
+font-size:17px ;
+font-weight: 500;
+text-justify: distribute;
+padding-right:2rem ;
+  }
+
+
+
+  p{
+text-align: center;
+text-justify:distribute ;
+font-size: 14px;
+padding-top: 1rem;
+  }
+
+  footer{
+
+text-justify:distribute ;
+font-size: 20px;
+padding-bottom: 4rem;
+  }
+
+.suscrebe:hover{
+ 
+ 
+
+}
+
+
+
+
+  /* PUNTOS DE QUIEBRE */
+
+
+
+  @media (max-width:900px) {
+
+  /*listen now*/
+
+main img{
+  width: 100vw;
+ 
+background-color: rgb(11, 8, 8);
+}
+
+.bobo img{
+
+  width: 50vw;
+
+}
+.bebe img{
+  width: 60vw;
+}
+
+
+  }
+
+
+  @media (max-width:788px) {
+/* IMPUT  LOGIN*/
+form{
+text-align: center;
+width: 100vw;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: palevioletred;
+}
+
+
+.login{
+width:100vw ;
+background-color: palevioletred;
+text-align: center;
+justify-content: center;
+align-items: center;
+
+}
+
+input{
+  width:80vw ;
+
+}
+select{
+  width:80vw ;
+
+}
+
+label{
+font-size: 15px;
+}
+
+
+button{
+
+  width: 80vw;;
+}
+
+ .suscrebe{
+ font-size: 80px;
+ text-align: center;
+}
+
+p{
+
+
+  
+  text-justify: distribute;
+}
+
+/* INTEGRANTES */
+
+
+
+
+  }
+
+  /* check y h5*/
+  .sing{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  @media (max-width:788px){
+/* INTEGRANTES */
+.integrantes{
+  width: 100%;
+  height: 800px;
+display: grid;
+grid-template-columns:repeat(2, 1fr);
+
+}
+
+section {
+  width: 100%;
+  height: 800px;
+
+}
+
+section img{
+  width: 50%;
+  height: 200px;
+}
+
+/* videos*/
+
+.video2{
+  width: 100vw;
+}
+
+
+
+.imgenes h2{
+ 
+
+font-size: 5rem;
+}
+
+
+video{
+width: 90vw;
+height: 500px;
+
+}
+
+  }
+
+
+  @media (max-width:955px){
+
+    video{
+      width: 90vw;
+      height: 600px;
+      
+
+  }
+
+  @media (max-width:620px){
+
+/* Login */
+
+form{
+  text-align: center;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: palevioletred;
+  }
+  
+  
+  .login{
+  width:100vw ;
+  background-color: palevioletred;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  
+  }
+  
+  input{
+    width:80vw ;
+  
+  }
+  select{
+    width:80vw ;
+  
+  }
+  
+  label{
+  font-size: 15px;
+  }
+  
+  
+  button{
+  
+    width: 80vw;;
+  }
+  
+   .suscrebe{
+   font-size: 60px;
+   text-align: center;
+  }
+  
+  p{
+  
+  
+   
+    text-justify: distribute;
+  }
+  
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* punto de quiebre mas pequeño*/
+
+
+  @media screen and (max-width:360px){
+
+/*LOGIN*/
+
+    form{
+      text-align: center;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      padding-right:2rem ;
+      }
+      
+      
+      .login{
+      width:100vw ;
+     
+   
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      
+      }
+      
+      input{
+        width:80vw ;
+      
+      }
+      select{
+        width:80vw ;
+      
+      }
+      
+      label{
+      font-size: 15px;
+      }
+      
+      
+      button{
+      
+        width: 80vw;;
+      }
+      
+       .suscrebe{
+       font-size: 50px;
+       text-align: center;
+      }
+      
+      p{
+      
+      
+       font-size: 8px;
+        text-justify: distribute;
+      }
+      
+/*video*/
+
+
+      .video2{
+        width: 100vw;
+        padding-right: 2rem;
+      
+      }
+      
+      
+      
+      .imgenes h2{
+       
+      
+      font-size: 5rem;
+      padding-right: 2rem;
+      }
+      
+      
+      video{
+      width: 90vw;
+      height: 500px;
+      
+      }
+
+/* INTEGRANTES */
+.integrantes{
+  width: 100%;
+  height: 800px;
+display: grid;
+grid-template-columns:repeat(2, 1fr);
+padding-right: 2rem;
+
+}
+
+section {
+  width: 100%;
+  height: 800px;
+
+}
+
+section img{
+  width: 30%;
+  height: 140px;
+}
+   
+
+
+  /*listen now*/
+
+  .musica{
+    width: 100vw;
+   
+    background-color:  rgb(2, 1, 9);
+  padding-right: 2rem;
+
+  }
+  
+  .bobo img{
+  
+    width: 50vw;
+   
+  }
+  .bebe img{
+    width: 60vw;
+    
+  }
+
+/* main */
+
+main{
+  width: 100vw;
+  background-color:  rgb(2, 1, 9);
+  padding-right: 2rem;
+
+}
+
+
+.tour{
+  width: 100vw;
+padding-right: 2rem;
+}
+
+
+  }
+
+
+
+
+  @media screen and (max-width:524px){
+
+    main img{
+      width: 100vw;
+     
+    background-color: rgb(11, 8, 8);
+   
+    }
+    
+    .bobo img{
+    
+      width: 80vw;
+     
+    
+    }
+    .bebe img{
+      width: 70vw;
+     
+    }
+
+
+
+/* INTEGRANTES */
+.integrantes{
+  width: 100%;
+  height: 800px;
+display: grid;
+grid-template-columns:repeat(2, 1fr);
+padding-right: 2rem;
+display: block;
+padding-top: 1.3rem;
+}
+
+section {
+  width: 100%;
+  height: 800px;
+  
+}
+
+section img{
+  width: 30%;
+  height: 90px;
+  margin: 5px;
+ 
+  
+}
+   
+
+
+
+/*LOGIN*/
+
+form{
+  text-align: center;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  padding-right:2rem ;
+  }
+  
+  
+  .login{
+  width:100vw ;
+ 
+
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  
+  }
+  
+  input{
+    width:80vw ;
+  
+  }
+  select{
+    width:80vw ;
+  
+  }
+  
+  label{
+  font-size: 15px;
+  }
+  
+  
+  button{
+  
+    width: 80vw;;
+  }
+  
+   .suscrebe{
+   font-size: 50px;
+   text-align: center;
+  }
+  
+  p{
+  
+  font-size:9px ;
+   
+    text-justify: distribute;
+  }
+  
+
+  }
+
+
+/*HEADER */
+
+@media  (max-width:752px){
+
+
+.sociales{
+
+ 
+
+}
+
+.sociales a{
+
+
+ font-size: 15px;
+ display: block;
+ padding: 5px;
+}
+
+.julio {
+width: 40vw;
+text-align: center;
+
+}
+
+}
+
+@media  (max-width:520px){
+
+.sociales i{
+background-color: aqua;
+display: none;
+}
+
+.julio {
+  width: 50vw;
+  text-align: center;
+  
+  }
+
+}
+
+
+@media  (max-width:520px){
+
+  .julio {
+    width: 50vw;
+    
+    
+    }
+
+
+  .sociales a{
+
+
+    font-size: 17px;
+    padding: 4px;
+    display: block;
+  
+   }
+   
+   .julio {
+    width: 60vw;
+    text-align: center;
+    
+    }
+
+
+
+}
