@@ -227,6 +227,7 @@ h2:hover{
   margin-top: 10px;
   border-radius:10px ;
   color: white;
+  text-align: center;
   }
   
   
@@ -869,6 +870,15 @@ display: none;
     
     }
 
+    input{
+      font-size:1rem ;
+      height: 30px;
+    }
 
+select{
+
+  font-size:1rem  ;
+  height: 30px;
+}
 
 }
