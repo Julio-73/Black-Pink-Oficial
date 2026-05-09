@@ -43,6 +43,18 @@
 </header>
 
 <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-particles">
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+    </div>
+    <div class="hero-rays"></div>
     <div class="hero-content">
         <h1 class="hero-title">BLACKPINK</h1>
         <p class="hero-subtitle">Welcome to the BLINK Family</p>
@@ -108,10 +120,14 @@
 
 <section class="subscribe-section" id="subscribe">
     <div class="subscribe-card">
-        <h2>Join BLINK Family</h2>
-        <p>Get the latest news and updates!</p>
+        <div class="subscribe-badge">Official Fan Community</div>
+        <h2>Join BLINK</h2>
+        <p>Be the first to receive exclusive news, comebacks, tours & special content.</p>
         <form class="subscribe-form">
-            <input type="email" placeholder="Enter your email" required>
+            <div class="form-row">
+                <input type="text" placeholder="Your name" required>
+                <input type="email" placeholder="Email address" required>
+            </div>
             <select required>
                 <option value="">Select Country</option>
                 <option value="US">United States</option>
@@ -119,8 +135,19 @@
                 <option value="JP">Japan</option>
                 <option value="MX">Mexico</option>
                 <option value="ES">Spain</option>
+                <option value="BR">Brazil</option>
+                <option value="UK">United Kingdom</option>
+                <option value="ID">Indonesia</option>
+                <option value="TH">Thailand</option>
+                <option value="PH">Philippines</option>
             </select>
-            <button type="submit" class="btn btn-primary">Subscribe</button>
+            <div class="subscribe-benefits">
+                <span>✨ New music alerts</span>
+                <span>🎤 Tour announcements</span>
+                <span>💖 Exclusive content</span>
+            </div>
+            <button type="submit" class="btn btn-primary">Join the Family</button>
+            <p class="subscribe-privacy">No spam, just BLACKPINK love ❤️</p>
         </form>
     </div>
 </section>
@@ -136,7 +163,6 @@
     <p>&copy; 2024 BLACKPINK. All Rights Reserved.</p>
 </footer>
 
-<script src="https://unpkg.com/scrollreveal"></script>
 <script src="page.js"></script>
 
 </body>
