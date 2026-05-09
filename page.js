@@ -1,5 +1,3 @@
-// Simple and reliable JavaScript
-
 document.addEventListener('DOMContentLoaded', function() {
     
     // Mobile Menu Toggle
@@ -8,9 +6,18 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (menuToggle && navMenu) {
         menuToggle.addEventListener('click', function() {
+            menuToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
     }
+    
+    // Close menu when clicking a link
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function() {
+            menuToggle?.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
     
     // Header scroll effect
     const header = document.getElementById('header');
@@ -28,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
     });
@@ -45,8 +52,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize ScrollReveal if available
     if (typeof ScrollReveal !== 'undefined') {
-        ScrollReveal().reveal('.member-card', { delay: 200, duration: 1000 });
-        ScrollReveal().reveal('.music-item', { delay: 200, duration: 1000 });
+        ScrollReveal().reveal('.member-card', { delay: 150, duration: 800, origin: 'bottom' });
+        ScrollReveal().reveal('.music-item', { delay: 200, duration: 800 });
         ScrollReveal().reveal('.section-title', { duration: 1000 });
     }
 });
