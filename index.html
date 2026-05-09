@@ -3,189 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Black Pink - Official Fan Page. Stay updated with the latest news, videos, tour dates and more.">
+    <meta name="keywords" content="BLACKPINK, K-pop, music, fandom, Jisoo, Jennie, Rosé, Lisa">
+    <meta name="author" content="Black Pink Fan Page">
+    <meta name="theme-color" content="#020109">
+    <meta property="og:title" content="Black Pink - Official Fan Page">
+    <meta property="og:description" content="Your source for all things Black Pink">
+    <meta property="og:type" content="website">
+    <title>Black Pink - Official Fan Page</title>
     <link rel="stylesheet" href="page.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="icon" href="pink.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
+
+<header class="header" id="header">
+    <nav class="nav-container">
+        <button class="menu-toggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-menu">
+            <a href="#tour" class="nav-link">Tour</a>
+            <a href="#video" class="nav-link">Video</a>
+            <a href="#music" class="nav-link">Music</a>
+            <a href="#subscribe" class="nav-link">Subscribe</a>
+        </div>
+    </nav>
     
-<!--------CABECERA SOACIALES--------->
+    <div class="logo-center">
+        <a href="#" aria-label="Black Pink Home">
+            <img class="logo-img" src="https://www.blackpinkmusic.com/files/2022/08/logo.png" alt="Black Pink Logo">
+        </a>
+    </div>
+    
+    <div class="social-container">
+        <a href="https://www.instagram.com/blackpinkofficial/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
+            <i class="bx bxl-instagram"></i>
+        </a>
+        <a href="https://www.youtube.com/@BLACKPINK" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="YouTube">
+            <i class="bx bxl-youtube"></i>
+        </a>
+        <a href="https://twitter.com/BLACKPINK" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Twitter">
+            <i class="bx bxl-twitter"></i>
+        </a>
+        <a href="https://www.tiktok.com/@bp_tiktok" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="TikTok">
+            <i class="bx bxl-tiktok"></i>
+        </a>
+    </div>
+</header>
 
-    <header >
-        <div class="sociales" >
-      <div    > 
-<a href="#tour">Tour</a>
-<a href="#video">Video</a>
-<a href="#subscribe">
-  Subscribe</a>
-</div>
-<div> 
-<a href=""> <img   class="julio" src="https://www.blackpinkmusic.com/files/2022/08/logo.png" alt="logo"> </a>
-</div>
-<div> 
-<div class="sociales">
-<a href="https://www.instagram.com/blackpinkofficial/"><i class='bx bxl-instagram'></i></a>
-<a href="https://www.youtube.com/@BLACKPINK"><i class='bx bxl-youtube'></i></a>
-<a href="https://twitter.com/BLACKPINK"><i class='bx bxl-twitter'></i></a>
-<a href="https://www.tiktok.com/@bp_tiktok"><i class='bx bxl-tiktok'></i> </a>
-</div>
-</div>
-    </header>
-
-
-    <!-------ESTRUCTURA CUERPO------>
-
-<main>
-
-    <img class="logo" src="pink.png" alt="logotipo">
-
+<main class="hero-section">
+    <div class="hero-content">
+        <img class="hero-logo" src="pink.png" alt="Black Pink" loading="eager">
+    </div>
 </main>
 
-<!-------INTEGRANTES------>
-
-<section>
-<div class="integrantes"> 
-   <div>
-<img  clase="ros" src="rose.png" alt="logo-rose">
-</div>
-<div> 
-<img src="lisa.png" alt="logo-lisa" srcset="">
-</div>
-<div> 
-<img src="jisoo.png" alt="logo-jiso">
-</div>
-<div>  
-<img src="jenny.png" alt="logo-jenny">
-</div>
-</div>
+<section class="members-section" id="members">
+    <h2 class="section-heading">Meet The Girls</h2>
+    <div class="members-container">
+        <div class="member-card" data-member="rose">
+            <div class="member-image">
+                <img src="rose.png" alt="Rosé" loading="lazy">
+            </div>
+            <div class="member-info">
+                <h3>Rosé</h3>
+                <p>Vocalist</p>
+            </div>
+        </div>
+        <div class="member-card" data-member="lisa">
+            <div class="member-image">
+                <img src="lisa.png" alt="Lisa" loading="lazy">
+            </div>
+            <div class="member-info">
+                <h3>Lisa</h3>
+                <p>Main Rapper</p>
+            </div>
+        </div>
+        <div class="member-card" data-member="jisoo">
+            <div class="member-image">
+                <img src="jisoo.png" alt="Jisoo" loading="lazy">
+            </div>
+            <div class="member-info">
+                <h3>Jisoo</h3>
+                <p>Visual & Vocalist</p>
+            </div>
+        </div>
+        <div class="member-card" data-member="jennie">
+            <div class="member-image">
+                <img src="jenny.png" alt="Jennie" loading="lazy">
+            </div>
+            <div class="member-info">
+                <h3>Jennie</h3>
+                <p>Main Rapper & Vocalist</p>
+            </div>
+        </div>
+    </div>
 </section>
 
-
-<!------- Section Musica------->
-
- <div class="musica" id="musica">
-<div class="bobo" >
-<img class="mu"  src="live2.png" alt="logo-listem">
-</div>
-<div class="bebe"  >  
-<img  class="list" src="Screenshot_13 copy.png" alt="logo-listen">
-</div>
-
-
-</div>
-
-<!-----Section Video------>
-
-<div class="video2"  id="video">  
-
-<video  class="poster" controls   width="900px"  height="700px" poster="pp.png" loop >
-
-<source src="loveluna.mp4"  type="video/mp4"   > 
-</video>
-
-
-</div>
-<div class="imgenes">
-    <h2 class="tipado"  > VIDEOS</h2>
+<section class="music-section" id="music">
+    <div class="music-wrapper">
+        <div class="music-item listen-item">
+            <img src="live2.png" alt="Listen Now" loading="lazy">
+            <div class="music-overlay">
+                <span>Listen Now</span>
+            </div>
+        </div>
+        <div class="music-item album-item">
+            <img src="Screenshot_13 copy.png" alt="Latest Album" loading="lazy">
+            <div class="music-overlay">
+                <span>New Release</span>
+            </div>
+        </div>
     </div>
+</section>
 
-
-    <!-----------TOUR------>
-
-    <div class="tour"  id="tour" >
-
-      
-
-
-        <video class="bolero-gifv bolero-gifv-processed playing" playsinline="" autoplay="autoplay" loop="" muted="" width="1920" height="1080" style="max-width: 100%;">
-          <source src="https://progressive-cdn.ustudio.com/ustudio/app/transcodes/TJqFJJ4d4wZ4.mp4" type="video/mp4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-          Su navegador no soporta el elemento de vídeo.
-        </font></font></video>
-
-
+<section class="video-section" id="video">
+    <h2 class="section-heading">Videos</h2>
+    <div class="video-wrapper">
+        <video class="main-video" controls playsinline poster="pp.png" preload="metadata">
+            <source src="loveluna.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de vídeo.
+        </video>
     </div>
+</section>
 
+<section class="tour-section" id="tour">
+    <div class="tour-content">
+        <h2 class="section-heading">World Tour</h2>
+        <video class="tour-video" playsinline autoplay loop muted preload="none">
+            <source src="https://progressive-cdn.ustudio.com/ustudio/app/transcodes/TJqFJJ4d4wZ4.mp4" type="video/mp4">
+        </video>
+    </div>
+</section>
 
-
-    <!----------------LOGIN------------>
-    <form action="">
-        <div class="login" id="subscribe" >
-  
-          <h2 class="suscrebe" > SUBSCRIBE</h2>
-      
-          
-          <label for="">EMAIL:</label>
-          <br>
-          <input class="ip"
-            type="email"
+<section class="subscribe-section" id="subscribe">
+    <div class="subscribe-wrapper">
+        <div class="subscribe-box">
+            <h2 class="subscribe-heading">Stay Updated</h2>
+            <p class="subscribe-text">Join BLINK family and get the latest news, exclusive content and special offers!</p>
             
-            required
-          />
-     
-          <br />
-          
-          <label for="">CHOOSE COUNTRY:</label>
-          <br>
-          <select name="" id="" placeholder="Seleccionar" required>
-            <option value="">Inglaterra</option>
-            <option value="">Argentina</option>
-            <option value="">Brazil</option>
-            <option value="">Chile</option>
-            <option value="">Mexico</option>
-            <option value="">Estados Unidos</option>
-            <option value="">España</option>
-            <option value="">Portugal</option>
-            <option value="">Francia</option>
-            <option value="">Korea del Sur</option>
-            <option value="">Japon</option>
-            <option value="">China</option>
-            <option value="">Australia</option>
-            <option value="">Canada</option>
-            <option value="">Nueva Zelanda</option>
-            <option value="">Perú</option>
-            <option value="">España</option>
-            <option value="">Italia</option>
-            <option value="">Ucrania</option>
-            <option value="">Rusia</option>
-            <option value="">Paraguay</option>
-            <option value="">Uruguay</option>
-            <option value="">Alemania</option>
-          </select>
-     
-     
-          <br />
-          <div class="sing" > 
-          <input type="checkbox"  class="check"  >
-        
-          <h5> SIGN UP TO RECEIVE EMAIL UPDATES AND OFFERS FROM BLACKPINK </h5>
+            <form class="subscribe-form" id="subscribeForm">
+                <div class="form-field">
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required autocomplete="email">
+                </div>
+                
+                <div class="form-field">
+                    <select id="country" name="country" required>
+                        <option value="">Select your country</option>
+                        <option value="US">United States</option>
+                        <option value="GB">United Kingdom</option>
+                        <option value="ES">Spain</option>
+                        <option value="MX">Mexico</option>
+                        <option value="AR">Argentina</option>
+                        <option value="BR">Brazil</option>
+                        <option value="CL">Chile</option>
+                        <option value="KR">South Korea</option>
+                        <option value="JP">Japan</option>
+                        <option value="AU">Australia</option>
+                        <option value="CA">Canada</option>
+                        <option value="FR">France</option>
+                        <option value="DE">Germany</option>
+                        <option value="IT">Italy</option>
+                    </select>
+                </div>
+                
+                <div class="form-checkbox">
+                    <input type="checkbox" id="consent" name="consent" required>
+                    <label for="consent">I agree to receive email updates from Black Pink</label>
+                </div>
+                
+                <button type="submit" class="submit-button">
+                    <span>Subscribe</span>
+                    <i class="bx bx-right-arrow-alt"></i>
+                </button>
+            </form>
+            
+            <p class="legal-note">By subscribing, you agree to our Terms and Privacy Policy. You can unsubscribe anytime.</p>
+        </div>
     </div>
-    <div>
-            <p> Emails will be sent by or on behalf of Universal Music Group 2220 Colorado Avenue, Santa Monica  <br> CA 90404 (310) 865-4000. You may withdraw your consent at any time.</p>
-          </div>
-  <br>
-  
+</section>
 
+<footer class="footer">
+    <div class="footer-content">
+        <img class="footer-logo" src="pink.png" alt="Black Pink">
+        <div class="footer-social">
+            <a href="https://www.instagram.com/blackpinkofficial/" target="_blank"><i class="bx bxl-instagram"></i></a>
+            <a href="https://www.youtube.com/@BLACKPINK" target="_blank"><i class="bx bxl-youtube"></i></a>
+            <a href="https://twitter.com/BLACKPINK" target="_blank"><i class="bx bxl-twitter"></i></a>
+            <a href="https://www.tiktok.com/@bp_tiktok" target="_blank"><i class="bx bxl-tiktok"></i></a>
+        </div>
+        <p class="copyright">&copy; 2024 Black Pink. All Rights Reserved.</p>
+    </div>
+</footer>
 
-<div> 
-
-    <button type="submit"><span>  Register </span>   </button  >
-   </div>
-<br>
-   
-  
-</form>
-
-
-
-
-
-
-<!----------SCROLL-------->
 <script src="https://unpkg.com/scrollreveal"></script>
-
-<script src="page.js"  ></script>
-
+<script src="page.js"></script>
 
 </body>
 </html>
