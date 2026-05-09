@@ -2,29 +2,13 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="BLACKPINK - Official Fan Page. The world's biggest girl group.">
-    <meta name="keywords" content="BLACKPINK, K-pop, Jisoo, Jennie, Rosé, Lisa, BLINK">
-    <meta name="theme-color" content="#000000">
-    <meta property="og:title" content="BLACKPINK - Official Fan Page">
-    <meta property="og:description" content="The world's biggest girl group">
-    <meta property="og:type" content="website">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BLACKPINK - Official Fan Page">
     <title>BLACKPINK | Official Fan Page</title>
     <link rel="stylesheet" href="page.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="icon" href="pink.png" type="image/png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-<!-- Loading placeholder - hidden immediately -->
-<div class="loader" id="loader" style="display:none;"></div>
-
-<div class="cursor" id="cursor"></div>
-<div class="cursor-follower" id="cursorFollower"></div>
 
 <header class="header" id="header">
     <div class="header-content">
@@ -33,426 +17,119 @@
             <span></span>
             <span></span>
         </button>
-        
         <nav class="nav-menu">
             <a href="#home" class="nav-link">Home</a>
             <a href="#members" class="nav-link">Members</a>
             <a href="#music" class="nav-link">Music</a>
             <a href="#video" class="nav-link">Videos</a>
-            <a href="#tour" class="nav-link">Tour</a>
             <a href="#subscribe" class="nav-link">Join BLINK</a>
         </nav>
-        
         <div class="logo-container">
             <a href="#" class="logo">
                 <img src="pink.png" alt="BLACKPINK">
             </a>
         </div>
-        
         <div class="social-icons">
-            <a href="https://www.instagram.com/blackpinkofficial/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
-                <i class="bx bxl-instagram"></i>
-            </a>
-            <a href="https://www.youtube.com/@BLACKPINK" target="_blank" rel="noopener" class="social-link" aria-label="YouTube">
-                <i class="bx bxl-youtube"></i>
-            </a>
-            <a href="https://twitter.com/BLACKPINK" target="_blank" rel="noopener" class="social-link" aria-label="Twitter">
-                <i class="bx bxl-twitter"></i>
-            </a>
-            <a href="https://www.tiktok.com/@bp_tiktok" target="_blank" rel="noopener" class="social-link" aria-label="TikTok">
-                <i class="bx bxl-tiktok"></i>
-            </a>
-        </div>
-    </div>
-</header>
-
-<main>
-    <section class="hero" id="home">
-        <div class="hero-bg">
-            <div class="hero-particles" id="particles"></div>
-            <div class="hero-gradient"></div>
-        </div>
-        <div class="hero-content">
-            <div class="hero-badge">OFFICIAL FAN PAGE</div>
-            <h1 class="hero-title">
-                <span class="title-line">BLACK</span>
-                <span class="title-line pink">PINK</span>
-            </h1>
-            <p class="hero-subtitle">Welcome to the BLINK Family</p>
-            <div class="hero-buttons">
-                <a href="#music" class="btn btn-primary">
-                    <span>Listen Now</span>
-                    <i class="bx bx-play"></i>
-                </a>
-                <a href="#video" class="btn btn-secondary">
-                    <span>Watch Videos</span>
-                    <i class="bx bx-movie-play"></i>
-                </a>
-            </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="stat-number" data-count="25">0</span>
-                    <span class="stat-label">M Awards</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number" data-count="40">0</span>
-                    <span class="stat-label">B Views</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number" data-count="35">0</span>
-                    <span class="stat-label">M Fans</span>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <span>Scroll</span>
-            <div class="scroll-arrow">
-                <i class="bx bx-chevrons-down"></i>
-            </div>
-        </div>
-    </section>
-
-    <section class="members" id="members">
-        <div class="section-header">
-            <h2 class="section-title">Meet The Members</h2>
-            <p class="section-subtitle">Four talented girls, one unstoppable group</p>
-        </div>
-        <div class="members-grid">
-            <div class="member-card" data-member="jisoo">
-                <div class="member-img-wrapper">
-                    <img src="jisoo.png" alt="Jisoo" loading="lazy">
-                    <div class="member-overlay">
-                        <div class="member-social">
-                            <i class="bx bxl-instagram"></i>
-                            <i class="bx bxl-twitter"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="member-info">
-                    <h3>Jisoo 지주</h3>
-                    <p class="member-role">Visual & Lead Vocalist</p>
-                    <div class="member-stats">
-                        <span><i class="bx bx-calendar"></i> Jan 1995</span>
-                        <span><i class="bx bx-map"></i> Seoul, Korea</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="member-card" data-member="jennie">
-                <div class="member-img-wrapper">
-                    <img src="jenny.png" alt="Jennie" loading="lazy">
-                    <div class="member-overlay">
-                        <div class="member-social">
-                            <i class="bx bxl-instagram"></i>
-                            <i class="bx bxl-twitter"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="member-info">
-                    <h3>Jennie 제니</h3>
-                    <p class="member-role">Main Rapper & Vocalist</p>
-                    <div class="member-stats">
-                        <span><i class="bx bx-calendar"></i> Dec 1996</span>
-                        <span><i class="bx bx-map"></i> Seoul, Korea</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="member-card" data-member="rosé">
-                <div class="member-img-wrapper">
-                    <img src="rose.png" alt="Rosé" loading="lazy">
-                    <div class="member-overlay">
-                        <div class="member-social">
-                            <i class="bx bxl-instagram"></i>
-                            <i class="bx bxl-twitter"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="member-info">
-                    <h3>Rosé 로제</h3>
-                    <p class="member-role">Main Vocalist</p>
-                    <div class="member-stats">
-                        <span><i class="bx bx-calendar"></i> Feb 1997</span>
-                        <span><i class="bx bx-map"></i> Melbourne, Australia</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="member-card" data-member="lisa">
-                <div class="member-img-wrapper">
-                    <img src="lisa.png" alt="Lisa" loading="lazy">
-                    <div class="member-overlay">
-                        <div class="member-social">
-                            <i class="bx bxl-instagram"></i>
-                            <i class="bx bxl-twitter"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="member-info">
-                    <h3>Lisa 리사</h3>
-                    <p class="member-role">Main Rapper & Dancer</p>
-                    <div class="member-stats">
-                        <span><i class="bx bx-calendar"></i> Mar 1997</span>
-                        <span><i class="bx bx-map"></i> Bangkok, Thailand</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="music" id="music">
-        <div class="section-header">
-            <h2 class="section-title">Latest Music</h2>
-            <p class="section-subtitle">New releases and biggest hits</p>
-        </div>
-        <div class="music-container">
-            <div class="music-showcase">
-                <div class="music-main">
-                    <img src="Screenshot_13 copy.png" alt="Latest Album" loading="lazy">
-                    <div class="music-play-btn">
-                        <i class="bx bx-play"></i>
-                    </div>
-                </div>
-                <div class="music-info">
-                    <span class="music-label">NEW RELEASE</span>
-                    <h3>BORN PINK</h3>
-                    <p>2nd Studio Album • 2022</p>
-                    <div class="music-buttons">
-                        <button class="music-btn"><i class="bx bxl-spotify"></i> Spotify</button>
-                        <button class="music-btn"><i class="bx bxl-apple"></i> Apple Music</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="music-playlist">
-                <h4>Popular Tracks</h4>
-                <div class="track-list">
-                    <div class="track">
-                        <span class="track-num">01</span>
-                        <div class="track-info">
-                            <span class="track-name">Pink Venom</span>
-                            <span class="track-album">BORN PINK</span>
-                        </div>
-                        <button class="track-play"><i class="bx bx-play"></i></button>
-                    </div>
-                    <div class="track">
-                        <span class="track-num">02</span>
-                        <div class="track-info">
-                            <span class="track-name">How You Like That</span>
-                            <span class="track-album">THE ALBUM</span>
-                        </div>
-                        <button class="track-play"><i class="bx bx-play"></i></button>
-                    </div>
-                    <div class="track">
-                        <span class="track-num">03</span>
-                        <div class="track-info">
-                            <span class="track-name">Shut Down</span>
-                            <span class="track-album">BORN PINK</span>
-                        </div>
-                        <button class="track-play"><i class="bx bx-play"></i></button>
-                    </div>
-                    <div class="track">
-                        <span class="track-num">04</span>
-                        <div class="track-info">
-                            <span class="track-name">Kill This Love</span>
-                            <span class="track-album">Kill This Love</span>
-                        </div>
-                        <button class="track-play"><i class="bx bx-play"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="video-section" id="video">
-        <div class="section-header">
-            <h2 class="section-title">Videos</h2>
-            <p class="section-subtitle">Official music videos and content</p>
-        </div>
-        <div class="video-container">
-            <div class="video-main">
-                <video class="main-video-player" controls playsinline poster="pp.png" preload="metadata">
-                    <source src="loveluna.mp4" type="video/mp4">
-                </video>
-                <div class="video-info">
-                    <h3>Latest MV</h3>
-                    <p>Watch the newest music video</p>
-                </div>
-            </div>
-            <div class="video-thumbs">
-                <div class="video-thumb active" data-video="loveluna.mp4">
-                    <img src="live2.png" alt="Video Thumbnail">
-                    <div class="thumb-overlay">
-                        <i class="bx bx-play"></i>
-                    </div>
-                    <span class="thumb-duration">3:45</span>
-                </div>
-                <div class="video-thumb">
-                    <img src="listem.png" alt="Video Thumbnail">
-                    <div class="thumb-overlay">
-                        <i class="bx bx-play"></i>
-                    </div>
-                    <span class="thumb-duration">4:02</span>
-                </div>
-                <div class="video-thumb">
-                    <img src="videos.png" alt="Video Thumbnail">
-                    <div class="thumb-overlay">
-                        <i class="bx bx-play"></i>
-                    </div>
-                    <span class="thumb-duration">3:20</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="tour-section" id="tour">
-        <div class="section-header">
-            <h2 class="section-title">World Tour</h2>
-            <p class="section-subtitle">BLACKPINK WORLD TOUR [BORN PINK]</p>
-        </div>
-        <div class="tour-container">
-            <div class="tour-video-wrapper">
-                <video class="tour-bg-video" playsinline autoplay loop muted preload="none">
-                    <source src="https://progressive-cdn.ustudio.com/ustudio/app/transcodes/TJqFJJ4d4wZ4.mp4" type="video/mp4">
-                </video>
-                <div class="tour-overlay">
-                    <div class="tour-content">
-                        <h3>BORN PINK TOUR</h3>
-                        <p>2022 - 2023</p>
-                        <a href="#subscribe" class="btn btn-primary">Get Tickets</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="gallery-section">
-        <div class="section-header">
-            <h2 class="section-title">Gallery</h2>
-            <p class="section-subtitle">Latest photos and moments</p>
-        </div>
-        <div class="gallery-grid">
-            <div class="gallery-item" style="--delay: 0">
-                <img src="blck pink.png" alt="Gallery">
-                <div class="gallery-overlay">
-                    <i class="bx bx-zoom-in"></i>
-                </div>
-            </div>
-            <div class="gallery-item" style="--delay: 1">
-                <img src="live.png" alt="Gallery">
-                <div class="gallery-overlay">
-                    <i class="bx bx-zoom-in"></i>
-                </div>
-            </div>
-            <div class="gallery-item" style="--delay: 2">
-                <img src="live2.png" alt="Gallery">
-                <div class="gallery-overlay">
-                    <i class="bx bx-zoom-in"></i>
-                </div>
-            </div>
-            <div class="gallery-item" style="--delay: 3">
-                <img src="pink.png" alt="Gallery">
-                <div class="gallery-overlay">
-                    <i class="bx bx-zoom-in"></i>
-                </div>
-            </div>
-            <div class="gallery-item" style="--delay: 4">
-                <img src="pp.png" alt="Gallery">
-                <div class="gallery-overlay">
-                    <i class="bx bx-zoom-in"></i>
-                </div>
-            </div>
-            <div class="gallery-item" style="--delay: 5">
-                <img src="videos.png" alt="Gallery">
-                <div class="gallery-overlay">
-                    <i class="bx bx-zoom-in"></i>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="subscribe-section" id="subscribe">
-        <div class="subscribe-bg">
-            <div class="subscribe-particles"></div>
-        </div>
-        <div class="subscribe-container">
-            <div class="subscribe-card">
-                <div class="subscribe-icon">
-                    <i class="bx bxs-heart"></i>
-                </div>
-                <h2>Join BLINK Family</h2>
-                <p>Be the first to know about new releases, tour dates, exclusive content and special offers!</p>
-                
-                <form class="subscribe-form" id="subscribeForm">
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                        <button type="submit" class="submit-btn">
-                            <span>Join Now</span>
-                            <i class="bx bx-paper-plane"></i>
-                        </button>
-                    </div>
-                    
-                    <div class="form-row">
-                        <select id="country" name="country" required>
-                            <option value="">Select Country</option>
-                            <option value="US">United States</option>
-                            <option value="GB">United Kingdom</option>
-                            <option value="KR">South Korea</option>
-                            <option value="JP">Japan</option>
-                            <option value="MX">Mexico</option>
-                            <option value="BR">Brazil</option>
-                            <option value="ES">Spain</option>
-                            <option value="AU">Australia</option>
-                            <option value="CA">Canada</option>
-                            <option value="FR">France</option>
-                            <option value="DE">Germany</option>
-                            <option value="PH">Philippines</option>
-                            <option value="ID">Indonesia</option>
-                            <option value="TH">Thailand</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-checkbox">
-                        <input type="checkbox" id="consent" name="consent" required>
-                        <label for="consent">I agree to receive email updates from BLACKPINK</label>
-                    </div>
-                </form>
-                
-                <p class="subscribe-note">Join 35+ million BLINKs worldwide!</p>
-            </div>
-        </div>
-    </section>
-</main>
-
-<footer class="footer">
-    <div class="footer-bg"></div>
-    <div class="footer-content">
-        <div class="footer-logo">
-            <img src="pink.png" alt="BLACKPINK">
-        </div>
-        
-        <div class="footer-links">
-            <a href="#home">Home</a>
-            <a href="#members">Members</a>
-            <a href="#music">Music</a>
-            <a href="#video">Videos</a>
-            <a href="#tour">Tour</a>
-        </div>
-        
-        <div class="footer-social">
             <a href="https://www.instagram.com/blackpinkofficial/" target="_blank"><i class="bx bxl-instagram"></i></a>
             <a href="https://www.youtube.com/@BLACKPINK" target="_blank"><i class="bx bxl-youtube"></i></a>
             <a href="https://twitter.com/BLACKPINK" target="_blank"><i class="bx bxl-twitter"></i></a>
             <a href="https://www.tiktok.com/@bp_tiktok" target="_blank"><i class="bx bxl-tiktok"></i></a>
-            <a href="https://www.facebook.com/BLACKPINK" target="_blank"><i class="bx bxl-facebook"></i></a>
-            <a href="https://open.spotify.com/artist/41MozT6ggFDe2D7D3wKnF1" target="_blank"><i class="bx bxl-spotify"></i></a>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2024 BLACKPINK. All Rights Reserved.</p>
-            <p>Created with <i class="bx bxs-heart"></i> for BLINKs</p>
         </div>
     </div>
+</header>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1 class="hero-title">BLACKPINK</h1>
+        <p class="hero-subtitle">Welcome to the BLINK Family</p>
+        <div class="hero-buttons">
+            <a href="#music" class="btn btn-primary">Listen Now</a>
+            <a href="#video" class="btn btn-secondary">Watch Videos</a>
+        </div>
+    </div>
+</section>
+
+<section class="members" id="members">
+    <h2 class="section-title">Meet The Members</h2>
+    <div class="members-grid">
+        <div class="member-card">
+            <img src="jisoo.png" alt="Jisoo">
+            <h3>Jisoo</h3>
+            <p>Visual & Lead Vocalist</p>
+        </div>
+        <div class="member-card">
+            <img src="jenny.png" alt="Jennie">
+            <h3>Jennie</h3>
+            <p>Main Rapper & Vocalist</p>
+        </div>
+        <div class="member-card">
+            <img src="rose.png" alt="Rosé">
+            <h3>Rosé</h3>
+            <p>Main Vocalist</p>
+        </div>
+        <div class="member-card">
+            <img src="lisa.png" alt="Lisa">
+            <h3>Lisa</h3>
+            <p>Main Rapper & Dancer</p>
+        </div>
+    </div>
+</section>
+
+<section class="music" id="music">
+    <h2 class="section-title">Latest Music</h2>
+    <div class="music-container">
+        <div class="music-item">
+            <img src="Screenshot_13 copy.png" alt="Album">
+        </div>
+        <div class="music-item">
+            <img src="live2.png" alt="Listen">
+        </div>
+    </div>
+</section>
+
+<section class="video-section" id="video">
+    <h2 class="section-title">Videos</h2>
+    <div class="video-container">
+        <video controls playsinline poster="pp.png" preload="metadata">
+            <source src="loveluna.mp4" type="video/mp4">
+        </video>
+    </div>
+</section>
+
+<section class="tour-section" id="tour">
+    <video playsinline autoplay loop muted preload="none">
+        <source src="https://progressive-cdn.ustudio.com/ustudio/app/transcodes/TJqFJJ4d4wZ4.mp4" type="video/mp4">
+    </video>
+</section>
+
+<section class="subscribe-section" id="subscribe">
+    <div class="subscribe-card">
+        <h2>Join BLINK Family</h2>
+        <p>Get the latest news and updates!</p>
+        <form class="subscribe-form">
+            <input type="email" placeholder="Enter your email" required>
+            <select required>
+                <option value="">Select Country</option>
+                <option value="US">United States</option>
+                <option value="KR">South Korea</option>
+                <option value="JP">Japan</option>
+                <option value="MX">Mexico</option>
+                <option value="ES">Spain</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+    </div>
+</section>
+
+<footer class="footer">
+    <img src="pink.png" alt="BLACKPINK">
+    <div class="footer-social">
+        <a href="https://www.instagram.com/blackpinkofficial/" target="_blank"><i class="bx bxl-instagram"></i></a>
+        <a href="https://www.youtube.com/@BLACKPINK" target="_blank"><i class="bx bxl-youtube"></i></a>
+        <a href="https://twitter.com/BLACKPINK" target="_blank"><i class="bx bxl-twitter"></i></a>
+        <a href="https://www.tiktok.com/@bp_tiktok" target="_blank"><i class="bx bxl-tiktok"></i></a>
+    </div>
+    <p>&copy; 2024 BLACKPINK. All Rights Reserved.</p>
 </footer>
 
 <script src="https://unpkg.com/scrollreveal"></script>
