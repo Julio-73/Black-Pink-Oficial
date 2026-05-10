@@ -1625,6 +1625,13 @@ section {
 
 .album-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 105, 180, 0.3);
+}
+
+.album-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
 }
 
 .album-card img {
@@ -1676,6 +1683,17 @@ section {
     border-radius: 10px;
     border: 1px solid var(--glass-border);
     transition: all 0.3s ease;
+}
+
+.song-row-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.song-row-link .song-item:hover {
+    background: rgba(255, 105, 180, 0.1);
+    transform: translateX(5px);
 }
 
 .song-item:hover {
@@ -1831,6 +1849,7 @@ section {
     overflow: hidden;
     border: 1px solid var(--glass-border);
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .video-card:hover {
@@ -2171,7 +2190,12 @@ section {
 .countdown-container-mobile h4 { font-size: 0.7rem; color: #ff69b4; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 0.8rem 0; }
 .countdown-timer { display: flex; justify-content: center; gap: 0.5rem; }
 .time-box { background: rgba(255,255,255,0.1); padding: 0.5rem; border-radius: 6px; min-width: 50px; }
-.time-box span { font-size: 1rem; font-weight: bold; display: block; color: white; }
+.time-box span { font-size: 1rem; font-weight: bold; display: block; color: white; animation: pulse-number 1s infinite alternate ease-in-out; }
+
+@keyframes pulse-number {
+    0% { transform: scale(1); opacity: 0.9; }
+    100% { transform: scale(1.05); opacity: 1; text-shadow: 0 0 8px rgba(255, 105, 180, 0.6); }
+}
 .time-box small { font-size: 0.5rem; color: #888; text-transform: uppercase; }
 
 .quote-mobile { text-align: center; font-style: italic; margin: 1.5rem 0; color: #ff69b4; font-size: 0.9rem; max-width: 600px; margin-left: auto; margin-right: auto; }
@@ -2350,5 +2374,12 @@ section {
         height: auto !important;
         opacity: 0.9 !important;
         margin-bottom: 1.5rem;
+    }
+}
+
+/* Responsive iframes for member modals on mobile */
+@media (max-width: 768px) {
+    .modal-content-mobile iframe {
+        height: 180px !important;
     }
 }
