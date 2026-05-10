@@ -1153,3 +1153,1202 @@ section {
         font-size: 1.4rem;
     }
 }
+
+/* ==================== CONTENT ADDED: HERO BANNER ==================== */
+.hero-banner {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.banner-slides {
+    position: relative;
+    height: 250px;
+}
+
+.banner-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.banner-slide.active {
+    opacity: 1;
+}
+
+.banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+}
+
+.banner-text {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    text-align: left;
+}
+
+.banner-label {
+    display: inline-block;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--pink-primary);
+    margin-bottom: 0.5rem;
+}
+
+.banner-text h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+}
+
+.banner-text p {
+    font-size: 0.75rem;
+    color: var(--white-dim);
+    margin-bottom: 0.8rem;
+}
+
+.banner-btn {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.65rem;
+}
+
+.banner-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1rem;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gray-dark);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: var(--pink-primary);
+    transform: scale(1.2);
+}
+
+/* ==================== CONTENT ADDED: COUNTDOWN TIMER ==================== */
+.countdown-container {
+    position: relative;
+    z-index: 2;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.countdown-label {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--pink-light);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.countdown-item {
+    text-align: center;
+    min-width: 70px;
+}
+
+.countdown-number {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1;
+}
+
+.countdown-text {
+    font-size: 0.6rem;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ==================== CONTENT ADDED: QUOTE CAROUSEL ==================== */
+.quote-carousel {
+    position: relative;
+    z-index: 2;
+    margin-top: 1.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+}
+
+.quote-track {
+    display: flex;
+    animation: quoteSlide 16s infinite;
+}
+
+.quote-slide {
+    flex: 0 0 100%;
+    text-align: center;
+    padding: 1rem;
+}
+
+.quote-text {
+    font-size: 0.9rem;
+    color: var(--white);
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.quote-author {
+    font-size: 0.7rem;
+    color: var(--pink-primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+@keyframes quoteSlide {
+    0%, 20% { transform: translateX(0); }
+    25%, 45% { transform: translateX(-100%); }
+    50%, 70% { transform: translateX(-200%); }
+    75%, 95% { transform: translateX(-300%); }
+    100% { transform: translateX(0); }
+}
+
+/* ==================== CONTENT ADDED: INSTAGRAM FEED ==================== */
+.instagram-feed {
+    position: relative;
+    z-index: 2;
+    margin-top: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.instagram-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    color: var(--white-dim);
+    font-size: 0.8rem;
+}
+
+.instagram-header i {
+    color: var(--pink-primary);
+    font-size: 1.2rem;
+}
+
+.instagram-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.instagram-item {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.instagram-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.instagram-item:hover img {
+    transform: scale(1.1);
+}
+
+.instagram-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.instagram-item:hover .instagram-overlay {
+    opacity: 1;
+}
+
+.instagram-overlay i {
+    font-size: 1.5rem;
+    color: var(--white);
+}
+
+/* ==================== CONTENT ADDED: MEMBER DETAILS ==================== */
+.member-details {
+    display: none;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--glass-border);
+    text-align: left;
+}
+
+.member-info-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.65rem;
+    color: var(--white-dim);
+    margin-bottom: 0.4rem;
+}
+
+.member-info-row span:first-child {
+    color: var(--gray);
+}
+
+.member-solo {
+    margin-top: 0.8rem;
+    font-size: 0.65rem;
+}
+
+.member-solo span {
+    color: var(--gray);
+}
+
+.member-solo a {
+    color: var(--pink-primary);
+    transition: color 0.3s ease;
+}
+
+.member-solo a:hover {
+    color: var(--pink-light);
+}
+
+.member-social {
+    margin-top: 0.8rem;
+}
+
+.member-insta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.65rem;
+    color: var(--white-dim);
+    transition: color 0.3s ease;
+}
+
+.member-insta:hover {
+    color: var(--pink-primary);
+}
+
+.member-insta i {
+    font-size: 0.9rem;
+}
+
+.member-profile-btn {
+    margin-top: 1rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.65rem;
+}
+
+/* ==================== CONTENT ADDED: MEMBER MODAL ==================== */
+.member-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.member-modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--black-light);
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 800px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    border: 1px solid var(--glass-border);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    color: var(--white-dim);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+    color: var(--pink-primary);
+}
+
+.modal-gallery {
+    margin-bottom: 2rem;
+}
+
+.modal-gallery h3,
+.modal-video h3,
+.modal-fact h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--white);
+    margin-bottom: 1rem;
+}
+
+.modal-images {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.modal-images img {
+    border-radius: 10px;
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+
+.modal-video {
+    margin-bottom: 2rem;
+}
+
+.video-embed {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.video-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.fun-fact-text {
+    font-size: 0.9rem;
+    color: var(--white-dim);
+    font-style: italic;
+}
+
+/* ==================== CONTENT ADDED: MUSIC SECTIONS ==================== */
+.subsection-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.subsection-title::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: var(--pink-primary);
+    margin: 0.8rem auto 0;
+}
+
+.discography-section {
+    margin-bottom: 3rem;
+    width: 100%;
+}
+
+.discography-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.album-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.album-card:hover {
+    transform: translateY(-5px);
+}
+
+.album-card img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+
+.album-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+}
+
+.album-info h4 {
+    font-size: 0.8rem;
+    color: var(--white);
+    margin-bottom: 0.2rem;
+}
+
+.album-info span {
+    font-size: 0.65rem;
+    color: var(--gray);
+}
+
+.top-songs-section {
+    margin-bottom: 3rem;
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.top-songs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.song-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1rem;
+    background: var(--glass-bg);
+    border-radius: 10px;
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+}
+
+.song-item:hover {
+    border-color: var(--pink-primary);
+    transform: translateX(5px);
+}
+
+.song-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--pink-primary);
+    min-width: 25px;
+}
+
+.song-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+}
+
+.song-title {
+    font-size: 0.85rem;
+    color: var(--white);
+}
+
+.song-streams {
+    font-size: 0.7rem;
+    color: var(--gray);
+}
+
+.spotify-section {
+    margin-bottom: 3rem;
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.spotify-embed {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+}
+
+.lyrics-section {
+    margin-bottom: 3rem;
+    width: 100%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.lyrics-box {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.lyrics-box p {
+    font-size: 0.8rem;
+    color: var(--white-dim);
+    line-height: 2;
+}
+
+.lyrics-highlight {
+    color: var(--pink-primary) !important;
+    font-weight: 500;
+}
+
+/* ==================== CONTENT ADDED: VIDEO TABS ==================== */
+.video-tabs-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.video-tabs {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.video-tab {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--white-dim);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.video-tab:hover {
+    border-color: var(--pink-primary);
+    color: var(--white);
+}
+
+.video-tab.active {
+    background: var(--pink-primary);
+    border-color: var(--pink-primary);
+    color: var(--white);
+}
+
+.video-filter {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.video-filter label {
+    font-size: 0.7rem;
+    color: var(--white-dim);
+}
+
+.video-filter select {
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    color: var(--white);
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+.video-tab-content {
+    display: none;
+    margin-bottom: 2rem;
+}
+
+.video-tab-content.active {
+    display: block;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.video-card {
+    background: var(--glass-bg);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+}
+
+.video-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--pink-primary);
+}
+
+.video-thumbnail {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+}
+
+.video-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.video-card:hover .video-thumbnail img {
+    transform: scale(1.05);
+}
+
+.video-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--pink-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.video-play-btn i {
+    font-size: 1.5rem;
+    color: var(--white);
+    margin-left: 3px;
+}
+
+.video-play-btn:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 10px 30px rgba(255,107,157,0.4);
+}
+
+.video-info {
+    padding: 1rem;
+}
+
+.video-info h4 {
+    font-size: 0.85rem;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+}
+
+.video-info span {
+    font-size: 0.65rem;
+    color: var(--gray);
+}
+
+/* ==================== CONTENT ADDED: SUBSCRIBE ENHANCEMENTS ==================== */
+.language-options {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    padding: 0.8rem;
+    background: var(--glass-bg);
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+}
+
+.language-label {
+    font-size: 0.75rem;
+    color: var(--white-dim);
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    cursor: pointer;
+    font-size: 0.7rem;
+    color: var(--white-dim);
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--pink-primary);
+}
+
+.discord-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding: 0.8rem 1.5rem;
+    background: #5865F2;
+    color: var(--white);
+    border-radius: 50px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.discord-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(88,101,242,0.4);
+}
+
+.discord-btn i {
+    font-size: 1.1rem;
+}
+
+/* ==================== CONTENT ADDED: MERCHANDISE SECTION ==================== */
+.merch-section {
+    background: var(--black-soft);
+    padding: 120px 2rem;
+    position: relative;
+}
+
+.merch-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+}
+
+.merch-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.merch-card {
+    background: var(--glass-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    transition: all 0.4s ease;
+}
+
+.merch-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(255,107,157,0.2);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+}
+
+.merch-image {
+    aspect-ratio: 1;
+    overflow: hidden;
+}
+
+.merch-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.merch-card:hover .merch-image img {
+    transform: scale(1.1);
+}
+
+.merch-info {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.merch-info h4 {
+    font-size: 0.9rem;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+}
+
+.merch-price {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--pink-primary);
+    margin-bottom: 1rem;
+}
+
+.merch-btn {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    font-size: 0.65rem;
+}
+
+/* ==================== CONTENT ADDED: TOUR MAP SECTION ==================== */
+.tour-map-section {
+    background: var(--black);
+    padding: 120px 2rem;
+    position: relative;
+}
+
+.tour-map-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+}
+
+.tour-map-container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#tour-map {
+    height: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+}
+
+.tour-cities {
+    display: none;
+}
+
+/* ==================== CONTENT ADDED: FOOTER UPDATE ==================== */
+.footer-follow {
+    font-size: 0.75rem;
+    color: var(--white-dim);
+    margin-bottom: 1rem;
+}
+
+/* ==================== RESPONSIVE FOR NEW CONTENT ==================== */
+@media (max-width: 768px) {
+    .hero-banner {
+        max-width: 100%;
+    }
+
+    .banner-slides {
+        height: 200px;
+    }
+
+    .countdown {
+        gap: 0.5rem;
+    }
+
+    .countdown-item {
+        min-width: 55px;
+    }
+
+    .countdown-number {
+        font-size: 1.5rem;
+    }
+
+    .instagram-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .discography-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .merch-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .video-tabs-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .modal-images {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .banner-slides {
+        height: 180px;
+    }
+
+    .banner-text h3 {
+        font-size: 1rem;
+    }
+
+    .countdown-container {
+        padding: 1rem;
+    }
+
+    .countdown-number {
+        font-size: 1.2rem;
+    }
+
+    .quote-text {
+        font-size: 0.8rem;
+    }
+
+    .merch-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .discography-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .video-tab {
+        padding: 0.6rem 1rem;
+        font-size: 0.6rem;
+    }
+
+    #tour-map {
+        height: 300px;
+    }
+}
+
+/* ==================== FIXED: MOBILE LAYOUT STYLES ==================== */
+.hero-carousel-mobile { position: relative; height: 250px; overflow: hidden; border-radius: 12px; margin-bottom: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+.carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
+.slide-text { position: absolute; bottom: 15px; left: 15px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
+.slide-text h3 { font-size: 0.7rem; color: #ff69b4; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
+.slide-text h2 { font-size: 1.2rem; margin: 0.5rem 0; font-family: 'Playfair Display', serif; }
+.slide-text p { font-size: 0.8rem; margin: 0 0 0.8rem 0; color: rgba(255,255,255,0.8); }
+.slide-text .btn { padding: 0.5rem 1rem; font-size: 0.65rem; }
+
+.countdown-container-mobile { text-align: center; margin: 1.5rem 0; padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 12px; max-width: 500px; margin-left: auto; margin-right: auto; }
+.countdown-container-mobile h4 { font-size: 0.7rem; color: #ff69b4; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 0.8rem 0; }
+.countdown-timer { display: flex; justify-content: center; gap: 0.5rem; }
+.time-box { background: rgba(255,255,255,0.1); padding: 0.5rem; border-radius: 6px; min-width: 50px; }
+.time-box span { font-size: 1rem; font-weight: bold; display: block; color: white; }
+.time-box small { font-size: 0.5rem; color: #888; text-transform: uppercase; }
+
+.quote-mobile { text-align: center; font-style: italic; margin: 1.5rem 0; color: #ff69b4; font-size: 0.9rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+.quote-mobile blockquote { margin: 0; }
+
+.instagram-feed-mobile { margin-top: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+.instagram-feed-mobile h4 { font-size: 0.8rem; color: #888; text-align: center; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+.instagram-feed-mobile h4 i { color: #ff69b4; }
+.insta-grid-mobile { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.3rem; }
+.insta-grid-mobile img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 6px; }
+
+.member-details-mobile { display: none; padding: 0.5rem; font-size: 0.75rem; text-align: left; }
+.member-card:hover .member-details-mobile { display: block; }
+.member-details-mobile p { margin: 0.3rem 0; color: #aaa; }
+.member-details-mobile strong { color: #fff; }
+
+.btn-small { padding: 0.4rem 0.8rem; font-size: 0.6rem; margin-top: 0.5rem; }
+
+.modal-mobile { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); }
+.modal-content-mobile { background: #1a1a1a; margin: 5% auto; padding: 1.5rem; border-radius: 12px; max-width: 90%; max-height: 90vh; overflow-y: auto; position: relative; }
+.modal-content-mobile h2 { font-family: 'Playfair Display', serif; color: #ff69b4; text-align: center; margin: 0 0 1rem 0; }
+.modal-content-mobile p { font-size: 0.85rem; color: #ccc; margin: 0.5rem 0; }
+.modal-content-mobile em { color: #ff69b4; font-style: italic; }
+.close-mobile { position: absolute; top: 10px; right: 15px; font-size: 1.8rem; cursor: pointer; color: #ff69b4; line-height: 1; }
+
+.tour-link-mobile { text-align: center; margin: 1.5rem 0; font-size: 0.9rem; }
+
+.tour-map-fixed { padding: 1rem; }
+.tour-cities-list { list-style: none; padding: 0; margin: 0; }
+.tour-cities-list li { padding: 0.8rem 0; border-bottom: 1px solid #333; font-size: 0.85rem; color: #ccc; }
+.tour-cities-list li:last-child { border-bottom: none; }
+
+.discography-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; max-width: 500px; margin: 0 auto 2rem; }
+.album-card img { width: 100%; border-radius: 8px; }
+.album-info { margin-top: 0.5rem; }
+.album-info h4 { font-size: 0.75rem; margin: 0; color: #fff; }
+.album-info span { font-size: 0.65rem; color: #888; }
+
+.top-songs-list { max-width: 500px; margin: 0 auto; }
+
+@media (max-width: 768px) {
+    .hero-carousel-mobile { height: 200px; }
+    .insta-grid-mobile { grid-template-columns: repeat(2, 1fr); }
+    .discography-grid { grid-template-columns: repeat(2, 1fr); }
+    .merch-grid { grid-template-columns: repeat(2, 1fr); }
+    .video-tabs { flex-wrap: wrap; justify-content: center; }
+    .tour-map-container { padding: 0 1rem; }
+}
+
+@media (max-width: 400px) {
+    .hero-carousel-mobile { height: 180px; }
+    .slide-text h2 { font-size: 1rem; }
+    .countdown-timer { gap: 0.3rem; }
+    .time-box { min-width: 45px; padding: 0.4rem; }
+    .time-box span { font-size: 0.9rem; }
+    .modal-content-mobile { margin: 2% auto; padding: 1rem; }
+}
+
+/* ==================== POLISH: HOME SPACING ==================== */
+.home-content > * { margin-bottom: 3rem; }
+
+@media (min-width: 769px) {
+    .hero-carousel-mobile { height: 400px; max-width: 800px; margin: 0 auto 2rem; }
+    .hero-carousel-mobile .slide-text h2 { font-size: 1.8rem; }
+    .hero-carousel-mobile .slide-text .btn { padding: 0.8rem 1.5rem; font-size: 0.9rem; }
+}
+
+@media (max-width: 768px) {
+    .home-content > * { margin-bottom: 1.5rem; }
+    .carousel-slide .btn-primary { font-size: 0.8rem; padding: 0.5rem 1rem; }
+}
+
+/* ==================== POLISH: BUTTONS ==================== */
+.btn-small { background: transparent; border: 1px solid #ff69b4; color: #ff69b4; padding: 0.3rem 0.8rem; border-radius: 20px; cursor: pointer; margin-top: 0.5rem; min-height: 48px; transition: all 0.3s; }
+.btn-small:hover { background: #ff69b4; color: #000; }
+
+/* ==================== POLISH: ALBUM GRID ==================== */
+.album-grid-fixed { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; align-items: start; }
+
+/* ==================== POLISH: SPOTIFY LINK ==================== */
+.spotify-link { text-align: center; padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 12px; }
+.spotify-link a { font-size: 1.1rem; transition: all 0.3s; }
+.spotify-link a:hover { transform: translateX(5px); }
+
+/* ==================== POLISH: VIDEO TABS ==================== */
+.video-tab { min-height: 48px; }
+.video-tab-content { margin-bottom: 1.5rem; }
+.video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; }
+
+/* ==================== POLISH: TOUR CITIES ==================== */
+.tour-cities-expanded { margin: 2rem 0; }
+.city-item { padding: 0.8rem 0; border-bottom: 1px solid #333; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: #ccc; }
+.city-item .pin { color: #ff69b4; font-size: 1.2rem; }
+.city-item:last-child { border-bottom: none; }
+
+/* ==================== POLISH: JOIN FORM ==================== */
+.join-form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 2rem 0; }
+.join-form-grid input, .join-form-grid select { min-height: 48px; }
+
+.language-selector { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1rem 0; align-items: center; }
+.language-selector .language-label { font-size: 0.8rem; color: #888; }
+.lang-btn { background: transparent; border: 1px solid #555; color: white; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; min-height: 48px; font-size: 0.8rem; transition: all 0.3s; }
+.lang-btn:hover { border-color: #ff69b4; }
+.lang-btn.active { background: #ff69b4; color: #000; border-color: #ff69b4; }
+
+.success-message { animation: fadeIn 0.5s; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ==================== POLISH: MERCH ==================== */
+.merch-grid-mobile { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 2rem 0; max-width: 600px; margin-left: auto; margin-right: auto; }
+.product-card { background: rgba(255,255,255,0.05); border-radius: 12px; overflow: hidden; text-align: center; padding-bottom: 1rem; }
+.product-card img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+.product-card h4 { font-size: 0.9rem; margin: 0.8rem 0 0.5rem; color: #fff; }
+.product-card .price { color: #ff69b4; font-weight: bold; font-size: 1.1rem; margin: 0.5rem 0; }
+.btn-cart { background: transparent; border: 1px solid #ff69b4; color: #ff69b4; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; font-size: 0.8rem; min-height: 48px; transition: all 0.3s; width: 80%; }
+.btn-cart:hover { background: #ff69b4; color: #000; }
+.load-more-btn { display: block; margin: 1.5rem auto; max-width: 200px; min-height: 48px; }
+
+@media (max-width: 400px) {
+    .merch-grid-mobile { grid-template-columns: 1fr; }
+    .join-form-grid { grid-template-columns: 1fr; }
+    .album-grid-fixed { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1920px) {
+    .hero-carousel-mobile { max-width: 1000px; height: 500px; }
+    .merch-grid-mobile { max-width: 800px; grid-template-columns: repeat(4, 1fr); }
+    .join-form-grid { grid-template-columns: repeat(3, 1fr); max-width: 1200px; margin: 2rem auto; }
+}
+
+/* ======================================== */
+/* CENTER CROWN LOGO ON MOBILE (≤768px)     */
+/* ======================================== */
+@media (max-width: 768px) {
+    .footer img[alt="BLACKPINK"] {
+        width: 60px !important;
+        height: auto !important;
+        margin: 0 auto 1rem auto !important;
+        display: block !important;
+        opacity: 0.9;
+    }
+    
+    .footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+    
+    .footer .footer-follow,
+    .footer p {
+        text-align: center;
+    }
+    
+    .footer-social,
+    .footer .footer-social {
+        justify-content: center;
+        gap: 0.8rem;
+        margin: 0.5rem 0;
+    }
+}
+
+/* ======================================== */
+/* CENTER CROWN LOGO ON DESKTOP (≥769px)    */
+/* ======================================== */
+@media (min-width: 769px) {
+    .footer-logo-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .footer-logo-container img {
+        width: 80px !important;
+        height: auto !important;
+        opacity: 0.9 !important;
+        margin-bottom: 1.5rem;
+    }
+}

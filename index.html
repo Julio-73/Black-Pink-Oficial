@@ -7,13 +7,14 @@
     <title>BLACKPINK | Official Fan Page</title>
     <link rel="stylesheet" href="page.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
 
 <header class="header" id="header">
     <div class="header-inner">
         <div class="header-left">
-            <button class="menu-toggle" aria-label="Menu">
+            <button class="menu-toggle" aria-label="Menu" onclick="openMobileMenu()">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -42,6 +43,7 @@
     </div>
 </header>
 
+<!-- POLISH: Home Section -->
 <section class="hero" id="home">
     <div class="hero-bg"></div>
     <div class="hero-particles">
@@ -49,98 +51,392 @@
         <span class="particle"></span>
         <span class="particle"></span>
         <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
     </div>
-    <div class="hero-rays"></div>
-    <div class="hero-content">
+    <div class="hero-content home-content">
         <h1 class="hero-title">BLACKPINK</h1>
         <p class="hero-subtitle">Welcome to the BLINK Family</p>
+
+        <!-- Hero Carousel -->
+        <div class="hero-carousel-mobile">
+            <div class="carousel-slide active">
+                <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?q=80&w=800&auto=format&fit=crop" alt="Born Pink Tour Live">
+                <div class="slide-text">
+                    <h3>LIVE NOW</h3>
+                    <h2>Born Pink World Tour</h2>
+                    <p>Experience the magic live!</p>
+                    <button class="btn btn-primary" onclick="document.getElementById('tour-map').scrollIntoView({behavior:'smooth'})">GET TICKETS</button>
+                </div>
+            </div>
+        </div>
+
         <div class="hero-buttons">
             <a href="#music" class="btn btn-primary">Listen Now</a>
             <a href="#video" class="btn btn-secondary">Watch Videos</a>
         </div>
+
+        <!-- Countdown Timer -->
+        <div class="countdown-container-mobile">
+            <h4>NEXT COMEBACK IN:</h4>
+            <div class="countdown-timer" id="comeback-countdown">
+                <div class="time-box"><span id="days">00</span><small>DAYS</small></div>
+                <div class="time-box"><span id="hours">00</span><small>HOURS</small></div>
+                <div class="time-box"><span id="minutes">00</span><small>MINUTES</small></div>
+                <div class="time-box"><span id="seconds">00</span><small>SECONDS</small></div>
+            </div>
+        </div>
+
+        <!-- Quote -->
+        <div class="quote-mobile">
+            <blockquote>"Thank you for waiting, we're back! 🌸 – Rosé"</blockquote>
+        </div>
+
+        <!-- Instagram Feed -->
+        <div class="instagram-feed-mobile">
+            <h4><i class="bx bxl-instagram"></i> @blackpinkofficial</h4>
+            <div class="insta-grid-mobile">
+                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=200" alt="Post 1">
+                <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=200" alt="Post 2">
+                <img src="https://images.unsplash.com/photo-1571266028243-3716f02d2d2e?w=200" alt="Post 3">
+                <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=200" alt="Post 4">
+            </div>
+        </div>
     </div>
 </section>
 
+<!-- POLISH: Members Section -->
 <section class="members" id="members">
     <h2 class="section-title">Meet The Members</h2>
     <div class="members-grid">
+        <!-- Jisoo -->
         <div class="member-card">
             <img src="jisoo.png" alt="Jisoo">
             <h3>Jisoo</h3>
             <p>Visual & Lead Vocalist</p>
+            <div class="member-details-mobile">
+                <p><strong>Full Name:</strong> Kim Ji-soo</p>
+                <p><strong>Born:</strong> Jan 3, 1995</p>
+                <p><strong>Height:</strong> 162cm</p>
+                <p><strong>Hobby:</strong> Playing guitar</p>
+                <p><strong>Solo:</strong> <a href="https://youtu.be/IKh3hHaJJPk" target="_blank" style="color:#ff69b4;">"Flower"</a></p>
+                <a href="https://instagram.com/sooyaaa__" target="_blank" class="member-insta">
+                    <i class="bx bxl-instagram"></i> @sooyaaa__
+                </a>
+                <button class="btn-small" onclick="openMemberModal('jisoo')">View Profile</button>
+            </div>
         </div>
+        <!-- Jennie -->
         <div class="member-card">
             <img src="jenny.png" alt="Jennie">
             <h3>Jennie</h3>
             <p>Main Rapper & Vocalist</p>
+            <div class="member-details-mobile">
+                <p><strong>Full Name:</strong> Jennie Kim</p>
+                <p><strong>Born:</strong> Jan 16, 1996</p>
+                <p><strong>Height:</strong> 163cm</p>
+                <p><strong>Hobby:</strong> Shopping, photography</p>
+                <p><strong>Solo:</strong> <a href="https://youtu.be/kPoptr_k2z8" target="_blank" style="color:#ff69b4;">"You & Me"</a></p>
+                <a href="https://instagram.com/jennierubyjane" target="_blank" class="member-insta">
+                    <i class="bx bxl-instagram"></i> @jennierubyjane
+                </a>
+                <button class="btn-small" onclick="openMemberModal('jennie')">View Profile</button>
+            </div>
         </div>
+        <!-- Rosé -->
         <div class="member-card">
             <img src="rose.png" alt="Rosé">
             <h3>Rosé</h3>
             <p>Main Vocalist</p>
+            <div class="member-details-mobile">
+                <p><strong>Full Name:</strong> Park Chae-young</p>
+                <p><strong>Born:</strong> Feb 11, 1997</p>
+                <p><strong>Height:</strong> 167cm</p>
+                <p><strong>Hobby:</strong> Playing piano</p>
+                <p><strong>Solo:</strong> <a href="https://youtu.be/2_VLdL7alJU" target="_blank" style="color:#ff69b4;">"On The Ground"</a></p>
+                <a href="https://instagram.com/roses_are_rosie" target="_blank" class="member-insta">
+                    <i class="bx bxl-instagram"></i> @roses_are_rosie
+                </a>
+                <button class="btn-small" onclick="openMemberModal('rose')">View Profile</button>
+            </div>
         </div>
+        <!-- Lisa -->
         <div class="member-card">
             <img src="lisa.png" alt="Lisa">
             <h3>Lisa</h3>
             <p>Main Rapper & Dancer</p>
+            <div class="member-details-mobile">
+                <p><strong>Full Name:</strong> Lalisa Manoban</p>
+                <p><strong>Born:</strong> Mar 27, 1997</p>
+                <p><strong>Height:</strong> 166.5cm</p>
+                <p><strong>Hobby:</strong> Dancing, gaming</p>
+                <p><strong>Solo:</strong> <a href="https://youtu.be/emoZ_4iWthU" target="_blank" style="color:#ff69b4;">"Money"</a></p>
+                <a href="https://instagram.com/lalalalisa_m" target="_blank" class="member-insta">
+                    <i class="bx bxl-instagram"></i> @lalalalisa_m
+                </a>
+                <button class="btn-small" onclick="openMemberModal('lisa')">View Profile</button>
+            </div>
         </div>
     </div>
 </section>
 
+<!-- Member Modals -->
+<div id="jisoo-modal" class="modal-mobile">
+    <div class="modal-content-mobile">
+        <span class="close-mobile" onclick="closeMemberModal('jisoo')">&times;</span>
+        <h2>Jisoo</h2>
+        <img src="jisoo.png" style="width:100%; max-width:200px; border-radius:8px; margin:1rem auto; display:block;">
+        <p><strong>Full Name:</strong> Kim Ji-soo</p>
+        <p><strong>Birth:</strong> January 3, 1995</p>
+        <p><strong>Position:</strong> Visual & Lead Vocalist</p>
+        <p><em>Fun Fact: Loves playing guitar! She's also an amazing painter.</em></p>
+        <iframe width="100%" height="180" src="https://www.youtube.com/embed/IKh3hHaJJPk" frameborder="0" allowfullscreen style="margin-top:1rem; border-radius:8px;"></iframe>
+    </div>
+</div>
+
+<div id="jennie-modal" class="modal-mobile">
+    <div class="modal-content-mobile">
+        <span class="close-mobile" onclick="closeMemberModal('jennie')">&times;</span>
+        <h2>Jennie</h2>
+        <img src="jenny.png" style="width:100%; max-width:200px; border-radius:8px; margin:1rem auto; display:block;">
+        <p><strong>Full Name:</strong> Jennie Kim</p>
+        <p><strong>Birth:</strong> January 16, 1996</p>
+        <p><strong>Position:</strong> Main Rapper & Vocalist</p>
+        <p><em>Fun Fact: She lived in New Zealand and Japan before becoming a trainee. Speaks Korean, English, and Japanese fluently!</em></p>
+        <iframe width="100%" height="180" src="https://www.youtube.com/embed/kPoptr_k2z8" frameborder="0" allowfullscreen style="margin-top:1rem; border-radius:8px;"></iframe>
+    </div>
+</div>
+
+<div id="rose-modal" class="modal-mobile">
+    <div class="modal-content-mobile">
+        <span class="close-mobile" onclick="closeMemberModal('rose')">&times;</span>
+        <h2>Rosé</h2>
+        <img src="rose.png" style="width:100%; max-width:200px; border-radius:8px; margin:1rem auto; display:block;">
+        <p><strong>Full Name:</strong> Park Chae-young</p>
+        <p><strong>Birth:</strong> February 11, 1997</p>
+        <p><strong>Position:</strong> Main Vocalist</p>
+        <p><em>Fun Fact: She was the last member to join YG Entertainment. She learned Korean in just 6 months!</em></p>
+        <iframe width="100%" height="180" src="https://www.youtube.com/embed/2_VLdL7alJU" frameborder="0" allowfullscreen style="margin-top:1rem; border-radius:8px;"></iframe>
+    </div>
+</div>
+
+<div id="lisa-modal" class="modal-mobile">
+    <div class="modal-content-mobile">
+        <span class="close-mobile" onclick="closeMemberModal('lisa')">&times;</span>
+        <h2>Lisa</h2>
+        <img src="lisa.png" style="width:100%; max-width:200px; border-radius:8px; margin:1rem auto; display:block;">
+        <p><strong>Full Name:</strong> Lalisa Manoban</p>
+        <p><strong>Birth:</strong> March 27, 1997</p>
+        <p><strong>Position:</strong> Main Rapper & Dancer</p>
+        <p><em>Fun Fact: Lisa speaks 4 languages! She started dancing at age 5.</em></p>
+        <iframe width="100%" height="180" src="https://www.youtube.com/embed/emoZ_4iWthU" frameborder="0" allowfullscreen style="margin-top:1rem; border-radius:8px;"></iframe>
+    </div>
+</div>
+
+<!-- POLISH: Music Section -->
 <section class="music" id="music">
     <h2 class="section-title">Latest Music</h2>
     <div class="music-container">
-        <div class="music-item">
-            <img src="Screenshot_13 copy.png" alt="Album">
+        <!-- Discography -->
+        <div class="discography-section">
+            <h3 class="subsection-title">Discography</h3>
+            <div class="discography-grid album-grid-fixed">
+                <div class="album-card">
+                    <img src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=300" alt="THE ALBUM">
+                    <div class="album-info"><h4>THE ALBUM</h4><span>2020</span></div>
+                </div>
+                <div class="album-card">
+                    <img src="https://images.unsplash.com/photo-1621360841012-8f5b2e04f5b4?w=300" alt="BORN PINK">
+                    <div class="album-info"><h4>BORN PINK</h4><span>2022</span></div>
+                </div>
+                <div class="album-card">
+                    <img src="https://images.unsplash.com/photo-1598387846148-47e8c3b6a4a3?w=300" alt="SQUARE UP">
+                    <div class="album-info"><h4>SQUARE UP</h4><span>2018</span></div>
+                </div>
+                <div class="album-card">
+                    <img src="https://images.unsplash.com/photo-1571330735066-03aaa9429d20?w=300" alt="KILL THIS LOVE">
+                    <div class="album-info"><h4>KILL THIS LOVE</h4><span>2019</span></div>
+                </div>
+            </div>
         </div>
-        <div class="music-item">
-            <img src="live2.png" alt="Listen">
+
+        <!-- Top Songs -->
+        <div class="top-songs-section">
+            <h3 class="subsection-title">Top Songs</h3>
+            <div class="top-songs-list">
+                <div class="song-item"><span class="song-rank">1</span><div class="song-info"><span class="song-title">DDu-Du DDu-Du</span><span class="song-streams">1.2B streams</span></div></div>
+                <div class="song-item"><span class="song-rank">2</span><div class="song-info"><span class="song-title">Kill This Love</span><span class="song-streams">900M streams</span></div></div>
+                <div class="song-item"><span class="song-rank">3</span><div class="song-info"><span class="song-title">How You Like That</span><span class="song-streams">850M streams</span></div></div>
+                <div class="song-item"><span class="song-rank">4</span><div class="song-info"><span class="song-title">Lovesick Girls</span><span class="song-streams">780M streams</span></div></div>
+                <div class="song-item"><span class="song-rank">5</span><div class="song-info"><span class="song-title">Shut Down</span><span class="song-streams">650M streams</span></div></div>
+            </div>
+        </div>
+
+        <!-- Spotify Link -->
+        <div class="spotify-section">
+            <h3 class="subsection-title">Stream Now</h3>
+            <div class="spotify-link">
+                <a href="https://open.spotify.com/artist/41MozSoPIsD1dJM0CLPjZF" target="_blank" style="color:#ff69b4; text-decoration:none;">
+                    🎧 Listen to BLACKPINK on Spotify →
+                </a>
+            </div>
+        </div>
+
+        <!-- Lyrics -->
+        <div class="lyrics-section">
+            <h3 class="subsection-title">Flower - Jisoo</h3>
+            <div class="lyrics-box">
+                <p>So I'm gonna dance in the light</p>
+                <p>Shining so bright</p>
+                <p class="lyrics-highlight">I'm floating in the blue</p>
+                <p>Your love is like a flower</p>
+                <p>Blooming in the rain</p>
+                <p class="lyrics-highlight">Watch me transform</p>
+                <p>From a bud to a rose</p>
+                <p>Now I'm in full bloom</p>
+            </div>
         </div>
     </div>
 </section>
 
+<!-- POLISH: Videos Section -->
 <section class="video-section" id="video">
     <h2 class="section-title">Videos</h2>
-    <div class="video-container">
-        <video controls playsinline poster="pp.png" preload="metadata">
-            <source src="loveluna.mp4" type="video/mp4">
-        </video>
+    
+    <!-- Video Tabs -->
+    <div class="video-tabs-container">
+        <div class="video-tabs">
+            <button class="video-tab active" onclick="showVideoTab('mv-videos')">Music Videos</button>
+            <button class="video-tab" onclick="showVideoTab('bts-videos')">Behind The Scenes</button>
+            <button class="video-tab" onclick="showVideoTab('live-videos')">Live</button>
+        </div>
+    </div>
+
+    <!-- Music Videos -->
+    <div class="video-tab-content active" id="mv-videos">
+        <div class="video-grid" id="mv-videos-grid">
+            <div class="video-card" data-year="2023">
+                <div class="video-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1598387846148-47e8c3b6a4a3?w=400" alt="Pink Venom">
+                    <a href="https://youtu.be/7HpX4bM8XUE" target="_blank" class="video-play-btn"><i class="bx bx-play"></i></a>
+                </div>
+                <div class="video-info"><h4>Pink Venom</h4><span>2023</span></div>
+            </div>
+            <div class="video-card" data-year="2022">
+                <div class="video-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1571266028243-3716f02d2d2e?w=400" alt="Shut Down">
+                    <a href="https://youtu.be/gRnuFC4Uolw" target="_blank" class="video-play-btn"><i class="bx bx-play"></i></a>
+                </div>
+                <div class="video-info"><h4>Shut Down</h4><span>2022</span></div>
+            </div>
+            <div class="video-card" data-year="2020">
+                <div class="video-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=400" alt="Lovesick Girls">
+                    <a href="https://youtu.be/eqS2TqL1o-k" target="_blank" class="video-play-btn"><i class="bx bx-play"></i></a>
+                </div>
+                <div class="video-info"><h4>Lovesick Girls</h4><span>2020</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BTS -->
+    <div class="video-tab-content" id="bts-videos" style="display:none;">
+        <div class="video-grid" id="bts-videos-grid">
+            <div class="video-card" data-year="2022">
+                <div class="video-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400" alt="Making of Born Pink">
+                    <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank" class="video-play-btn"><i class="bx bx-play"></i></a>
+                </div>
+                <div class="video-info"><h4>Making of Born Pink</h4><span>2022</span></div>
+            </div>
+            <div class="video-card" data-year="2023">
+                <div class="video-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400" alt="Tour Rehearsals">
+                    <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank" class="video-play-btn"><i class="bx bx-play"></i></a>
+                </div>
+                <div class="video-info"><h4>Tour Rehearsals</h4><span>2023</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Live -->
+    <div class="video-tab-content" id="live-videos" style="display:none;">
+        <div class="video-grid" id="live-videos-grid">
+            <div class="video-card" data-year="2023">
+                <div class="video-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=400" alt="Coachella">
+                    <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank" class="video-play-btn"><i class="bx bx-play"></i></a>
+                </div>
+                <div class="video-info"><h4>Coachella 2023</h4><span>2023</span></div>
+            </div>
+            <div class="video-card" data-year="2022">
+                <div class="video-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1571266028243-3716f02d2d2e?w=400" alt="Seoul">
+                    <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank" class="video-play-btn"><i class="bx bx-play"></i></a>
+                </div>
+                <div class="video-info"><h4>Seoul Concert 2022</h4><span>2022</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tour Link -->
+    <div class="tour-link-mobile">
+        <a href="#tour-map" style="color:#ff69b4; text-decoration:none;">👉 View Full Tour Dates & Map</a>
     </div>
 </section>
 
+<!-- Tour Section (Video) -->
 <section class="tour-section" id="tour">
     <video playsinline autoplay loop muted preload="none">
         <source src="https://progressive-cdn.ustudio.com/ustudio/app/transcodes/TJqFJJ4d4wZ4.mp4" type="video/mp4">
     </video>
 </section>
 
+<!-- POLISH: Subscribe Section -->
 <section class="subscribe-section" id="subscribe">
     <div class="subscribe-card">
         <div class="subscribe-badge">Official Fan Community</div>
         <h2>Join BLINK</h2>
         <p>Be the first to receive exclusive news, comebacks, tours & special content.</p>
-        <form class="subscribe-form">
-            <div class="form-row">
+        
+        <form class="subscribe-form join-form" onsubmit="handleJoinForm(event)">
+            <div class="join-form-grid">
                 <input type="text" placeholder="Your name" required>
                 <input type="email" placeholder="Email address" required>
+                <select required>
+                    <option value="">Favorite Song</option>
+                    <option value="ddudu">DDu-Du DDu-Du</option>
+                    <option value="kill-this-love">Kill This Love</option>
+                    <option value="how-you-like-that">How You Like That</option>
+                    <option value="lovesick-girls">Lovesick Girls</option>
+                    <option value="shut-down">Shut Down</option>
+                </select>
+                <select required>
+                    <option value="">Since when are you a BLINK?</option>
+                    <option value="2016">2016</option>
+                    <option value="2018">2018</option>
+                    <option value="2020">2020</option>
+                    <option value="2022">2022</option>
+                    <option value="2024">2024</option>
+                    <option value="2026">2026</option>
+                </select>
+                <select required>
+                    <option value="">Select Country</option>
+                    <option value="US">United States</option>
+                    <option value="KR">South Korea</option>
+                    <option value="JP">Japan</option>
+                    <option value="MX">Mexico</option>
+                    <option value="ES">Spain</option>
+                    <option value="BR">Brazil</option>
+                    <option value="UK">United Kingdom</option>
+                </select>
             </div>
-            <select required>
-                <option value="">Select Country</option>
-                <option value="US">United States</option>
-                <option value="KR">South Korea</option>
-                <option value="JP">Japan</option>
-                <option value="MX">Mexico</option>
-                <option value="ES">Spain</option>
-                <option value="BR">Brazil</option>
-                <option value="UK">United Kingdom</option>
-                <option value="ID">Indonesia</option>
-                <option value="TH">Thailand</option>
-                <option value="PH">Philippines</option>
-            </select>
+            
+            <div class="language-selector">
+                <span class="language-label">Language:</span>
+                <button type="button" class="lang-btn active" onclick="selectLang(this)">English</button>
+                <button type="button" class="lang-btn" onclick="selectLang(this)">Spanish</button>
+                <button type="button" class="lang-btn" onclick="selectLang(this)">Korean</button>
+            </div>
+            
             <div class="subscribe-benefits">
                 <span>✨ New music alerts</span>
                 <span>🎤 Tour announcements</span>
@@ -149,19 +445,279 @@
             <button type="submit" class="btn btn-primary">Join the Family</button>
             <p class="subscribe-privacy">No spam, just BLACKPINK love ❤️</p>
         </form>
+        
+        <!-- Success Message -->
+        <div class="success-message" id="successMessage" style="display:none; text-align:center; padding:1rem; background:rgba(255,105,180,0.1); border-radius:8px; margin-top:1rem;">
+            ✅ Welcome, <span id="user-name"></span>! You're BLINK #<span id="blink-number"></span>. Check your email!
+        </div>
+        
+        <a href="https://discord.gg/blackpink" target="_blank" class="discord-btn">
+            <i class="bx bxl-discord"></i> Join Official BLINK Server
+        </a>
+    </div>
+</section>
+
+<!-- POLISH: Merchandise Section -->
+<section class="merch-section" id="merch">
+    <h2 class="section-title">Shop Official Merch</h2>
+    <div class="merch-grid-mobile">
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=300" alt="T-Shirt">
+            <h4>Born Pink Tour T-Shirt</h4>
+            <p class="price">$35</p>
+            <button class="btn-cart" onclick="addToCart('T-Shirt', 35)">ADD TO CART</button>
+        </div>
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=300" alt="Hoodie">
+            <h4>BLACKPINK Logo Hoodie</h4>
+            <p class="price">$65</p>
+            <button class="btn-cart" onclick="addToCart('Hoodie', 65)">ADD TO CART</button>
+        </div>
+    </div>
+    <button class="btn btn-secondary load-more-btn" onclick="loadMoreProducts()">Load More Products</button>
+</section>
+
+<!-- POLISH: Tour Map Section -->
+<section class="tour-map-section" id="tour-map">
+    <h2 class="section-title">Born Pink World Tour</h2>
+    <div class="tour-cities-expanded">
+        <div class="city-item">
+            <span class="pin">📍</span>
+            <strong>Seoul, South Korea</strong> — Oct 15-16, 2022 (50,000 fans)
+        </div>
+        <div class="city-item">
+            <span class="pin">📍</span>
+            <strong>Bangkok, Thailand</strong> — Jan 7-8, 2023
+        </div>
+        <div class="city-item">
+            <span class="pin">📍</span>
+            <strong>London, UK</strong> — Dec 1, 2022
+        </div>
+        <div class="city-item">
+            <span class="pin">📍</span>
+            <strong>Sydney, Australia</strong> — Jun 10-11, 2023
+        </div>
+        <div class="city-item">
+            <span class="pin">📍</span>
+            <strong>Auckland, New Zealand</strong> — Jun 17, 2023
+        </div>
+    </div>
+    <button class="btn btn-primary" style="margin-top: 1rem; width: 100%;">BUY TICKETS</button>
+    
+    <div class="tour-map-container" style="margin-top:2rem;">
+        <div id="tour-map-leaflet" style="height:300px; border-radius:12px; overflow:hidden;"></div>
     </div>
 </section>
 
 <footer class="footer">
-    <img src="pink.png" alt="BLACKPINK">
+    <p class="footer-follow">Follow us for daily updates ❤️</p>
+    <div class="footer-logo-container">
+        <img src="pink.png" alt="BLACKPINK">
+    </div>
     <div class="footer-social">
         <a href="https://www.instagram.com/blackpinkofficial/" target="_blank"><i class="bx bxl-instagram"></i></a>
         <a href="https://www.youtube.com/@BLACKPINK" target="_blank"><i class="bx bxl-youtube"></i></a>
         <a href="https://twitter.com/BLACKPINK" target="_blank"><i class="bx bxl-twitter"></i></a>
         <a href="https://www.tiktok.com/@bp_tiktok" target="_blank"><i class="bx bxl-tiktok"></i></a>
     </div>
-    <p>&copy; 2024 BLACKPINK. All Rights Reserved.</p>
+    <p>&copy; 2026 BLACKPINK. All Rights Reserved.</p>
 </footer>
+
+<!-- MOBILE MENU: Hamburger Menu CSS -->
+<style>
+/* Hamburger Menu Overlay */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 999;
+  transition: left 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.mobile-menu-overlay.active {
+  left: 0;
+}
+
+.mobile-menu-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.mobile-menu-links li {
+  margin: 1.5rem 0;
+}
+
+.mobile-menu-links a {
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+
+.mobile-menu-links a:hover {
+  color: #ff69b4;
+}
+
+.close-menu-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+</style>
+
+<!-- Mobile Menu Overlay HTML -->
+<div class="mobile-menu-overlay" id="mobileMenu">
+  <button class="close-menu-btn" onclick="closeMobileMenu()">×</button>
+  <ul class="mobile-menu-links">
+    <li><a href="#home" onclick="closeMobileMenu()">HOME</a></li>
+    <li><a href="#members" onclick="closeMobileMenu()">MEMBERS</a></li>
+    <li><a href="#music" onclick="closeMobileMenu()">MUSIC</a></li>
+    <li><a href="#video" onclick="closeMobileMenu()">VIDEOS</a></li>
+    <li><a href="#subscribe" onclick="closeMobileMenu()">JOIN BLINK</a></li>
+  </ul>
+</div>
+
+<!-- JS Functions -->
+<script>
+const countdownDate = new Date("June 15, 2026 00:00:00").getTime();
+setInterval(() => {
+  const now = new Date().getTime();
+  const distance = countdownDate - now;
+  document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+  document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
+}, 1000);
+
+function openMemberModal(member) {
+    document.getElementById(member + '-modal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+function closeMemberModal(member) {
+    document.getElementById(member + '-modal').style.display = 'none';
+    document.body.style.overflow = '';
+}
+document.querySelectorAll('.modal-mobile').forEach(modal => {
+    modal.addEventListener('click', function(e) {
+        if (e.target === this) this.style.display = 'none';
+    });
+});
+
+function showVideoTab(tabId) {
+    document.querySelectorAll('.video-tab-content').forEach(c => c.style.display = 'none');
+    document.querySelectorAll('.video-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(tabId).style.display = 'block';
+    event.target.classList.add('active');
+}
+
+function addToCart(product, price) {
+    alert(product + ' ($' + price + ') added to cart!');
+}
+
+function handleJoinForm(e) {
+    e.preventDefault();
+    const name = e.target.querySelector('input[type="text"]').value;
+    const randomNum = Math.floor(Math.random() * 90000) + 10000;
+    document.getElementById('user-name').innerText = name;
+    document.getElementById('blink-number').innerText = randomNum;
+    document.getElementById('successMessage').style.display = 'block';
+    e.target.reset();
+    setTimeout(() => { document.getElementById('successMessage').style.display = 'none'; }, 5000);
+}
+
+function selectLang(btn) {
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+}
+
+function loadMoreProducts() {
+    alert('Loading more products...');
+}
+
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-mobile').forEach(m => m.style.display = 'none');
+        document.body.style.overflow = '';
+        closeMobileMenu();
+    }
+});
+
+// Mobile Menu Functions
+function openMobileMenu() {
+    document.getElementById('mobileMenu').classList.add('active');
+}
+
+function closeMobileMenu() {
+    document.getElementById('mobileMenu').classList.remove('active');
+}
+
+// Smooth scroll + auto-close menu
+document.querySelectorAll('.mobile-menu-links a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        
+        if (targetSection) {
+            window.scrollTo({
+                top: targetSection.offsetTop - 80,
+                behavior: 'smooth'
+            });
+            closeMobileMenu();
+        }
+    });
+});
+
+// Close menu when clicking outside
+document.getElementById('mobileMenu').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeMobileMenu();
+    }
+});
+</script>
+
+<!-- Leaflet Map -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    if (document.getElementById('tour-map-leaflet')) {
+        var map = L.map('tour-map-leaflet').setView([20, 100], 2);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+        
+        var cities = [
+            {name: 'Seoul', lat: 37.5665, lng: 126.978},
+            {name: 'Bangkok', lat: 13.7563, lng: 100.5018},
+            {name: 'London', lat: 51.5074, lng: -0.1278},
+            {name: 'Sydney', lat: -33.8688, lng: 151.2093},
+            {name: 'Paris', lat: 48.8566, lng: 2.3522},
+            {name: 'Atlanta', lat: 33.749, lng: -84.388}
+        ];
+        
+        cities.forEach(function(city) {
+            L.marker([city.lat, city.lng]).addTo(map).bindPopup(city.name);
+        });
+    }
+});
+</script>
 
 <script src="page.js"></script>
 
