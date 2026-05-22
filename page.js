@@ -1043,30 +1043,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ==========================================
-    // 16. WEB AUDIO API FREQUENCY SPECTRUM
+    // 16. WEB AUDIO API FREQUENCY SPECTRUM (PROCEDURAL NEON VISUALIZER)
     // ==========================================
     const visualizerCanvas = document.getElementById('player-visualizer-canvas');
-    let audioCtx = null;
-    let analyser = null;
-    let sourceNode = null;
     let visualizerAnimId = null;
 
     function initWebAudio() {
-        if (audioCtx) return;
-        
-        try {
-            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            analyser = audioCtx.createAnalyser();
-            analyser.fftSize = 64; // Sleek layout (32 bins)
-            
-            sourceNode = audioCtx.createMediaElementSource(audioEl);
-            sourceNode.connect(analyser);
-            analyser.connect(audioCtx.destination);
-            
-            drawVisualizer();
-        } catch (e) {
-            console.error("Web Audio context locked or unavailable: ", e);
-        }
+        // Initialize drawing loop directly to prevent CORS restrictions from muting sound
+        drawVisualizer();
     }
 
     function drawVisualizer() {
@@ -1075,38 +1059,39 @@ document.addEventListener('DOMContentLoaded', function() {
         const width = visualizerCanvas.width;
         const height = visualizerCanvas.height;
         
-        const bufferLength = analyser ? analyser.frequencyBinCount : 32;
+        const bufferLength = 32;
         const dataArray = new Uint8Array(bufferLength);
         
         function renderLoop() {
             visualizerAnimId = requestAnimationFrame(renderLoop);
             
-            if (analyser && !audioEl.paused) {
-                analyser.getByteFrequencyData(dataArray);
+            if (audioEl && !audioEl.paused) {
+                const time = Date.now() * 0.005;
+                for (let i = 0; i < bufferLength; i++) {
+                    // Pulsing waves mimicking bass, mid, and treble bands
+                    const bassPulse = Math.sin(time * 0.85) * 0.4 + 0.6; // low frequency bass pulse
+                    const midOsc = Math.cos(i * 0.28 - time * 0.55) * 0.5 + 0.5;
+                    const highOsc = Math.sin(i * 0.6 + time * 1.15) * 0.3 + 0.3;
+                    
+                    let amp = 0;
+                    if (i < 8) {
+                        // Bass area (strong pulsing, deep movements)
+                        amp = (bassPulse * 0.75 + midOsc * 0.25) * 190;
+                    } else if (i < 20) {
+                        // Mids area (smooth wave movements)
+                        amp = (midOsc * 0.8 + highOsc * 0.2) * 140;
+                    } else {
+                        // Treble area (nervous active chatter)
+                        amp = (highOsc * 0.85 + Math.random() * 0.15) * 90;
+                    }
+                    
+                    // Apply index tapering (higher frequency = lower amplitude)
+                    dataArray[i] = amp * (1 - (i / bufferLength) * 0.45);
+                }
             } else {
                 // Soft exponential decay to flatline on pause
                 for (let i = 0; i < bufferLength; i++) {
                     dataArray[i] = Math.max(0, dataArray[i] - 5);
-                }
-            }
-            
-            // Check for CORS limitations (e.g. soundhelix blocks data unless configured with CORS headers)
-            let isZero = true;
-            for (let i = 0; i < bufferLength; i++) {
-                if (dataArray[i] > 0) {
-                    isZero = false;
-                    break;
-                }
-            }
-            
-            // Procedural synthesis fallback: pulses beautifully matching a virtual tempo in case of CORS blocks
-            if (isZero && !audioEl.paused) {
-                const time = Date.now() * 0.0055;
-                for (let i = 0; i < bufferLength; i++) {
-                    const sine1 = Math.sin(i * 0.28 + time) * 0.5 + 0.5;
-                    const sine2 = Math.cos(i * 0.14 - time * 0.75) * 0.5 + 0.5;
-                    const amp = (sine1 * 0.65 + sine2 * 0.35) * 165;
-                    dataArray[i] = amp * (1 - (i / bufferLength) * 0.45); // high roll-off
                 }
             }
             
@@ -1155,9 +1140,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (audioEl) {
         audioEl.addEventListener('play', function() {
             initWebAudio();
-            if (audioCtx && audioCtx.state === 'suspended') {
-                audioCtx.resume();
-            }
         });
     }
 
