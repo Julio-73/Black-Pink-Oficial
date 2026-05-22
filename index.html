@@ -45,7 +45,11 @@
 
 <!-- POLISH: Home Section -->
 <section class="hero" id="home">
+    <video class="hero-video-bg" playsinline autoplay loop muted preload="auto">
+        <source src="loveluna.mp4" type="video/mp4">
+    </video>
     <div class="hero-bg"></div>
+    <canvas id="hero-particles-canvas" class="hero-particles-canvas"></canvas>
     <div class="hero-particles">
         <span class="particle"></span>
         <span class="particle"></span>
@@ -307,6 +311,58 @@
             </div>
         </div>
     </div>
+
+    <!-- Premium Custom Music Player -->
+    <div class="music-player-panel">
+        <audio id="bp-audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+        <div class="player-vinyl-container">
+            <div class="player-vinyl" id="player-vinyl">
+                <img src="pink.png" alt="Vinyl Cover" class="player-vinyl-cover" id="player-vinyl-cover">
+                <div class="player-vinyl-center"></div>
+            </div>
+        </div>
+        <div class="player-info-controls">
+            <div class="player-track-info">
+                <h4 class="player-track-title" id="player-track-title">DDu-Du DDu-Du</h4>
+                <span class="player-track-artist">BLACKPINK</span>
+            </div>
+            
+            <div class="player-progress-container">
+                <span class="player-time" id="player-current-time">0:00</span>
+                <div class="player-progress-bar" id="player-progress-bar">
+                    <div class="player-progress-fill" id="player-progress-fill"></div>
+                </div>
+                <span class="player-time" id="player-duration">0:00</span>
+            </div>
+
+            <div class="player-controls-row">
+                <div class="player-buttons">
+                    <button class="player-btn" id="player-prev" aria-label="Previous Song">
+                        <i class="bx bx-skip-previous"></i>
+                    </button>
+                    <button class="player-btn player-btn-main" id="player-play-pause" aria-label="Play or Pause">
+                        <i class="bx bx-play" id="play-pause-icon"></i>
+                    </button>
+                    <button class="player-btn" id="player-next" aria-label="Next Song">
+                        <i class="bx bx-skip-next"></i>
+                    </button>
+                </div>
+
+                <div class="player-equalizer" id="player-equalizer">
+                    <canvas id="player-visualizer-canvas" width="160" height="40"></canvas>
+                </div>
+
+                <div class="player-volume-container">
+                    <button class="player-btn" id="player-mute" style="width:30px; height:30px; font-size:1rem; border:none; background:transparent;" aria-label="Mute">
+                        <i class="bx bx-volume-full" id="mute-icon"></i>
+                    </button>
+                    <div class="player-volume-slider" id="player-volume-slider">
+                        <div class="player-volume-fill" id="player-volume-fill" style="width: 80%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- POLISH: Videos Section -->
@@ -397,8 +453,8 @@
 
 <!-- Tour Section (Video) -->
 <section class="tour-section" id="tour">
-    <video playsinline autoplay loop muted preload="none">
-        <source src="https://progressive-cdn.ustudio.com/ustudio/app/transcodes/TJqFJJ4d4wZ4.mp4" type="video/mp4">
+    <video playsinline autoplay loop muted preload="auto">
+        <source src="amor.mp4" type="video/mp4">
     </video>
 </section>
 
@@ -487,6 +543,79 @@
         </div>
     </div>
     <button class="btn btn-secondary load-more-btn" onclick="loadMoreProducts()">Load More Products</button>
+</section>
+
+<!-- ==================== BLINK INTERACTIVE QUIZ ==================== -->
+<section class="quiz-section" id="quiz-section">
+    <h2 class="section-title">BLINK Zone</h2>
+    <div class="quiz-container">
+        <div class="quiz-card" id="quiz-card">
+            
+            <!-- SCREEN 1: INTRO -->
+            <div class="quiz-screen quiz-screen-intro active" id="quiz-screen-intro">
+                <span class="quiz-badge">Interactive Test</span>
+                <h3>¿Qué integrante de BLACKPINK eres?</h3>
+                <p>Responde con sinceridad a estas divertidas preguntas de personalidad y descubre cuál de las chicas coincide con tu energía y estilo de vida.</p>
+                <button class="btn btn-primary" id="btn-start-quiz">Empezar Test</button>
+            </div>
+
+            <!-- SCREEN 2: QUESTION -->
+            <div class="quiz-screen quiz-screen-question" id="quiz-screen-question">
+                <div class="quiz-progress-container">
+                    <div class="quiz-progress-text">
+                        <span>Pregunta <span id="quiz-current-num">1</span> de 5</span>
+                        <span><span id="quiz-percent">20</span>%</span>
+                    </div>
+                    <div class="quiz-progress-bg">
+                        <div class="quiz-progress-fill" id="quiz-progress-fill" style="width: 20%;"></div>
+                    </div>
+                </div>
+                <h4 class="quiz-question-text" id="quiz-question-text">¿Cuál sería tu cita ideal de fin de semana?</h4>
+                <div class="quiz-options-grid" id="quiz-options-grid">
+                    <!-- Dynamically inserted options -->
+                </div>
+            </div>
+
+            <!-- SCREEN 3: RESULT -->
+            <div class="quiz-screen quiz-screen-result" id="quiz-screen-result">
+                <div class="quiz-result-card">
+                    <span class="quiz-badge">Tu Alma Gemela BLINK</span>
+                    
+                    <!-- Dynamic BLINK VIP Fan Pass -->
+                    <div class="blink-vip-pass" id="blink-vip-pass">
+                        <div class="vip-pass-glow"></div>
+                        <div class="vip-pass-header">
+                            <img src="pink.png" alt="BLACKPINK Logo" class="vip-logo">
+                            <span class="vip-label">VIP FAN ACCESS</span>
+                        </div>
+                        <div class="vip-pass-body">
+                            <div class="vip-avatar-container">
+                                <img src="rose.png" alt="Resultado" class="quiz-result-img" id="quiz-result-img">
+                            </div>
+                            <div class="vip-info">
+                                <h3 class="quiz-result-member" id="quiz-result-member">Rosé</h3>
+                                <span class="quiz-result-role" id="quiz-result-role">Main Vocalist</span>
+                                <p class="quiz-result-desc" id="quiz-result-desc">Eres creativa, apasionada y te expresas de forma genuina. Valoras las artes y la música profundamente, ¡igual que Rosé!</p>
+                            </div>
+                        </div>
+                        <div class="vip-pass-footer">
+                            <div class="vip-user-input-area">
+                                <input type="text" id="vip-user-name" class="vip-input" placeholder="Ingresa tu nombre BLINK" maxlength="15">
+                            </div>
+                            <div class="vip-serial">ID: <span id="vip-serial-number">BLINK-98472</span></div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-result-buttons">
+                        <button class="btn btn-primary" id="btn-download-pass"><i class="bx bx-download"></i> Descargar VIP Pass</button>
+                        <button class="btn btn-secondary" id="btn-restart-quiz">Volver a Jugar</button>
+                        <a href="" target="_blank" class="btn btn-secondary" id="btn-solo-link">Escuchar su Solo</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </section>
 
 <!-- POLISH: Tour Map Section -->
@@ -606,128 +735,21 @@
   </ul>
 </div>
 
-<!-- JS Functions -->
-<script>
-const countdownDate = new Date("June 15, 2026 00:00:00").getTime();
-setInterval(() => {
-  const now = new Date().getTime();
-  const distance = countdownDate - now;
-  document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
-  document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
-}, 1000);
-
-function openMemberModal(member) {
-    document.getElementById(member + '-modal').style.display = 'block';
-    document.body.style.overflow = 'hidden';
-}
-function closeMemberModal(member) {
-    document.getElementById(member + '-modal').style.display = 'none';
-    document.body.style.overflow = '';
-}
-document.querySelectorAll('.modal-mobile').forEach(modal => {
-    modal.addEventListener('click', function(e) {
-        if (e.target === this) this.style.display = 'none';
-    });
-});
-
-function showVideoTab(tabId) {
-    document.querySelectorAll('.video-tab-content').forEach(c => c.style.display = 'none');
-    document.querySelectorAll('.video-tab').forEach(t => t.classList.remove('active'));
-    document.getElementById(tabId).style.display = 'block';
-    event.target.classList.add('active');
-}
-
-function addToCart(product, price) {
-    alert(product + ' ($' + price + ') added to cart!');
-}
-
-function handleJoinForm(e) {
-    e.preventDefault();
-    const name = e.target.querySelector('input[type="text"]').value;
-    const randomNum = Math.floor(Math.random() * 90000) + 10000;
-    document.getElementById('user-name').innerText = name;
-    document.getElementById('blink-number').innerText = randomNum;
-    document.getElementById('successMessage').style.display = 'block';
-    e.target.reset();
-    setTimeout(() => { document.getElementById('successMessage').style.display = 'none'; }, 5000);
-}
-
-function selectLang(btn) {
-    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-}
-
-function loadMoreProducts() {
-    alert('Loading more products...');
-}
-
-// Video Modal Functions
-function openVideoModal(videoId) {
-    const modal = document.getElementById('video-modal');
-    const player = document.getElementById('youtube-player');
-    const link = document.getElementById('youtube-link');
-    
-    player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-    link.href = `https://www.youtube.com/watch?v=${videoId}`;
-    modal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
-}
-
-function closeVideoModal() {
-    const modal = document.getElementById('video-modal');
-    const player = document.getElementById('youtube-player');
-    player.src = '';
-    modal.style.display = 'none';
-    document.body.style.overflow = '';
-}
-
-document.getElementById('video-modal').addEventListener('click', function(e) {
-    if (e.target === this) closeVideoModal();
-});
-
-document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-        document.querySelectorAll('.modal-mobile').forEach(m => m.style.display = 'none');
-        document.body.style.overflow = '';
-        closeMobileMenu();
-    }
-});
-
-// Mobile Menu Functions
-function openMobileMenu() {
-    document.getElementById('mobileMenu').classList.add('active');
-}
-
-function closeMobileMenu() {
-    document.getElementById('mobileMenu').classList.remove('active');
-}
-
-// Smooth scroll + auto-close menu
-document.querySelectorAll('.mobile-menu-links a').forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetSection = document.getElementById(targetId);
-        
-        if (targetSection) {
-            window.scrollTo({
-                top: targetSection.offsetTop - 80,
-                behavior: 'smooth'
-            });
-            closeMobileMenu();
-        }
-    });
-});
-
-// Close menu when clicking outside
-document.getElementById('mobileMenu').addEventListener('click', function(e) {
-    if (e.target === this) {
-        closeMobileMenu();
-    }
-});
-</script>
+<!-- Floating Mini Player -->
+<div class="mini-player-floating" id="mini-player-floating">
+    <div class="mini-player-vinyl-wrapper">
+        <div class="mini-player-vinyl" id="mini-vinyl">
+            <img src="pink.png" alt="Vinyl" class="mini-vinyl-cover" id="mini-vinyl-cover">
+        </div>
+    </div>
+    <div class="mini-player-info">
+        <span class="mini-track-title" id="mini-track-title">DDu-Du DDu-Du</span>
+    </div>
+    <div class="mini-player-controls">
+        <button class="mini-control-btn" id="mini-play-pause" aria-label="Play or Pause"><i class="bx bx-play" id="mini-play-pause-icon"></i></button>
+        <button class="mini-control-btn" id="mini-next" aria-label="Next Song"><i class="bx bx-skip-next"></i></button>
+    </div>
+</div>
 
 <!-- Video Modal -->
 <div id="video-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:2000;">
@@ -742,30 +764,6 @@ document.getElementById('mobileMenu').addEventListener('click', function(e) {
 
 <!-- Leaflet Map -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    if (document.getElementById('tour-map-leaflet')) {
-        var map = L.map('tour-map-leaflet').setView([20, 100], 2);
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-            attribution: '© OpenStreetMap'
-        }).addTo(map);
-        
-        var cities = [
-            {name: 'Seoul', lat: 37.5665, lng: 126.978},
-            {name: 'Bangkok', lat: 13.7563, lng: 100.5018},
-            {name: 'London', lat: 51.5074, lng: -0.1278},
-            {name: 'Sydney', lat: -33.8688, lng: 151.2093},
-            {name: 'Paris', lat: 48.8566, lng: 2.3522},
-            {name: 'Atlanta', lat: 33.749, lng: -84.388}
-        ];
-        
-        cities.forEach(function(city) {
-            L.marker([city.lat, city.lng]).addTo(map).bindPopup(city.name);
-        });
-    }
-});
-</script>
-
 <script src="page.js"></script>
 
 </body>
