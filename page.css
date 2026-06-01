@@ -160,14 +160,15 @@ button {
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: 2.5rem;
+    gap: 1.25rem;
+    flex-wrap: wrap;
 }
 
 .nav-link {
-    font-size: 0.7rem;
+    font-size: 0.62rem;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 2.5px;
+    letter-spacing: 1.8px;
     color: var(--white-dim);
     position: relative;
     padding: 6px 0;
@@ -2276,9 +2277,78 @@ section {
 .album-grid-fixed { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; align-items: start; }
 
 /* ==================== POLISH: SPOTIFY LINK ==================== */
-.spotify-link { text-align: center; padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 12px; }
-.spotify-link a { font-size: 1.1rem; transition: all 0.3s; }
-.spotify-link a:hover { transform: translateX(5px); }
+.spotify-embed-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.spotify-embed {
+    display: block;
+    border-radius: 16px;
+    background: #121212;
+}
+
+.spotify-link-footer {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.spotify-link-footer a {
+    color: var(--pink-primary);
+    font-size: 0.9rem;
+    transition: opacity 0.3s ease;
+}
+
+.spotify-link-footer a:hover {
+    opacity: 0.85;
+}
+
+.tour-link-anchor {
+    color: #ff69b4;
+    text-decoration: none;
+}
+
+.tour-link-anchor:hover {
+    text-decoration: underline;
+}
+
+.tour-map-intro {
+    text-align: center;
+    color: var(--gray);
+    font-size: 0.9rem;
+    max-width: 520px;
+    margin: -3rem auto 2rem;
+}
+
+.tour-tickets-btn {
+    display: block;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.insta-grid-mobile a {
+    display: block;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.insta-grid-mobile a:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(255, 107, 157, 0.25);
+}
+
+.youtube-modal-link {
+    color: #ff69b4;
+}
 
 /* ==================== POLISH: VIDEO TABS ==================== */
 .video-tab { min-height: 48px; }

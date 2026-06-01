@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="BLACKPINK - Official Fan Page">
-    <title>BLACKPINK | Official Fan Page</title>
+    <meta name="description" content="Fan page oficial de BLACKPINK para BLINKs: música, vídeos, tour, merch y comunidad.">
+    <meta property="og:title" content="BLACKPINK | Fan Page Oficial">
+    <meta property="og:description" content="Música, integrantes, tour Born Pink y comunidad BLINK.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="pink.png">
+    <meta name="theme-color" content="#ff6b9d">
+    <title>BLACKPINK | Fan Page Oficial</title>
+    <link rel="icon" href="pink.png" type="image/png">
     <link rel="stylesheet" href="page.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -14,17 +20,20 @@
 <header class="header" id="header">
     <div class="header-inner">
         <div class="header-left">
-            <button class="menu-toggle" aria-label="Menu" onclick="openMobileMenu()">
+            <button class="menu-toggle" aria-label="Abrir menú" onclick="openMobileMenu()">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             <nav class="nav-menu">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#members" class="nav-link">Members</a>
-                <a href="#music" class="nav-link">Music</a>
+                <a href="#home" class="nav-link">Inicio</a>
+                <a href="#members" class="nav-link">Integrantes</a>
+                <a href="#music" class="nav-link">Música</a>
                 <a href="#video" class="nav-link">Videos</a>
-                <a href="#subscribe" class="nav-link">Join BLINK</a>
+                <a href="#tour-map" class="nav-link">Tour</a>
+                <a href="#merch" class="nav-link">Merch</a>
+                <a href="#quiz-section" class="nav-link">BLINK Zone</a>
+                <a href="#subscribe" class="nav-link">Únete</a>
             </nav>
         </div>
         <div class="header-center">
@@ -58,50 +67,50 @@
     </div>
     <div class="hero-content home-content">
         <h1 class="hero-title">BLACKPINK</h1>
-        <p class="hero-subtitle">Welcome to the BLINK Family</p>
+        <p class="hero-subtitle">Bienvenida a la familia BLINK</p>
 
         <!-- Hero Carousel -->
         <div class="hero-carousel-mobile">
             <div class="carousel-slide active">
-                <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?q=80&w=800&auto=format&fit=crop" alt="Born Pink Tour Live">
+                <img src="https://img.youtube.com/vi/gQlMMD8auMs/hqdefault.jpg" alt="BLACKPINK - Pink Venom" loading="lazy" width="800" height="450">
                 <div class="slide-text">
-                    <h3>LIVE NOW</h3>
+                    <h3>EN VIVO</h3>
                     <h2>Born Pink World Tour</h2>
-                    <p>Experience the magic live!</p>
-                    <button class="btn btn-primary" onclick="document.getElementById('tour-map').scrollIntoView({behavior:'smooth'})">GET TICKETS</button>
+                    <p>¡Vive la magia en directo!</p>
+                    <button class="btn btn-primary" onclick="document.getElementById('tour-map').scrollIntoView({behavior:'smooth'})">VER TOUR</button>
                 </div>
             </div>
         </div>
 
         <div class="hero-buttons">
-            <a href="#music" class="btn btn-primary">Listen Now</a>
-            <a href="#video" class="btn btn-secondary">Watch Videos</a>
+            <a href="#music" class="btn btn-primary">Escuchar ahora</a>
+            <a href="#video" class="btn btn-secondary">Ver videos</a>
         </div>
 
         <!-- Countdown Timer -->
         <div class="countdown-container-mobile">
-            <h4>NEXT COMEBACK IN:</h4>
+            <h4>PRÓXIMO COMEBACK EN:</h4>
             <div class="countdown-timer" id="comeback-countdown">
-                <div class="time-box"><span id="days">00</span><small>DAYS</small></div>
-                <div class="time-box"><span id="hours">00</span><small>HOURS</small></div>
-                <div class="time-box"><span id="minutes">00</span><small>MINUTES</small></div>
-                <div class="time-box"><span id="seconds">00</span><small>SECONDS</small></div>
+                <div class="time-box"><span id="days">00</span><small>DÍAS</small></div>
+                <div class="time-box"><span id="hours">00</span><small>HORAS</small></div>
+                <div class="time-box"><span id="minutes">00</span><small>MIN</small></div>
+                <div class="time-box"><span id="seconds">00</span><small>SEG</small></div>
             </div>
         </div>
 
         <!-- Quote -->
         <div class="quote-mobile">
-            <blockquote>"Thank you for waiting, we're back! 🌸 – Rosé"</blockquote>
+            <blockquote>"Gracias por esperar, ¡hemos vuelto! 🌸 – Rosé"</blockquote>
         </div>
 
         <!-- Instagram Feed -->
         <div class="instagram-feed-mobile">
             <h4><i class="bx bxl-instagram"></i> @blackpinkofficial</h4>
             <div class="insta-grid-mobile">
-                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=200" alt="Post 1">
-                <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=200" alt="Post 2">
-                <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?q=80&w=200&auto=format&fit=crop" alt="BLACKPINK Live Concert">
-                <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=200" alt="Post 4">
+                <a href="https://www.youtube.com/watch?v=gQlMMD8auMs" target="_blank" rel="noopener"><img src="https://img.youtube.com/vi/gQlMMD8auMs/hqdefault.jpg" alt="Pink Venom" loading="lazy"></a>
+                <a href="https://www.youtube.com/watch?v=POe9SOEKotk" target="_blank" rel="noopener"><img src="https://img.youtube.com/vi/POe9SOEKotk/hqdefault.jpg" alt="Shut Down" loading="lazy"></a>
+                <a href="https://www.youtube.com/watch?v=IHdVIe785wQ" target="_blank" rel="noopener"><img src="https://img.youtube.com/vi/IHdVIe785wQ/hqdefault.jpg" alt="How You Like That" loading="lazy"></a>
+                <a href="https://www.youtube.com/watch?v=bwmSjveZ3n8" target="_blank" rel="noopener"><img src="https://img.youtube.com/vi/bwmSjveZ3n8/hqdefault.jpg" alt="DDU-DU DDU-DU" loading="lazy"></a>
             </div>
         </div>
     </div>
@@ -109,7 +118,7 @@
 
 <!-- POLISH: Members Section -->
 <section class="members" id="members">
-    <h2 class="section-title">Meet The Members</h2>
+    <h2 class="section-title">Conoce a las integrantes</h2>
     <div class="members-grid">
         <!-- Jisoo -->
         <div class="member-card">
@@ -125,7 +134,7 @@
                 <a href="https://instagram.com/sooyaaa__" target="_blank" class="member-insta">
                     <i class="bx bxl-instagram"></i> @sooyaaa__
                 </a>
-                <button class="btn-small" onclick="openMemberModal('jisoo')">View Profile</button>
+                <button class="btn-small" onclick="openMemberModal('jisoo')">Ver perfil</button>
             </div>
         </div>
         <!-- Jennie -->
@@ -142,7 +151,7 @@
                 <a href="https://instagram.com/jennierubyjane" target="_blank" class="member-insta">
                     <i class="bx bxl-instagram"></i> @jennierubyjane
                 </a>
-                <button class="btn-small" onclick="openMemberModal('jennie')">View Profile</button>
+                <button class="btn-small" onclick="openMemberModal('jennie')">Ver perfil</button>
             </div>
         </div>
         <!-- Rosé -->
@@ -159,7 +168,7 @@
                 <a href="https://instagram.com/roses_are_rosie" target="_blank" class="member-insta">
                     <i class="bx bxl-instagram"></i> @roses_are_rosie
                 </a>
-                <button class="btn-small" onclick="openMemberModal('rose')">View Profile</button>
+                <button class="btn-small" onclick="openMemberModal('rose')">Ver perfil</button>
             </div>
         </div>
         <!-- Lisa -->
@@ -176,7 +185,7 @@
                 <a href="https://instagram.com/lalalalisa_m" target="_blank" class="member-insta">
                     <i class="bx bxl-instagram"></i> @lalalalisa_m
                 </a>
-                <button class="btn-small" onclick="openMemberModal('lisa')">View Profile</button>
+                <button class="btn-small" onclick="openMemberModal('lisa')">Ver perfil</button>
             </div>
         </div>
     </div>
@@ -249,26 +258,26 @@
 
 <!-- POLISH: Music Section -->
 <section class="music" id="music">
-    <h2 class="section-title">Latest Music</h2>
+    <h2 class="section-title">Última música</h2>
     <div class="music-container">
         <!-- Discography -->
         <div class="discography-section">
-            <h3 class="subsection-title">Discography</h3>
+            <h3 class="subsection-title">Discografía</h3>
             <div class="discography-grid album-grid-fixed">
-                <a href="https://open.spotify.com/album/7jaSNQUBJbvfbZHLNFrV7P" target="_blank" class="album-card-link"><div class="album-card">
-                    <img src="https://placehold.co/200x200/1a1a1a/ff69b4?text=THE+ALBUM" alt="THE ALBUM">
+                <a href="https://open.spotify.com/album/2gNPnKP1PDkB5SZz3IMKuX" target="_blank" rel="noopener" class="album-card-link"><div class="album-card">
+                    <img src="https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e021895052324f123becdd0d53d" alt="THE ALBUM" loading="lazy" width="200" height="200">
                     <div class="album-info"><h4>THE ALBUM</h4><span>2020</span></div>
                 </div></a>
-                <a href="https://open.spotify.com/album/5nRJdXzY9mFqVvWjKkXxZz" target="_blank" class="album-card-link"><div class="album-card">
-                    <img src="https://placehold.co/200x200/1a1a1a/ff69b4?text=BORN+PINK" alt="BORN PINK">
+                <a href="https://open.spotify.com/album/0S4pP8MBY9p7ngFWIZQAJv" target="_blank" rel="noopener" class="album-card-link"><div class="album-card">
+                    <img src="https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02580ac3ad7dfc81e509171120" alt="BORN PINK" loading="lazy" width="200" height="200">
                     <div class="album-info"><h4>BORN PINK</h4><span>2022</span></div>
                 </div></a>
-                <a href="https://open.spotify.com/album/3PNxZ3BELbUXJ1XLktXiHz" target="_blank" class="album-card-link"><div class="album-card">
-                    <img src="https://placehold.co/200x200/1a1a1a/ff69b4?text=SQUARE+UP" alt="SQUARE UP">
+                <a href="https://open.spotify.com/album/3PNxZ3BELbUXJ1XLktXiHz" target="_blank" rel="noopener" class="album-card-link"><div class="album-card">
+                    <img src="https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02e20e5c366b497518353497b0" alt="SQUARE UP" loading="lazy" width="200" height="200">
                     <div class="album-info"><h4>SQUARE UP</h4><span>2018</span></div>
                 </div></a>
-                <a href="https://open.spotify.com/album/41MozSoPIsD1dJM0CLPjZF" target="_blank" class="album-card-link"><div class="album-card">
-                    <img src="https://placehold.co/200x200/1a1a1a/ff69b4?text=KILL+THIS+LOVE" alt="KILL THIS LOVE">
+                <a href="https://open.spotify.com/album/3ZzeWH0Rfthd2oOrKjC9Jn" target="_blank" rel="noopener" class="album-card-link"><div class="album-card">
+                    <img src="https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e021f2c9885eb0f4facb9da9cd3" alt="KILL THIS LOVE" loading="lazy" width="200" height="200">
                     <div class="album-info"><h4>KILL THIS LOVE</h4><span>2019</span></div>
                 </div></a>
             </div>
@@ -276,7 +285,7 @@
 
         <!-- Top Songs -->
         <div class="top-songs-section">
-            <h3 class="subsection-title">Top Songs</h3>
+            <h3 class="subsection-title">Top canciones</h3>
             <div class="top-songs-list">
                 <a href="https://open.spotify.com/track/4lQsB3ERTWSNaAN1IkuNRl" target="_blank" class="song-row-link"><div class="song-item"><span class="song-rank">1</span><div class="song-info"><span class="song-title">DDu-Du DDu-Du</span><span class="song-streams">1.2B streams</span></div></div></a>
                 <a href="https://open.spotify.com/track/6hvFrZNocdt2FcKGCSY5NI" target="_blank" class="song-row-link"><div class="song-item"><span class="song-rank">2</span><div class="song-info"><span class="song-title">Kill This Love</span><span class="song-streams">900M streams</span></div></div></a>
@@ -288,12 +297,23 @@
 
         <!-- Spotify Link -->
         <div class="spotify-section">
-            <h3 class="subsection-title">Stream Now</h3>
-            <div class="spotify-link">
-                <a href="https://open.spotify.com/artist/41MozSoPIsD1dJM0CLPjZF" target="_blank" style="color:#ff69b4; text-decoration:none;">
-                    🎧 Listen to BLACKPINK on Spotify →
-                </a>
+            <h3 class="subsection-title">Escuchar en Spotify</h3>
+            <div class="spotify-embed-wrapper">
+                <iframe
+                    class="spotify-embed"
+                    src="https://open.spotify.com/embed/artist/41MozSoPIsD1dJM0CLPjZF?utm_source=generator&theme=0"
+                    width="100%"
+                    height="352"
+                    frameborder="0"
+                    allowfullscreen=""
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"
+                    title="BLACKPINK en Spotify">
+                </iframe>
             </div>
+            <p class="spotify-link-footer">
+                <a href="https://open.spotify.com/artist/41MozSoPIsD1dJM0CLPjZF" target="_blank" rel="noopener">Abrir perfil de BLACKPINK en Spotify →</a>
+            </p>
         </div>
 
         <!-- Lyrics -->
@@ -372,9 +392,9 @@
     <!-- Video Tabs -->
     <div class="video-tabs-container">
         <div class="video-tabs">
-            <button class="video-tab active" onclick="showVideoTab('mv-videos')">Music Videos</button>
-            <button class="video-tab" onclick="showVideoTab('bts-videos')">Behind The Scenes</button>
-            <button class="video-tab" onclick="showVideoTab('live-videos')">Live</button>
+            <button class="video-tab active" onclick="showVideoTab('mv-videos', this)">Videos musicales</button>
+            <button class="video-tab" onclick="showVideoTab('bts-videos', this)">Detrás de cámaras</button>
+            <button class="video-tab" onclick="showVideoTab('live-videos', this)">En vivo</button>
         </div>
     </div>
 
@@ -383,21 +403,21 @@
         <div class="video-grid" id="mv-videos-grid">
             <div class="video-card" onclick="openVideoModal('gQlMMD8auMs')">
                 <div class="video-thumbnail">
-                    <img src="https://placehold.co/400x225/1a1a1a/ff69b4?text=Pink+Venom" alt="Pink Venom">
+                    <img src="https://img.youtube.com/vi/gQlMMD8auMs/hqdefault.jpg" alt="Pink Venom" loading="lazy" width="400" height="225">
                     <span class="video-play-btn"><i class="bx bx-play"></i></span>
                 </div>
                 <div class="video-info"><h4>Pink Venom</h4><span>2023</span></div>
             </div>
             <div class="video-card" onclick="openVideoModal('POe9SOEKotk')">
                 <div class="video-thumbnail">
-                    <img src="https://placehold.co/400x225/1a1a1a/ff69b4?text=Shut+Down" alt="Shut Down">
+                    <img src="https://img.youtube.com/vi/POe9SOEKotk/hqdefault.jpg" alt="Shut Down" loading="lazy" width="400" height="225">
                     <span class="video-play-btn"><i class="bx bx-play"></i></span>
                 </div>
                 <div class="video-info"><h4>Shut Down</h4><span>2022</span></div>
             </div>
             <div class="video-card" onclick="openVideoModal('dyRsYk0LyA8')">
                 <div class="video-thumbnail">
-                    <img src="https://placehold.co/400x225/1a1a1a/ff69b4?text=Lovesick+Girls" alt="Lovesick Girls">
+                    <img src="https://img.youtube.com/vi/dyRsYk0LyA8/hqdefault.jpg" alt="Lovesick Girls" loading="lazy" width="400" height="225">
                     <span class="video-play-btn"><i class="bx bx-play"></i></span>
                 </div>
                 <div class="video-info"><h4>Lovesick Girls</h4><span>2020</span></div>
@@ -408,19 +428,19 @@
     <!-- BTS -->
     <div class="video-tab-content" id="bts-videos" style="display:none;">
         <div class="video-grid" id="bts-videos-grid">
-            <div class="video-card" onclick="openVideoModal('dQw4w9WgXcQ')">
+            <div class="video-card" onclick="openVideoModal('pDP9SEP7vCo')">
                 <div class="video-thumbnail">
-                    <img src="https://placehold.co/400x225/1a1a1a/ff69b4?text=Making+of+Born+Pink" alt="Making of Born Pink">
+                    <img src="https://img.youtube.com/vi/pDP9SEP7vCo/hqdefault.jpg" alt="Pink Venom - Making Film" loading="lazy" width="400" height="225">
                     <span class="video-play-btn"><i class="bx bx-play"></i></span>
                 </div>
-                <div class="video-info"><h4>Making of Born Pink</h4><span>2022</span></div>
+                <div class="video-info"><h4>Pink Venom - Making Film</h4><span>2022</span></div>
             </div>
-            <div class="video-card" data-year="2023">
+            <div class="video-card" onclick="openVideoModal('L0zIUVVEW6g')">
                 <div class="video-thumbnail">
-                    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400" alt="Tour Rehearsals">
-                    <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank" class="video-play-btn"><i class="bx bx-play"></i></a>
+                    <img src="https://img.youtube.com/vi/L0zIUVVEW6g/hqdefault.jpg" alt="Shut Down - Making Film" loading="lazy" width="400" height="225">
+                    <span class="video-play-btn"><i class="bx bx-play"></i></span>
                 </div>
-                <div class="video-info"><h4>Tour Rehearsals</h4><span>2023</span></div>
+                <div class="video-info"><h4>Shut Down - Making Film</h4><span>2022</span></div>
             </div>
         </div>
     </div>
@@ -428,26 +448,26 @@
     <!-- Live -->
     <div class="video-tab-content" id="live-videos" style="display:none;">
         <div class="video-grid" id="live-videos-grid">
-            <div class="video-card" onclick="openVideoModal('dQw4w9WgXcQ')">
+            <div class="video-card" onclick="openVideoModal('z9tifvQSu-g')">
                 <div class="video-thumbnail">
-                    <img src="https://placehold.co/400x225/1a1a1a/ff69b4?text=Coachella+2023" alt="Coachella">
+                    <img src="https://img.youtube.com/vi/z9tifvQSu-g/hqdefault.jpg" alt="Typa Girl en Coachella 2023" loading="lazy" width="400" height="225">
                     <span class="video-play-btn"><i class="bx bx-play"></i></span>
                 </div>
-                <div class="video-info"><h4>Coachella 2023</h4><span>2023</span></div>
+                <div class="video-info"><h4>Typa Girl - Coachella 2023</h4><span>2023</span></div>
             </div>
-            <div class="video-card" onclick="openVideoModal('dQw4w9WgXcQ')">
+            <div class="video-card" onclick="openVideoModal('VLpUsmBafMQ')">
                 <div class="video-thumbnail">
-                    <img src="https://placehold.co/400x225/1a1a1a/ff69b4?text=Seoul+Concert+2022" alt="Seoul">
+                    <img src="https://img.youtube.com/vi/VLpUsmBafMQ/hqdefault.jpg" alt="Pretty Savage en Coachella 2023" loading="lazy" width="400" height="225">
                     <span class="video-play-btn"><i class="bx bx-play"></i></span>
                 </div>
-                <div class="video-info"><h4>Seoul Concert 2022</h4><span>2022</span></div>
+                <div class="video-info"><h4>Pretty Savage - Coachella 2023</h4><span>2023</span></div>
             </div>
         </div>
     </div>
 
     <!-- Tour Link -->
     <div class="tour-link-mobile">
-        <a href="#tour-map" style="color:#ff69b4; text-decoration:none;">👉 View Full Tour Dates & Map</a>
+        <a href="#tour-map" class="tour-link-anchor">👉 Ver fechas del tour y mapa</a>
     </div>
 </section>
 
@@ -461,16 +481,16 @@
 <!-- POLISH: Subscribe Section -->
 <section class="subscribe-section" id="subscribe">
     <div class="subscribe-card">
-        <div class="subscribe-badge">Official Fan Community</div>
-        <h2>Join BLINK</h2>
-        <p>Be the first to receive exclusive news, comebacks, tours & special content.</p>
+        <div class="subscribe-badge">Comunidad fan oficial</div>
+        <h2>Únete a BLINK</h2>
+        <p>Sé la primera en recibir noticias exclusivas, comebacks, tours y contenido especial.</p>
         
         <form class="subscribe-form join-form" onsubmit="handleJoinForm(event)">
             <div class="join-form-grid">
-                <input type="text" placeholder="Your name" required>
-                <input type="email" placeholder="Email address" required>
+                <input type="text" placeholder="Tu nombre" required>
+                <input type="email" placeholder="Correo electrónico" required>
                 <select required>
-                    <option value="">Favorite Song</option>
+                    <option value="">Canción favorita</option>
                     <option value="ddudu">DDu-Du DDu-Du</option>
                     <option value="kill-this-love">Kill This Love</option>
                     <option value="how-you-like-that">How You Like That</option>
@@ -478,7 +498,7 @@
                     <option value="shut-down">Shut Down</option>
                 </select>
                 <select required>
-                    <option value="">Since when are you a BLINK?</option>
+                    <option value="">¿Desde cuándo eres BLINK?</option>
                     <option value="2016">2016</option>
                     <option value="2018">2018</option>
                     <option value="2020">2020</option>
@@ -487,62 +507,62 @@
                     <option value="2026">2026</option>
                 </select>
                 <select required>
-                    <option value="">Select Country</option>
-                    <option value="US">United States</option>
-                    <option value="KR">South Korea</option>
-                    <option value="JP">Japan</option>
-                    <option value="MX">Mexico</option>
-                    <option value="ES">Spain</option>
-                    <option value="BR">Brazil</option>
-                    <option value="UK">United Kingdom</option>
+                    <option value="">Selecciona tu país</option>
+                    <option value="US">Estados Unidos</option>
+                    <option value="KR">Corea del Sur</option>
+                    <option value="JP">Japón</option>
+                    <option value="MX">México</option>
+                    <option value="ES">España</option>
+                    <option value="BR">Brasil</option>
+                    <option value="UK">Reino Unido</option>
                 </select>
             </div>
             
             <div class="language-selector">
-                <span class="language-label">Language:</span>
-                <button type="button" class="lang-btn active" onclick="selectLang(this)">English</button>
-                <button type="button" class="lang-btn" onclick="selectLang(this)">Spanish</button>
-                <button type="button" class="lang-btn" onclick="selectLang(this)">Korean</button>
+                <span class="language-label">Idioma preferido:</span>
+                <button type="button" class="lang-btn active" onclick="selectLang(this)">Español</button>
+                <button type="button" class="lang-btn" onclick="selectLang(this)">English</button>
+                <button type="button" class="lang-btn" onclick="selectLang(this)">한국어</button>
             </div>
             
             <div class="subscribe-benefits">
-                <span>✨ New music alerts</span>
-                <span>🎤 Tour announcements</span>
-                <span>💖 Exclusive content</span>
+                <span>✨ Alertas de música nueva</span>
+                <span>🎤 Anuncios de tour</span>
+                <span>💖 Contenido exclusivo</span>
             </div>
-            <button type="submit" class="btn btn-primary">Join the Family</button>
-            <p class="subscribe-privacy">No spam, just BLACKPINK love ❤️</p>
+            <button type="submit" class="btn btn-primary">Unirme a la familia</button>
+            <p class="subscribe-privacy">Sin spam, solo amor BLACKPINK ❤️</p>
         </form>
         
         <!-- Success Message -->
         <div class="success-message" id="successMessage" style="display:none; text-align:center; padding:1rem; background:rgba(255,105,180,0.1); border-radius:8px; margin-top:1rem;">
-            ✅ Welcome, <span id="user-name"></span>! You're BLINK #<span id="blink-number"></span>. Check your email!
+            ✅ ¡Bienvenida, <span id="user-name"></span>! Eres la BLINK #<span id="blink-number"></span>. Revisa tu correo.
         </div>
         
         <a href="https://discord.gg/blackpink" target="_blank" class="discord-btn">
-            <i class="bx bxl-discord"></i> Join Official BLINK Server
+            <i class="bx bxl-discord"></i> Servidor oficial BLINK en Discord
         </a>
     </div>
 </section>
 
 <!-- POLISH: Merchandise Section -->
 <section class="merch-section" id="merch">
-    <h2 class="section-title">Shop Official Merch</h2>
+    <h2 class="section-title">Merch oficial</h2>
     <div class="merch-grid-mobile">
         <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=300" alt="T-Shirt">
-            <h4>Born Pink Tour T-Shirt</h4>
+            <img src="https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02580ac3ad7dfc81e509171120" alt="Camiseta Born Pink Tour" loading="lazy" width="300" height="300">
+            <h4>Camiseta Born Pink Tour</h4>
             <p class="price">$35</p>
-            <button class="btn-cart" onclick="addToCart('T-Shirt', 35)">ADD TO CART</button>
+            <button class="btn-cart" onclick="addToCart('Camiseta Born Pink', 35)">AÑADIR AL CARRITO</button>
         </div>
         <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=300" alt="Hoodie">
-            <h4>BLACKPINK Logo Hoodie</h4>
+            <img src="https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e021f2c9885eb0f4facb9da9cd3" alt="Hoodie BLACKPINK" loading="lazy" width="300" height="300">
+            <h4>Hoodie BLACKPINK</h4>
             <p class="price">$65</p>
-            <button class="btn-cart" onclick="addToCart('Hoodie', 65)">ADD TO CART</button>
+            <button class="btn-cart" onclick="addToCart('Hoodie BLACKPINK', 65)">AÑADIR AL CARRITO</button>
         </div>
     </div>
-    <button class="btn btn-secondary load-more-btn" onclick="loadMoreProducts()">Load More Products</button>
+    <button class="btn btn-secondary load-more-btn" onclick="loadMoreProducts()">Cargar más productos</button>
 </section>
 
 <!-- ==================== BLINK INTERACTIVE QUIZ ==================== -->
@@ -621,6 +641,7 @@
 <!-- POLISH: Tour Map Section -->
 <section class="tour-map-section" id="tour-map">
     <h2 class="section-title">Born Pink World Tour</h2>
+    <p class="tour-map-intro">Fechas destacadas del tour mundial Born Pink.</p>
     <div class="tour-cities-expanded">
         <div class="city-item">
             <span class="pin">📍</span>
@@ -643,7 +664,7 @@
             <strong>Auckland, New Zealand</strong> — Jun 17, 2023
         </div>
     </div>
-    <button class="btn btn-primary" style="margin-top: 1rem; width: 100%;">BUY TICKETS</button>
+    <a href="https://www.ygfamily.com/artist/main.htm?ACT_ID=49" class="btn btn-primary tour-tickets-btn" target="_blank" rel="noopener">ENTRADAS OFICIALES</a>
     
     <div class="tour-map-container" style="margin-top:2rem;">
         <div id="tour-map-leaflet" style="height:300px; border-radius:12px; overflow:hidden;"></div>
@@ -651,7 +672,7 @@
 </section>
 
 <footer class="footer">
-    <p class="footer-follow">Follow us for daily updates ❤️</p>
+    <p class="footer-follow">Síguenos para novedades diarias ❤️</p>
     <div class="footer-logo-container">
         <img src="pink.png" alt="BLACKPINK">
     </div>
@@ -661,7 +682,7 @@
         <a href="https://twitter.com/BLACKPINK" target="_blank"><i class="bx bxl-twitter"></i></a>
         <a href="https://www.tiktok.com/@bp_tiktok" target="_blank"><i class="bx bxl-tiktok"></i></a>
     </div>
-    <p>&copy; 2026 BLACKPINK. All Rights Reserved.</p>
+    <p>&copy; 2026 BLACKPINK. Fan page no oficial. Todos los derechos de marca pertenecen a YG Entertainment.</p>
 </footer>
 
 <!-- MOBILE MENU: Hamburger Menu CSS -->
@@ -727,11 +748,14 @@
 <div class="mobile-menu-overlay" id="mobileMenu">
   <button class="close-menu-btn" onclick="closeMobileMenu()">×</button>
   <ul class="mobile-menu-links">
-    <li><a href="#home" onclick="closeMobileMenu()">HOME</a></li>
-    <li><a href="#members" onclick="closeMobileMenu()">MEMBERS</a></li>
-    <li><a href="#music" onclick="closeMobileMenu()">MUSIC</a></li>
+    <li><a href="#home" onclick="closeMobileMenu()">INICIO</a></li>
+    <li><a href="#members" onclick="closeMobileMenu()">INTEGRANTES</a></li>
+    <li><a href="#music" onclick="closeMobileMenu()">MÚSICA</a></li>
     <li><a href="#video" onclick="closeMobileMenu()">VIDEOS</a></li>
-    <li><a href="#subscribe" onclick="closeMobileMenu()">JOIN BLINK</a></li>
+    <li><a href="#tour-map" onclick="closeMobileMenu()">TOUR</a></li>
+    <li><a href="#merch" onclick="closeMobileMenu()">MERCH</a></li>
+    <li><a href="#quiz-section" onclick="closeMobileMenu()">BLINK ZONE</a></li>
+    <li><a href="#subscribe" onclick="closeMobileMenu()">ÚNETE</a></li>
   </ul>
 </div>
 
@@ -757,7 +781,7 @@
     <button onclick="closeVideoModal()" style="position:absolute; top:-10px; right:10px; background:none; border:none; color:#ff69b4; font-size:2rem; cursor:pointer; z-index:2001;">×</button>
     <iframe id="youtube-player" width="100%" height="450" src="" frameborder="0" allowfullscreen></iframe>
     <p style="text-align:center; margin-top:1rem;">
-      <a href="" id="youtube-link" target="_blank" style="color:#ff69b4;">Watch on YouTube →</a>
+      <a href="" id="youtube-link" target="_blank" rel="noopener" class="youtube-modal-link">Ver en YouTube →</a>
     </p>
   </div>
 </div>

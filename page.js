@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // ==========================================
     // 7. VIDEO GALLERY CONTROLS & TABS
     // ==========================================
-    window.showVideoTab = function(tabId) {
+    window.showVideoTab = function(tabId, tabBtn) {
         document.querySelectorAll('.video-tab-content').forEach(c => {
             c.style.display = 'none';
             c.classList.remove('active');
@@ -258,8 +258,8 @@ document.addEventListener('DOMContentLoaded', function() {
             targetContent.classList.add('active');
         }
         
-        if (event && event.currentTarget) {
-            event.currentTarget.classList.add('active');
+        if (tabBtn) {
+            tabBtn.classList.add('active');
         }
     };
 
@@ -312,11 +312,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // 8. MERCHANDISE SHOP & CART
     // ==========================================
     window.addToCart = function(product, price) {
-        alert(`🛒 ¡Felicidades! "${product}" ($${price}) se ha añadido al carrito.`);
+        alert(`🛒 "${product}" ($${price}) se añadió al carrito (demo).`);
     };
 
     window.loadMoreProducts = function() {
-        alert('🛍️ Cargando más productos oficiales BLACKPINK...');
+        alert('🛍️ Más merch oficial estará disponible pronto.');
     };
 
     // ==========================================
@@ -465,27 +465,27 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: "DDu-Du DDu-Du",
             url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-            cover: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=300"
+            cover: "https://img.youtube.com/vi/bwmSjveZ3n8/hqdefault.jpg"
         },
         {
             title: "Kill This Love",
             url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-            cover: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=300"
+            cover: "https://img.youtube.com/vi/2S24-y0Y3pE/hqdefault.jpg"
         },
         {
             title: "How You Like That",
             url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-            cover: "https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?q=80&w=300&auto=format&fit=crop"
+            cover: "https://img.youtube.com/vi/IHdVIe785wQ/hqdefault.jpg"
         },
         {
             title: "Lovesick Girls",
             url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
-            cover: "https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=300"
+            cover: "https://img.youtube.com/vi/dyRsYk0LyA8/hqdefault.jpg"
         },
         {
             title: "Shut Down",
             url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
-            cover: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300"
+            cover: "https://img.youtube.com/vi/POe9SOEKotk/hqdefault.jpg"
         }
     ];
 
