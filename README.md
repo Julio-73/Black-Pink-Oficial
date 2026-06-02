@@ -54,38 +54,142 @@
 1. **Clone the repository**
 ```bash
 git clone https://github.com/Julio-73/Black-Pink-Oficial.git
-```
-
-2. **Navigate to project**
-```bash
 cd Black-Pink-Oficial
+npm install
 ```
 
-3. **Open in browser**
+2. **Optimize assets (one-time)**
 ```bash
-# Simply open index.html in your browser
-# Or use a local server:
-npx serve .
+npm run build      # icons + images + videos + validation
 ```
+
+3. **Serve locally**
+```bash
+npm run serve      # http://localhost:3000
+```
+
+> ES modules require an HTTP server. Opening `index.html` via `file://` will fail.
+
+### Available scripts
+| Command | What it does |
+|---|---|
+| `npm run serve` | Local dev server on :3000 |
+| `npm run optimize` | Regenerate PWA icons + optimized images + videos |
+| `npm run optimize:images` | Convert PNG → AVIF+WebP+PNG @2 sizes |
+| `npm run optimize:videos` | Trim + compress MP4/WebM + poster frames |
+| `npm run optimize:icons` | Generate PWA icons (192/512/maskable/apple) |
+| `npm run validate` | Run SEO + a11y audits |
+| `npm run audit` | Full project metrics report |
+| `npm run build` | Full pipeline: optimize + validate |
 
 ---
 
-## 📂 Project Structure
+## 📊 Performance
+
+- **Total shipped**: ~3.7MB (vs ~175MB original) — **97% reduction**
+- **First-load gzipped**: **44KB** (HTML + CSS + JS)
+- **Video**: trimmed 3-min loops → 15s + H.264 + VP9 dual-stream
+- **Images**: AVIF (10) + WebP (10) + PNG fallback (10) at 2 sizes
+- **JS**: 12 modules ES6, gzipped total 17KB
+- **No bundler**: native ES modules with HTTP/2 multiplexing
+- **Service worker**: precache 18 critical assets for offline
+
+Run `npm run audit` for full metrics.
+
+---
+
+## 🔍 SEO & Rich Results
+
+- ✅ JSON-LD: `WebSite`, `Organization`, **`MusicGroup`** (4 members with birthDate/role/nationality + 6 sameAs)
+- ✅ Open Graph: 15 properties (image, locale, alternate locales, dimensions)
+- ✅ Twitter Cards: summary_large_image
+- ✅ Canonical URL + hreflang (es/en/ko)
+- ✅ Sitemap.xml + robots.txt
+- ✅ Theme color light/dark + color-scheme
+
+Test with:
+- [Google Rich Results Test](https://search.google.com/test/rich-results)
+- [opengraph.xyz](https://www.opengraph.xyz/)
+
+---
+
+## ♿ Accessibility
+
+- ✅ `<main>` landmark + skip-to-content link
+- ✅ Focus trap in modals + focus restoration on close
+- ✅ Esc closes modals
+- ✅ Forms: 5 labels (sr-only), `aria-required`, live `aria-invalid` validation
+- ✅ Quiz result: `aria-live="polite"` announces member name on reveal
+- ✅ Video player + audio controls: full `aria-label`s
+- ✅ `:focus-visible` outline (3px pink) replaces all `outline: none`
+- ✅ `@media (prefers-reduced-motion: reduce)` — disables all animations
+- ✅ `@media (prefers-contrast: more)` — high-contrast outline + underlines
+- ✅ Modals: `role="dialog"`, `aria-modal="true"`, `aria-labelledby`
+- ✅ Language buttons: `aria-pressed`
+- ✅ Video cards: `role="button"`, `tabindex="0"`
+- ✅ Headings: 1 h1, 13 h2, 11 h3, 17 h4 (no skipped levels)
+
+Validate with:
+- Chrome DevTools → Lighthouse → Accessibility
+- [axe DevTools](https://www.deque.com/axe/devtools/) browser extension
+- [WAVE](https://wave.webaim.org/)
+
+---
+
+## 📦 PWA (Progressive Web App)
+
+- ✅ Installable on iOS, Android, Desktop
+- ✅ Custom theme color (hot pink) + status bar
+- ✅ Maskable icon (Android adaptive)
+- ✅ App shortcuts: Test BLINK, Tour
+- ✅ Offline: 18 precached assets, network-first for navigations
+- ✅ Apple touch icon + mask-icon (Safari pinned tab)
+
+---
 
 ```
 Black-Pink-Oficial/
-├── 📄 index.html          # Main HTML structure
-├── 🎨 page.css            # Premium styles & animations
-├── ⚡ page.js             # Interactive functionality
-├── 🖼️ Assets/             # Images & videos
-│   ├── pink.png          # Logo
-│   ├── jisoo.png         # Member images
-│   ├── jenny.png
-│   ├── rose.png
-│   ├── lisa.png
-│   ├── loveluna.mp4      # Video content
-│   └── ...
-└── 📝 README.md          # This file
+├── 📄 index.html              # Main HTML (with JSON-LD, OG, Twitter, PWA links)
+├── 🎨 page.css                # Premium styles (a11y utilities included)
+├── 📋 manifest.json           # PWA manifest (icons, shortcuts, screenshots)
+├── ⚙️ sw.js                   # Service worker (precache, cache-first)
+├── 🤖 robots.txt              # Crawler rules + sitemap ref
+├── 🗺️ sitemap.xml             # Sitemap (hreflang)
+│
+├── ⚡ js/                     # 12 ES6 modules (no bundler)
+│   ├── main.js                # Entry + delegated click dispatcher
+│   ├── toast.js               # ARIA-live notifications
+│   ├── nav.js                 # Header, mobile menu, scroll progress
+│   ├── modals.js              # Member + video modals (focus trap)
+│   ├── videos.js              # Video tabs
+│   ├── cart.js                # Merch cart (localStorage)
+│   ├── forms.js               # Join BLINK form (a11y validated)
+│   ├── countdown.js           # Comeback timer (dynamic)
+│   ├── map.js                 # Leaflet world tour map
+│   ├── effects.js             # Reveal, parallax, particles, tilt, confetti
+│   ├── player.js              # Music player + visualizer + mini-player
+│   └── quiz.js                # BLINK personality test + VIP pass canvas
+│
+├── 🖼️ img/                    # Optimized images
+│   ├── *.avif  *.webp  *.png   # 5 members × 2 sizes × 3 formats = 30 files
+│   └── pwa/                   # App icons (192/512/maskable/apple)
+│
+├── 🎬 video/                  # Compressed videos
+│   ├── *.mp4  *.webm          # H.264 + VP9 dual-stream
+│   └── *-poster.webp          # Poster frames
+│
+├── 🛠️ scripts/                # Build & audit scripts
+│   ├── optimize-images.mjs    # sharp: PNG → AVIF+WebP+PNG
+│   ├── optimize-videos.mjs    # ffmpeg: trim + H.264 + VP9
+│   ├── generate-pwa-icons.mjs # 192/512/maskable/apple
+│   ├── generate-screenshot.mjs
+│   ├── refactor-html.mjs      # One-shot HTML refactor (data-action)
+│   ├── validate-seo.mjs       # JSON-LD, manifest, OG, Twitter
+│   ├── audit-a11y.mjs         # Landmarks, aria, headings
+│   └── audit.mjs              # Full project metrics
+│
+├── 🗃️ assets/originals/       # Source files (gitignored)
+└── 📝 README.md
 ```
 
 ---
@@ -113,6 +217,30 @@ Black-Pink-Oficial/
 | Firefox | 88+     |
 | Safari  | 14+     |
 | Edge    | 90+     |
+
+ES modules + AVIF + service workers required. No IE support.
+
+---
+
+## 🚢 Deployment
+
+### GitHub Pages
+1. Push to `main` branch
+2. Settings → Pages → Source: `main` / `/` (root)
+3. URL: `https://<user>.github.io/Black-Pink-Oficial/`
+4. Update canonical URL in `index.html` and `sitemap.xml` if different
+
+### Vercel / Netlify
+- Build command: `npm run build`
+- Output: `./` (static)
+- Add headers for cache (`Cache-Control: max-age=31536000, immutable` for `/img/` and `/js/`)
+
+### Important after deploying
+- Update `<link rel="canonical">` in `index.html` (search for `julio-73`)
+- Update `og:url`, `og:image`, `twitter:image` to absolute URL
+- Update `<loc>` in `sitemap.xml`
+- Update `Sitemap:` line in `robots.txt`
+- Re-run `npm run validate:seo` to verify
 
 ---
 

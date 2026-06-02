@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://julio-73.github.io/Black-Pink-Oficial/sitemap.xml

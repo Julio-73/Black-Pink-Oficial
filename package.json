@@ -1,0 +1,30 @@
+{
+  "name": "blackpink-official-fan",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BLACKPINK premium fan page — PWA · A11y · SEO optimized",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "serve": "npx --yes serve . -l 3000",
+    "dev": "node scripts/dev-server.mjs",
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "optimize:videos": "node scripts/optimize-videos.mjs",
+    "optimize:icons": "node scripts/generate-pwa-icons.mjs",
+    "optimize": "npm run optimize:icons && npm run optimize:images && npm run optimize:videos",
+    "refactor:html": "node scripts/refactor-html.mjs",
+    "validate:seo": "node scripts/validate-seo.mjs",
+    "validate:a11y": "node scripts/audit-a11y.mjs",
+    "audit": "node scripts/audit.mjs",
+    "validate": "npm run validate:seo && npm run validate:a11y",
+    "build": "npm run optimize && npm run validate"
+  },
+  "devDependencies": {
+    "ffmpeg-static": "^5.2.0",
+    "jsdom": "^29.1.1",
+    "puppeteer-core": "^25.1.0",
+    "sharp": "^0.33.5"
+  }
+}

@@ -1,0 +1,51 @@
+/*
+  Security headers for Netlify
+  https://docs.netlify.com/routing/headers/
+*/
+
+/
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(self), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-XSS-Protection: 0
+
+  Content-Security-Policy: default-src 'self';
+    script-src 'self' https://unpkg.com https://www.youtube.com https://*.ytimg.com;
+    style-src 'self' 'unsafe-inline' https://unpkg.com https://fonts.googleapis.com;
+    font-src 'self' https://fonts.gstatic.com data:;
+    img-src 'self' data: blob: https: http:;
+    media-src 'self' https://www.soundhelix.com https://www.youtube.com;
+    connect-src 'self' https://www.youtube.com https://i.ytimg.com;
+    frame-src https://www.youtube.com https://www.youtube-nocookie.com;
+    worker-src 'self';
+    manifest-src 'self';
+    base-uri 'self';
+    form-action 'self';
+    frame-ancestors 'self';
+    object-src 'none'
+
+/img/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/video/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/page.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/manifest.json
+  Cache-Control: public, max-age=86400
+
+/sw.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+/robots.txt
+  Cache-Control: public, max-age=86400
+
+/sitemap.xml
+  Cache-Control: public, max-age=86400

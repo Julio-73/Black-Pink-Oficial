@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>404 · BLACKPINK Fan Hub</title>
+    <meta name="theme-color" content="#ff2e93">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="page.css">
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', system-ui, sans-serif;
+            background: radial-gradient(ellipse at center, #1b0b14 0%, #0a0a0a 70%);
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+        .error-card {
+            max-width: 480px;
+            padding: 2.5rem 2rem;
+            background: rgba(255, 46, 147, 0.08);
+            border: 1px solid rgba(255, 46, 147, 0.3);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+        .error-code {
+            font-size: clamp(5rem, 18vw, 8rem);
+            font-weight: 800;
+            margin: 0;
+            background: linear-gradient(135deg, #ff2e93 0%, #ff6bb5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+        .error-msg {
+            font-size: 1.25rem;
+            margin: 1rem 0 0.5rem;
+        }
+        .error-hint {
+            color: rgba(255, 255, 255, 0.65);
+            margin: 0 0 1.5rem;
+        }
+        .error-link {
+            display: inline-block;
+            background: #ff2e93;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .error-link:hover,
+        .error-link:focus-visible {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 46, 147, 0.4);
+        }
+        .pulse {
+            display: inline-block;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .pulse { animation: none; }
+            .error-link:hover { transform: none; }
+        }
+    </style>
+</head>
+<body>
+    <main class="error-card" id="main" tabindex="-1">
+        <p class="error-code" aria-label="Error 404">404</p>
+        <h1 class="error-msg">¡Oops! Esta página no existe</h1>
+        <p class="error-hint">Parece que esta ruta se perdió entre el Pink Venom y el Shut Down <span class="pulse">💔</span></p>
+        <a class="error-link" href="./">Volver al inicio</a>
+    </main>
+</body>
+</html>

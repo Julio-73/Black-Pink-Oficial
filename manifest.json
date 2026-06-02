@@ -1,0 +1,65 @@
+{
+  "name": "BLACKPINK Fan Hub — Official Fan Page",
+  "short_name": "BLACKPINK",
+  "description": "Página oficial para BLINKS. Descubre noticias, música, tour, video clips, fotos y un test para saber cuál miembro del grupo eres.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0a0a0a",
+  "theme_color": "#ff2e93",
+  "lang": "es",
+  "dir": "ltr",
+  "categories": ["music", "entertainment", "lifestyle"],
+  "icons": [
+    {
+      "src": "img/pwa/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "img/pwa/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "img/pwa/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "img/pwa/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "img/pwa/screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "BLACKPINK Fan Hub — Inicio"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Test BLINK",
+      "short_name": "Test",
+      "description": "Descubre tu miembro interior",
+      "url": "./#quiz",
+      "icons": [{ "src": "img/pwa/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Tour",
+      "short_name": "Tour",
+      "description": "Próximos conciertos",
+      "url": "./#tour",
+      "icons": [{ "src": "img/pwa/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
