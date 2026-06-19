@@ -101,6 +101,8 @@ let _visualizerRaf = null;
 let _scrollMiniHandler = null;
 let _progressInterval = null;
 let _isPlaying = false;
+let _pendingSongIndex = -1;
+let _pendingAutoPlay = false;
 
 function renderLyrics(song) {
     if (!lyricsBoxEl) return;
@@ -119,12 +121,16 @@ function renderLyrics(song) {
     lyricsBoxEl.scrollTop = 0;
 }
 
-function loadSong(index) {
+function loadSong(index, autoPlay) {
     currentSongIndex = index;
     const song = PLAYLIST[index];
     if (ytReady && ytPlayer) {
         ytPlayer.loadVideoById(song.videoId);
         ytPlayer.seekTo(0);
+        if (autoPlay) ytPlayer.playVideo();
+    } else {
+        _pendingSongIndex = index;
+        _pendingAutoPlay = !!autoPlay;
     }
     if (trackTitleEl) trackTitleEl.textContent = song.title;
     if (vinylCoverEl) vinylCoverEl.src = song.cover;
@@ -163,19 +169,13 @@ function togglePlayPause() {
 
 function next() {
     const idx = (currentSongIndex + 1) % PLAYLIST.length;
-    loadSong(idx);
-    if (_isPlaying && ytReady && ytPlayer) {
-        ytPlayer.playVideo();
-    }
+    loadSong(idx, _isPlaying);
 }
 
 function prev() {
     let i = currentSongIndex - 1;
     if (i < 0) i = PLAYLIST.length - 1;
-    loadSong(i);
-    if (_isPlaying && ytReady && ytPlayer) {
-        ytPlayer.playVideo();
-    }
+    loadSong(i, _isPlaying);
 }
 
 function formatTime(secs) {
@@ -314,7 +314,13 @@ function initYouTube() {
             onReady: () => {
                 ytReady = true;
                 ytPlayer.setVolume(preMuteVolume);
-                loadSong(0);
+                if (_pendingSongIndex !== -1) {
+                    loadSong(_pendingSongIndex, _pendingAutoPlay);
+                    _pendingSongIndex = -1;
+                    _pendingAutoPlay = false;
+                } else {
+                    loadSong(0);
+                }
                 startProgressPolling();
             },
             onStateChange: (e) => {
@@ -413,11 +419,8 @@ export function init() {
             const title = this.querySelector('.song-title')?.textContent.trim().toLowerCase();
             const idx = PLAYLIST.findIndex(s => s.title.toLowerCase() === title);
             if (idx !== -1) {
-                loadSong(idx);
-                if (ytReady && ytPlayer) {
-                    ytPlayer.playVideo();
-                    setPlayUI(true);
-                }
+                loadSong(idx, true);
+                setPlayUI(true);
                 mainPlayerPanel?.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         });
@@ -434,7 +437,7 @@ export function init() {
     window.addEventListener('scroll', _scrollMiniHandler, { passive: true });
 
     // Init YouTube player if API ready, otherwise wait
-    if (window.YT && YT.loaded) {
+    if (typeof YT !== 'undefined' && typeof YT.Player !== 'undefined') {
         initYouTube();
     } else {
         window.onYouTubeIframeAPIReady = initYouTube;
