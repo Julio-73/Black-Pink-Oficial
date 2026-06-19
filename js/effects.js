@@ -205,11 +205,15 @@ function setupTilt() {
             this.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) scale3d(1.03, 1.03, 1.03)`;
             this.style.setProperty('--glare-x', `${(x / rect.width) * 100}%`);
             this.style.setProperty('--glare-y', `${(y / rect.height) * 100}%`);
+            this.style.setProperty('--tilt-x', rx);
+            this.style.setProperty('--tilt-y', ry);
         };
         const leaveHandler = function() {
             this.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
             this.style.setProperty('--glare-x', '50%');
             this.style.setProperty('--glare-y', '50%');
+            this.style.setProperty('--tilt-x', 0);
+            this.style.setProperty('--tilt-y', 0);
         };
         card.addEventListener('mousemove', moveHandler);
         card.addEventListener('mouseleave', leaveHandler);

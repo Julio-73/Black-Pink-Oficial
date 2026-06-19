@@ -18,7 +18,9 @@ const PRECACHE = [
   './js/map.js',
   './js/effects.js',
   './js/player.js',
-  './js/quiz.js'
+  './js/quiz.js',
+  './js/lightstick.js',
+  './css/lightstick.css'
 ];
 
 self.addEventListener('install', (e) => {

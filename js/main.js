@@ -11,6 +11,7 @@ import * as effects  from './effects.js';
 import * as player   from './player.js';
 import * as quiz     from './quiz.js';
 import * as booking  from './booking.js';
+import * as lightstick from './lightstick.js';
 
 // Consolidate data-action handlers from all modules.
 const actions = Object.assign(
@@ -20,7 +21,9 @@ const actions = Object.assign(
     videos.actions || {},
     cart.actions || {},
     forms.actions || {},
-    booking.actions || {}
+    booking.actions || {},
+    player.actions || {},
+    lightstick.actions || {}
 );
 
 let _dispatcherHandler = null;
@@ -37,6 +40,7 @@ function bootstrap() {
     player.init();
     quiz.init();
     booking.init();
+    lightstick.init();
 
     // Single delegated click listener for the entire page.
     _dispatcherHandler = (e) => {
@@ -76,4 +80,5 @@ export function destroy() {
     player.destroy?.();
     quiz.destroy?.();
     booking.destroy?.();
+    lightstick.destroy?.();
 }

@@ -77,6 +77,7 @@
     <link rel="stylesheet" href="css/modals.css">
     <link rel="stylesheet" href="css/toast.css">
     <link rel="stylesheet" href="css/booking.css">
+    <link rel="stylesheet" href="css/lightstick.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"
           integrity="sha384-42kyIPf7HDYLkGffmxDhSx/3Z/53wGBs3nD6wEFxsbeDc7rMO6mkYbkAcpRsnMU2"
@@ -224,6 +225,7 @@
     <div class="members-grid">
         <!-- Jisoo -->
         <div class="member-card">
+            <span class="member-bg-name" aria-hidden="true">JISOO</span>
             <img src="img/jisoo.webp" alt="Jisoo">
             <h3>Jisoo</h3>
             <p>Visual & Lead Vocalist</p>
@@ -241,6 +243,7 @@
         </div>
         <!-- Jennie -->
         <div class="member-card">
+            <span class="member-bg-name" aria-hidden="true">JENNIE</span>
             <img src="img/jenny.webp" alt="Jennie">
             <h3>Jennie</h3>
             <p>Main Rapper & Vocalist</p>
@@ -258,6 +261,7 @@
         </div>
         <!-- Rosé -->
         <div class="member-card">
+            <span class="member-bg-name" aria-hidden="true">ROSÉ</span>
             <img src="img/rose.webp" alt="Rosé">
             <h3>Rosé</h3>
             <p>Main Vocalist</p>
@@ -275,6 +279,7 @@
         </div>
         <!-- Lisa -->
         <div class="member-card">
+            <span class="member-bg-name" aria-hidden="true">LISA</span>
             <img src="img/lisa.webp" alt="Lisa">
             <h3>Lisa</h3>
             <p>Main Rapper & Dancer</p>
@@ -366,22 +371,58 @@
         <div class="discography-section">
             <h3 class="subsection-title">Discografía</h3>
             <div class="discography-grid album-grid-fixed">
-                <a href="https://open.spotify.com/album/2gNPnKP1PDkB5SZz3IMKuX" target="_blank" rel="noopener" class="album-card-link"><div class="album-card">
-                    <img src="https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e021895052324f123becdd0d53d" alt="THE ALBUM" loading="lazy" width="200" height="200">
-                    <div class="album-info"><h4>THE ALBUM</h4><span>2020</span></div>
-                </div></a>
-                <a href="https://open.spotify.com/album/0S4pP8MBY9p7ngFWIZQAJv" target="_blank" rel="noopener" class="album-card-link"><div class="album-card">
-                    <img src="https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02580ac3ad7dfc81e509171120" alt="BORN PINK" loading="lazy" width="200" height="200">
-                    <div class="album-info"><h4>BORN PINK</h4><span>2022</span></div>
-                </div></a>
-                <a href="https://open.spotify.com/album/3PNxZ3BELbUXJ1XLktXiHz" target="_blank" rel="noopener" class="album-card-link"><div class="album-card">
-                    <img src="https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02e20e5c366b497518353497b0" alt="SQUARE UP" loading="lazy" width="200" height="200">
-                    <div class="album-info"><h4>SQUARE UP</h4><span>2018</span></div>
-                </div></a>
-                <a href="https://open.spotify.com/album/3ZzeWH0Rfthd2oOrKjC9Jn" target="_blank" rel="noopener" class="album-card-link"><div class="album-card">
-                    <img src="https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e021f2c9885eb0f4facb9da9cd3" alt="KILL THIS LOVE" loading="lazy" width="200" height="200">
-                    <div class="album-info"><h4>KILL THIS LOVE</h4><span>2019</span></div>
-                </div></a>
+                <div class="album-card-link" data-action="select-album" data-album="the-album" data-song-index="2">
+                    <div class="album-card">
+                        <div class="album-cover-wrapper">
+                            <img class="album-cover-img" src="https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e021895052324f123becdd0d53d" alt="THE ALBUM" loading="lazy" width="200" height="200">
+                            <div class="album-cd" aria-hidden="true" style="background-image: url('https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e021895052324f123becdd0d53d');"></div>
+                        </div>
+                        <div class="album-info">
+                            <h4>THE ALBUM</h4>
+                            <span>2020</span>
+                            <a href="https://open.spotify.com/album/2gNPnKP1PDkB5SZz3IMKuX" target="_blank" rel="noopener" class="spotify-badge" aria-label="Abrir en Spotify"><i class="bx bxl-spotify"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="album-card-link" data-action="select-album" data-album="born-pink" data-song-index="4">
+                    <div class="album-card">
+                        <div class="album-cover-wrapper">
+                            <img class="album-cover-img" src="https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02580ac3ad7dfc81e509171120" alt="BORN PINK" loading="lazy" width="200" height="200">
+                            <div class="album-cd" aria-hidden="true" style="background-image: url('https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02580ac3ad7dfc81e509171120');"></div>
+                        </div>
+                        <div class="album-info">
+                            <h4>BORN PINK</h4>
+                            <span>2022</span>
+                            <a href="https://open.spotify.com/album/0S4pP8MBY9p7ngFWIZQAJv" target="_blank" rel="noopener" class="spotify-badge" aria-label="Abrir en Spotify"><i class="bx bxl-spotify"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="album-card-link" data-action="select-album" data-album="square-up" data-song-index="0">
+                    <div class="album-card">
+                        <div class="album-cover-wrapper">
+                            <img class="album-cover-img" src="https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02e20e5c366b497518353497b0" alt="SQUARE UP" loading="lazy" width="200" height="200">
+                            <div class="album-cd" aria-hidden="true" style="background-image: url('https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02e20e5c366b497518353497b0');"></div>
+                        </div>
+                        <div class="album-info">
+                            <h4>SQUARE UP</h4>
+                            <span>2018</span>
+                            <a href="https://open.spotify.com/album/3PNxZ3BELbUXJ1XLktXiHz" target="_blank" rel="noopener" class="spotify-badge" aria-label="Abrir en Spotify"><i class="bx bxl-spotify"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="album-card-link" data-action="select-album" data-album="kill-this-love" data-song-index="1">
+                    <div class="album-card">
+                        <div class="album-cover-wrapper">
+                            <img class="album-cover-img" src="https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e021f2c9885eb0f4facb9da9cd3" alt="KILL THIS LOVE" loading="lazy" width="200" height="200">
+                            <div class="album-cd" aria-hidden="true" style="background-image: url('https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e021f2c9885eb0f4facb9da9cd3');"></div>
+                        </div>
+                        <div class="album-info">
+                            <h4>KILL THIS LOVE</h4>
+                            <span>2019</span>
+                            <a href="https://open.spotify.com/album/3ZzeWH0Rfthd2oOrKjC9Jn" target="_blank" rel="noopener" class="spotify-badge" aria-label="Abrir en Spotify"><i class="bx bxl-spotify"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -883,6 +924,11 @@
       </svg>
     </div>
 
+    <!-- Stage View Preview Container -->
+    <div id="booking-stage-preview" class="booking-stage-preview" aria-live="polite">
+      <div class="stage-preview-placeholder">Selecciona una zona en el mapa para ver tu vista al escenario</div>
+    </div>
+
     <!-- Booking details / Input form -->
     <div class="booking-selection-details">
       <div class="booking-selection-row">
@@ -917,6 +963,64 @@
         integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH"
         crossorigin="anonymous"></script>
 <script type="module" src="js/main.js"></script>
+
+<!-- Floating Lightstick Widget -->
+<div id="floating-lightstick-widget" class="lightstick-widget" aria-label="BLACKPINK Lightstick Controller">
+  <button id="lightstick-toggle-btn" class="lightstick-toggle-btn" aria-label="Abrir controlador de Lightstick">
+    <div class="lightstick-btn-icon">
+      <svg viewBox="0 0 100 100" class="mini-stick-svg">
+        <path d="M 50,20 C 40,20 30,30 35,45 C 38,55 50,75 50,75 C 50,75 62,55 65,45 C 70,30 60,20 50,20 Z" fill="#ff2e93"/>
+        <rect x="47" y="65" width="6" height="25" fill="#fff" rx="2"/>
+      </svg>
+    </div>
+  </button>
+  
+  <div id="lightstick-panel" class="lightstick-panel" aria-hidden="true">
+    <div class="lightstick-header">
+      <h4>BLINK Lightstick</h4>
+      <button id="lightstick-close-btn" class="lightstick-close-btn" aria-label="Cerrar controlador">&times;</button>
+    </div>
+    <div class="lightstick-body">
+      <div class="lightstick-display">
+        <div id="lightstick-visual" class="lightstick-visual off">
+          <div class="lightstick-glow-effect"></div>
+          <div class="lightstick-head">
+            <div class="heart left" data-chirp="left"></div>
+            <div class="heart right" data-chirp="right"></div>
+            <div class="center-gem"></div>
+          </div>
+          <div class="lightstick-handle">
+            <div class="wrist-strap"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="lightstick-controls">
+        <div class="control-row">
+          <label>Modo de Luz:</label>
+          <div class="mode-buttons">
+            <button class="mode-btn active" data-action="set-lightstick-mode" data-mode="off">Off</button>
+            <button class="mode-btn" data-action="set-lightstick-mode" data-mode="on">Fijo</button>
+            <button class="mode-btn" data-action="set-lightstick-mode" data-mode="pulse">Pulso</button>
+            <button class="mode-btn" data-action="set-lightstick-mode" data-mode="concert">Concert</button>
+          </div>
+        </div>
+        <div class="control-row">
+          <label>Color LED:</label>
+          <div class="color-picker">
+            <button class="color-btn active" data-action="set-lightstick-color" data-color="#ff2e93" style="background: #ff2e93;" aria-label="Rosa"></button>
+            <button class="color-btn" data-action="set-lightstick-color" data-color="#00f3ff" style="background: #00f3ff;" aria-label="Celeste"></button>
+            <button class="color-btn" data-action="set-lightstick-color" data-color="#ffd700" style="background: #ffd700;" aria-label="Dorado"></button>
+            <button class="color-btn" data-action="set-lightstick-color" data-color="#ffffff" style="background: #ffffff;" aria-label="Blanco"></button>
+          </div>
+        </div>
+        <div class="lightstick-tip">
+          <p>💡 Tip: ¡Haz clic en los corazones para escucharlos chirriar!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>

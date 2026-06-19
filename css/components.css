@@ -581,3 +581,191 @@
 .member-card:hover::after, .product-card:hover::after {
     opacity: 1;
 }
+
+/* Custom Era Themes (Theme Matching) */
+:root, [data-theme="born-pink"] {
+    --pink-primary: #ff2e93;
+    --pink-glow: rgba(255, 46, 147, 0.3);
+    --bg-gradient: radial-gradient(ellipse at center, #1c0a13 0%, #050505 70%);
+}
+
+[data-theme="the-album"] {
+    --pink-primary: #d4af37; /* Gold */
+    --pink-glow: rgba(212, 175, 55, 0.3);
+    --bg-gradient: radial-gradient(ellipse at center, #26210f 0%, #050505 70%);
+}
+
+[data-theme="square-up"] {
+    --pink-primary: #ff2a85; /* Bright Hot Pink */
+    --pink-glow: rgba(255, 42, 133, 0.4);
+    --bg-gradient: radial-gradient(ellipse at center, #210311 0%, #030303 70%);
+}
+
+[data-theme="kill-this-love"] {
+    --pink-primary: #a61c3c; /* Crimson Red */
+    --pink-glow: rgba(166, 28, 60, 0.3);
+    --bg-gradient: radial-gradient(ellipse at center, #200408 0%, #050505 70%);
+}
+
+/* Apply background theme transitions */
+body {
+    background: var(--bg-gradient) !important;
+    transition: background 0.8s ease-in-out;
+}
+
+/* Multilayer 3D Members card parallax */
+.member-card {
+    --tilt-x: 0;
+    --tilt-y: 0;
+}
+
+.member-bg-name {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%) translate3d(calc(var(--tilt-y) * 0.8px), calc(var(--tilt-x) * -0.8px), -20px);
+    font-size: 6rem;
+    font-weight: 900;
+    color: rgba(255, 46, 147, 0.05);
+    z-index: 0;
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+    letter-spacing: -2px;
+    font-family: 'Outfit', sans-serif;
+    transition: transform 0.1s ease-out;
+}
+
+.member-card img {
+    position: relative;
+    z-index: 2;
+    transform: translate3d(calc(var(--tilt-y) * -0.4px), calc(var(--tilt-x) * 0.4px), 30px);
+    transition: transform 0.1s ease-out;
+}
+
+.member-card h3 {
+    position: relative;
+    z-index: 3;
+    transform: translate3d(calc(var(--tilt-y) * -0.2px), calc(var(--tilt-x) * 0.2px), 40px);
+    transition: transform 0.1s ease-out;
+}
+
+.member-card p {
+    position: relative;
+    z-index: 3;
+    transform: translate3d(calc(var(--tilt-y) * -0.1px), calc(var(--tilt-x) * 0.1px), 35px);
+    transition: transform 0.1s ease-out;
+}
+
+/* CD 3D Slide-out styles */
+.album-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.album-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: visible !important; /* allow CD to slide out */
+    transition: transform 0.3s ease;
+}
+
+.album-cover-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    z-index: 2;
+}
+
+.album-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.album-cd {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    pointer-events: none;
+}
+
+.album-cd::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24%;
+    height: 24%;
+    border-radius: 50%;
+    background: #0f0f0f;
+    border: 3px solid rgba(255, 255, 255, 0.15);
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.9);
+}
+
+.album-cd::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 50%, transparent 30%, rgba(255, 255, 255, 0.1) 40%, rgba(0, 243, 255, 0.1) 50%, rgba(255, 46, 147, 0.1) 60%, transparent 70%);
+    mix-blend-mode: overlay;
+    z-index: 1;
+}
+
+/* Hover CD slide out */
+.album-card-link:hover .album-cover-img {
+    transform: translateX(-24px) scale(0.95);
+}
+
+.album-card-link:hover .album-cd {
+    transform: translateX(48px) rotate(180deg);
+}
+
+.album-info {
+    position: relative;
+    padding: 0.75rem 0 0 0;
+    background: transparent;
+    z-index: 3;
+}
+
+.album-info h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.album-info span {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.spotify-badge {
+    position: absolute;
+    right: 0;
+    bottom: 2px;
+    color: #1ed760;
+    font-size: 18px;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.spotify-badge:hover {
+    transform: scale(1.2);
+    color: #1fdf64;
+}

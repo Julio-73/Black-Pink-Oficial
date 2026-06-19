@@ -121,9 +121,27 @@ function renderLyrics(song) {
     lyricsBoxEl.scrollTop = 0;
 }
 
+const SONG_THEMES = {
+    'ddu-du ddu-du': 'square-up',
+    'kill this love': 'kill-this-love',
+    'how you like that': 'the-album',
+    'lovesick girls': 'the-album',
+    'shut down': 'born-pink'
+};
+
+export function changeTheme(themeName) {
+    document.documentElement.setAttribute('data-theme', themeName);
+}
+
+function applySongTheme(title) {
+    const theme = SONG_THEMES[title.toLowerCase()] || 'born-pink';
+    changeTheme(theme);
+}
+
 function loadSong(index, autoPlay) {
     currentSongIndex = index;
     const song = PLAYLIST[index];
+    applySongTheme(song.title);
     if (ytReady && ytPlayer) {
         ytPlayer.loadVideoById(song.videoId);
         ytPlayer.seekTo(0);
@@ -263,10 +281,16 @@ function setupVisualizer() {
                 else amp = (high * 0.85 + Math.random() * 0.15) * 90;
                 dataArray[i] = amp * (1 - (i / bufferLength) * 0.45);
             }
+            let bassSum = 0;
+            for (let i = 0; i < 8; i++) {
+                bassSum += dataArray[i];
+            }
+            window.bpBassIntensity = bassSum / 8 / 190;
         } else {
             for (let i = 0; i < bufferLength; i++) {
                 dataArray[i] = Math.max(0, dataArray[i] - 5);
             }
+            window.bpBassIntensity = 0;
         }
         vCtx.clearRect(0, 0, width, height);
         vCtx.fillStyle = 'rgba(15, 15, 15, 0.1)';
@@ -460,3 +484,16 @@ export function destroy() {
     ytReady = false;
     visualizerStarted = false;
 }
+
+export const actions = {
+    'select-album': (el) => {
+        const album = el.dataset.album;
+        const songIndex = Number(el.dataset.songIndex);
+        changeTheme(album);
+        if (!isNaN(songIndex)) {
+            loadSong(songIndex, true);
+            setPlayUI(true);
+            mainPlayerPanel?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }
+};

@@ -9,6 +9,77 @@ let selectedZone = '';
 let selectedPrice = 0;
 let assignedSeat = '';
 
+function updateStagePreview(zoneName) {
+    const previewEl = document.getElementById('booking-stage-preview');
+    if (!previewEl) return;
+    
+    let viewDescription = '';
+    let stageViewHTML = '';
+    let glowColor = '';
+    
+    switch(zoneName) {
+        case 'VIP Standing':
+            glowColor = '#ff6b9d';
+            viewDescription = '¡VISTA EXTREMA DESDE FRENTE DE ESCENARIO! Estarás a pocos metros de la mítica pasarela de BLACKPINK.';
+            stageViewHTML = `
+                <div class="stage-view-visual vip">
+                    <div class="stage-light" style="background: linear-gradient(to top, rgba(255, 107, 157, 0.4), transparent);"></div>
+                    <div class="stage-barrier">BARRA VIP</div>
+                    <div class="stage-screen">BORN PINK MAIN STAGE</div>
+                </div>
+            `;
+            break;
+        case 'Platinum A':
+        case 'Platinum B':
+            glowColor = '#00f3ff';
+            viewDescription = `Excelente vista panorámica lateral (${zoneName}). Excelente balance de audio y visibilidad directa al escenario secundario.`;
+            stageViewHTML = `
+                <div class="stage-view-visual platinum">
+                    <div class="stage-light" style="background: linear-gradient(to top, rgba(0, 243, 255, 0.3), transparent); transform: rotate(${zoneName.includes('A') ? '-25deg' : '25deg'});"></div>
+                    <div class="stage-screen-side">SIDE VIEW</div>
+                    <div class="stage-screen">MAIN STAGE</div>
+                </div>
+            `;
+            break;
+        case 'Gold Seats':
+            glowColor = '#d4af37';
+            viewDescription = 'Vista frontal elevada con ángulo completo hacia las pantallas gigantes. Ideal para capturar toda la coreografía.';
+            stageViewHTML = `
+                <div class="stage-view-visual gold">
+                    <div class="stage-light" style="background: linear-gradient(to top, rgba(212, 175, 55, 0.25), transparent);"></div>
+                    <div class="stage-center-box">CONSOLA DE SONIDO</div>
+                    <div class="stage-screen">MAIN STAGE</div>
+                </div>
+            `;
+            break;
+        case 'General Admission':
+            glowColor = '#ffffff';
+            viewDescription = 'Vista general del estadio entero. Disfruta de la atmósfera electrizante de la marea de lightsticks de BLINK.';
+            stageViewHTML = `
+                <div class="stage-view-visual general">
+                    <div class="stage-stadium-glow">BLINK OCEAN WAVE</div>
+                    <div class="stage-screen-far">MAIN STAGE</div>
+                </div>
+            `;
+            break;
+        default:
+            viewDescription = 'Selecciona una zona en el mapa para ver tu vista al escenario.';
+            stageViewHTML = `<div class="stage-preview-placeholder">Selecciona una zona para ver la vista del escenario</div>`;
+    }
+    
+    previewEl.innerHTML = `
+        <div class="stage-view-title" style="color: ${glowColor || '#fff'}">VISTA ESTIMADA: ${zoneName.toUpperCase()}</div>
+        ${stageViewHTML}
+        <div class="stage-view-desc">${viewDescription}</div>
+    `;
+    previewEl.style.borderColor = glowColor || 'rgba(255, 255, 255, 0.1)';
+    if (glowColor) {
+        previewEl.style.boxShadow = `0 0 15px ${glowColor}25`;
+    } else {
+        previewEl.style.boxShadow = 'none';
+    }
+}
+
 function openBooking(el) {
     selectedCity = el.dataset.city || 'Seoul, South Korea';
     selectedDate = el.dataset.date || 'Oct 15-16, 2022';
@@ -32,6 +103,8 @@ function openBooking(el) {
     document.querySelectorAll('#arena-svg .arena-section').forEach(sec => {
         sec.classList.remove('selected');
     });
+
+    updateStagePreview('');
 
     if (detailsTitle) detailsTitle.textContent = selectedCity.toUpperCase() + ' — ' + selectedDate.toUpperCase();
     if (bookingModal) {
@@ -70,6 +143,8 @@ function selectZone(el) {
     if (zoneNameEl) zoneNameEl.textContent = selectedZone;
     if (zonePriceEl) zonePriceEl.textContent = `$${selectedPrice}`;
     if (seatEl) seatEl.textContent = assignedSeat;
+
+    updateStagePreview(selectedZone);
 
     checkValidation();
 }
