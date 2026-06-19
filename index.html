@@ -24,8 +24,6 @@
 
     <link rel="canonical" href="https://julio-73.github.io/Black-Pink-Oficial/">
     <link rel="alternate" hreflang="es" href="https://julio-73.github.io/Black-Pink-Oficial/">
-    <link rel="alternate" hreflang="en" href="https://julio-73.github.io/Black-Pink-Oficial/">
-    <link rel="alternate" hreflang="ko" href="https://julio-73.github.io/Black-Pink-Oficial/">
     <link rel="alternate" hreflang="x-default" href="https://julio-73.github.io/Black-Pink-Oficial/">
 
     <meta property="og:site_name" content="BLACKPINK Fan Hub">
@@ -65,10 +63,21 @@
     <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
     <link rel="preconnect" href="https://img.youtube.com" crossorigin>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link rel="dns-prefetch" href="https://www.soundhelix.com">
-    <link rel="dns-prefetch" href="https://www.google.com">
+    <link rel="preload" href="video/loveluna-poster.webp" as="image">
 
-    <link rel="stylesheet" href="page.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/a11y.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/sections.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/player.css">
+    <link rel="stylesheet" href="css/quiz.css">
+    <link rel="stylesheet" href="css/modals.css">
+    <link rel="stylesheet" href="css/toast.css">
+    <link rel="stylesheet" href="css/booking.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"
           integrity="sha384-42kyIPf7HDYLkGffmxDhSx/3Z/53wGBs3nD6wEFxsbeDc7rMO6mkYbkAcpRsnMU2"
           crossorigin="anonymous">
@@ -190,19 +199,6 @@
         <h1 class="hero-title">BLACKPINK</h1>
         <p class="hero-subtitle">Bienvenida a la familia BLINK</p>
 
-        <!-- Hero Carousel -->
-        <div class="hero-carousel-mobile">
-            <div class="carousel-slide active">
-                <img src="https://img.youtube.com/vi/gQlMMD8auMs/hqdefault.jpg" alt="BLACKPINK - Pink Venom" loading="lazy" width="800" height="450">
-                <div class="slide-text">
-                    <h3>EN VIVO</h3>
-                    <h2>Born Pink World Tour</h2>
-                    <p>¡Vive la magia en directo!</p>
-                    <button class="btn btn-primary" data-action="scroll-to" data-target="#tour-map">VER TOUR</button>
-                </div>
-            </div>
-        </div>
-
         <div class="hero-buttons">
             <a href="#music" class="btn btn-primary">Escuchar ahora</a>
             <a href="#video" class="btn btn-secondary">Ver videos</a>
@@ -219,21 +215,6 @@
             </div>
         </div>
 
-        <!-- Quote -->
-        <div class="quote-mobile">
-            <blockquote>"Gracias por esperar, ¡hemos vuelto! 🌸 – Rosé"</blockquote>
-        </div>
-
-        <!-- Instagram Feed -->
-        <div class="instagram-feed-mobile">
-            <h4><i class="bx bxl-instagram"></i> @blackpinkofficial</h4>
-            <div class="insta-grid-mobile">
-                <a href="https://www.youtube.com/watch?v=gQlMMD8auMs" target="_blank" rel="noopener"><img src="https://img.youtube.com/vi/gQlMMD8auMs/hqdefault.jpg" alt="Pink Venom" loading="lazy"></a>
-                <a href="https://www.youtube.com/watch?v=POe9SOEKotk" target="_blank" rel="noopener"><img src="https://img.youtube.com/vi/POe9SOEKotk/hqdefault.jpg" alt="Shut Down" loading="lazy"></a>
-                <a href="https://www.youtube.com/watch?v=l482T0yNkeo" target="_blank" rel="noopener"><img src="https://img.youtube.com/vi/l482T0yNkeo/hqdefault.jpg" alt="Kill This Love" loading="lazy"></a>
-                <a href="https://www.youtube.com/watch?v=dyRsYk0LyA8" target="_blank" rel="noopener"><img src="https://img.youtube.com/vi/dyRsYk0LyA8/hqdefault.jpg" alt="LISA - MONEY" loading="lazy"></a>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -251,7 +232,7 @@
                 <p><strong>Born:</strong> Jan 3, 1995</p>
                 <p><strong>Height:</strong> 162cm</p>
                 <p><strong>Hobby:</strong> Playing guitar</p>
-                <p><strong>Solo:</strong> <a href="https://youtu.be/IKh3hHaJJPk" target="_blank" rel="noopener noreferrer" style="color:#ff69b4;">"Flower"</a></p>
+                <p><strong>Solo:</strong> <a href="https://youtu.be/IKh3hHaJJPk" target="_blank" rel="noopener noreferrer" class="solo-link">"Flower"</a></p>
                 <a href="https://instagram.com/sooyaaa__" target="_blank" rel="noopener noreferrer" class="member-insta">
                     <i class="bx bxl-instagram"></i> @sooyaaa__
                 </a>
@@ -268,7 +249,7 @@
                 <p><strong>Born:</strong> Jan 16, 1996</p>
                 <p><strong>Height:</strong> 163cm</p>
                 <p><strong>Hobby:</strong> Shopping, photography</p>
-                <p><strong>Solo:</strong> <a href="https://youtu.be/kPoptr_k2z8" target="_blank" rel="noopener noreferrer" style="color:#ff69b4;">"You & Me"</a></p>
+                <p><strong>Solo:</strong> <a href="https://youtu.be/kPoptr_k2z8" target="_blank" rel="noopener noreferrer" class="solo-link">"You & Me"</a></p>
                 <a href="https://instagram.com/jennierubyjane" target="_blank" rel="noopener noreferrer" class="member-insta">
                     <i class="bx bxl-instagram"></i> @jennierubyjane
                 </a>
@@ -285,7 +266,7 @@
                 <p><strong>Born:</strong> Feb 11, 1997</p>
                 <p><strong>Height:</strong> 167cm</p>
                 <p><strong>Hobby:</strong> Playing piano</p>
-                <p><strong>Solo:</strong> <a href="https://youtu.be/2_VLdL7alJU" target="_blank" rel="noopener noreferrer" style="color:#ff69b4;">"On The Ground"</a></p>
+                <p><strong>Solo:</strong> <a href="https://youtu.be/2_VLdL7alJU" target="_blank" rel="noopener noreferrer" class="solo-link">"On The Ground"</a></p>
                 <a href="https://instagram.com/roses_are_rosie" target="_blank" rel="noopener noreferrer" class="member-insta">
                     <i class="bx bxl-instagram"></i> @roses_are_rosie
                 </a>
@@ -302,7 +283,7 @@
                 <p><strong>Born:</strong> Mar 27, 1997</p>
                 <p><strong>Height:</strong> 166.5cm</p>
                 <p><strong>Hobby:</strong> Dancing, gaming</p>
-                <p><strong>Solo:</strong> <a href="https://youtu.be/emoZ_4iWthU" target="_blank" rel="noopener noreferrer" style="color:#ff69b4;">"Money"</a></p>
+                <p><strong>Solo:</strong> <a href="https://youtu.be/emoZ_4iWthU" target="_blank" rel="noopener noreferrer" class="solo-link">"Money"</a></p>
                 <a href="https://instagram.com/lalalalisa_m" target="_blank" rel="noopener noreferrer" class="member-insta">
                     <i class="bx bxl-instagram"></i> @lalalalisa_m
                 </a>
@@ -317,14 +298,14 @@
     <div class="modal-content-mobile">
         <span class="close-mobile" data-action="close-member-modal" data-member="jisoo" aria-label="Cerrar perfil de Jisoo">&times;</span>
         <h2 id="jisoo-modal-title">Jisoo</h2>
-        <img src="img/jisoo.webp" alt="Jisoo de BLACKPINK" style="width:100%; max-width:200px; border-radius:8px; margin:1rem auto; display:block;">
+        <img src="img/jisoo.webp" alt="Jisoo de BLACKPINK" class="modal-member-img">
         <p><strong>Full Name:</strong> Kim Ji-soo</p>
         <p><strong>Birth:</strong> January 3, 1995</p>
         <p><strong>Position:</strong> Visual & Lead Vocalist</p>
         <p><em>Fun Fact: Loves playing guitar! She's also an amazing painter.</em></p>
-        <iframe width="100%" height="200" src="https://www.youtube.com/embed/9pdj4iJD08s?rel=0&modestbranding=1" title="Jisoo - Flower Official MV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="margin-top:1rem; border-radius:8px;"></iframe>
-        <p style="text-align:center; margin-top:0.5rem; font-size:0.75rem; color:#888;">
-            <a href="https://www.youtube.com/watch?v=9pdj4iJD08s" target="_blank" rel="noopener noreferrer" style="color:#ff69b4;">Watch on YouTube →</a>
+        <iframe width="100%" height="200" src="https://www.youtube.com/embed/9pdj4iJD08s?rel=0&modestbranding=1" title="Jisoo - Flower Official MV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="modal-iframe"></iframe>
+        <p class="modal-watch-link">
+            <a href="https://www.youtube.com/watch?v=9pdj4iJD08s" target="_blank" rel="noopener noreferrer" class="modal-watch-link-text">Watch on YouTube →</a>
         </p>
     </div>
 </div>
@@ -333,14 +314,14 @@
     <div class="modal-content-mobile">
         <span class="close-mobile" data-action="close-member-modal" data-member="jennie" aria-label="Cerrar perfil de Jennie">&times;</span>
         <h2 id="jennie-modal-title">Jennie</h2>
-        <img src="img/jenny.webp" alt="Jennie de BLACKPINK" style="width:100%; max-width:200px; border-radius:8px; margin:1rem auto; display:block;">
+        <img src="img/jenny.webp" alt="Jennie de BLACKPINK" class="modal-member-img">
         <p><strong>Full Name:</strong> Jennie Kim</p>
         <p><strong>Birth:</strong> January 16, 1996</p>
         <p><strong>Position:</strong> Main Rapper & Vocalist</p>
         <p><em>Fun Fact: She lived in New Zealand and Japan before becoming a trainee. Speaks Korean, English, and Japanese fluently!</em></p>
-        <iframe width="100%" height="200" src="https://www.youtube.com/embed/gQlMMD8auMs?rel=0&modestbranding=1" title="Jennie - You & Me Official MV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="margin-top:1rem; border-radius:8px;"></iframe>
-        <p style="text-align:center; margin-top:0.5rem; font-size:0.75rem; color:#888;">
-            <a href="https://www.youtube.com/watch?v=gQlMMD8auMs" target="_blank" rel="noopener noreferrer" style="color:#ff69b4;">Watch on YouTube →</a>
+        <iframe width="100%" height="200" src="https://www.youtube.com/embed/gQlMMD8auMs?rel=0&modestbranding=1" title="Jennie - You & Me Official MV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="modal-iframe"></iframe>
+        <p class="modal-watch-link">
+            <a href="https://www.youtube.com/watch?v=gQlMMD8auMs" target="_blank" rel="noopener noreferrer" class="modal-watch-link-text">Watch on YouTube →</a>
         </p>
     </div>
 </div>
@@ -349,14 +330,14 @@
     <div class="modal-content-mobile">
         <span class="close-mobile" data-action="close-member-modal" data-member="rose" aria-label="Cerrar perfil de Rosé">&times;</span>
         <h2 id="rose-modal-title">Rosé</h2>
-        <img src="img/rose.webp" alt="Rosé de BLACKPINK" style="width:100%; max-width:200px; border-radius:8px; margin:1rem auto; display:block;">
+        <img src="img/rose.webp" alt="Rosé de BLACKPINK" class="modal-member-img">
         <p><strong>Full Name:</strong> Park Chae-young</p>
         <p><strong>Birth:</strong> February 11, 1997</p>
         <p><strong>Position:</strong> Main Vocalist</p>
         <p><em>Fun Fact: She was the last member to join YG Entertainment. She learned Korean in just 6 months!</em></p>
-        <iframe width="100%" height="200" src="https://www.youtube.com/embed/qN4ooNx77u0?rel=0&modestbranding=1" title="Rosé - On The Ground Official MV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="margin-top:1rem; border-radius:8px;"></iframe>
-        <p style="text-align:center; margin-top:0.5rem; font-size:0.75rem; color:#888;">
-            <a href="https://www.youtube.com/watch?v=qN4ooNx77u0" target="_blank" rel="noopener noreferrer" style="color:#ff69b4;">Watch on YouTube →</a>
+        <iframe width="100%" height="200" src="https://www.youtube.com/embed/qN4ooNx77u0?rel=0&modestbranding=1" title="Rosé - On The Ground Official MV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="modal-iframe"></iframe>
+        <p class="modal-watch-link">
+            <a href="https://www.youtube.com/watch?v=qN4ooNx77u0" target="_blank" rel="noopener noreferrer" class="modal-watch-link-text">Watch on YouTube →</a>
         </p>
     </div>
 </div>
@@ -365,14 +346,14 @@
     <div class="modal-content-mobile">
         <span class="close-mobile" data-action="close-member-modal" data-member="lisa" aria-label="Cerrar perfil de Lisa">&times;</span>
         <h2 id="lisa-modal-title">Lisa</h2>
-        <img src="img/lisa.webp" alt="Lisa de BLACKPINK" style="width:100%; max-width:200px; border-radius:8px; margin:1rem auto; display:block;">
+        <img src="img/lisa.webp" alt="Lisa de BLACKPINK" class="modal-member-img">
         <p><strong>Full Name:</strong> Lalisa Manoban</p>
         <p><strong>Birth:</strong> March 27, 1997</p>
         <p><strong>Position:</strong> Main Rapper & Dancer</p>
         <p><em>Fun Fact: Lisa speaks 4 languages! She started dancing at age 5.</em></p>
-        <iframe width="100%" height="200" src="https://www.youtube.com/embed/dyRsYk0LyA8?rel=0&modestbranding=1" title="Lisa - MONEY Official MV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="margin-top:1rem; border-radius:8px;"></iframe>
-        <p style="text-align:center; margin-top:0.5rem; font-size:0.75rem; color:#888;">
-            <a href="https://www.youtube.com/watch?v=dyRsYk0LyA8" target="_blank" rel="noopener noreferrer" style="color:#ff69b4;">Watch on YouTube →</a>
+        <iframe width="100%" height="200" src="https://www.youtube.com/embed/dyRsYk0LyA8?rel=0&modestbranding=1" title="Lisa - MONEY Official MV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="modal-iframe"></iframe>
+        <p class="modal-watch-link">
+            <a href="https://www.youtube.com/watch?v=dyRsYk0LyA8" target="_blank" rel="noopener noreferrer" class="modal-watch-link-text">Watch on YouTube →</a>
         </p>
     </div>
 </div>
@@ -423,7 +404,7 @@
                 <iframe
                     class="spotify-embed"
                     src="https://open.spotify.com/embed/artist/41MozSoPIsD1dJM0CLPjZF?utm_source=generator&theme=0"
-                    style="border-radius: 12px;"
+                    class="spotify-embed"
                     width="100%"
                     height="100%"
                     frameborder="0"
@@ -439,29 +420,23 @@
         </div>
 
         <!-- Lyrics -->
-        <div class="lyrics-section">
-            <h3 class="subsection-title">Flower - Jisoo</h3>
-            <div class="lyrics-box">
-                <p>So I'm gonna dance in the light</p>
-                <p>Shining so bright</p>
-                <p class="lyrics-highlight">I'm floating in the blue</p>
-                <p>Your love is like a flower</p>
-                <p>Blooming in the rain</p>
-                <p class="lyrics-highlight">Watch me transform</p>
-                <p>From a bud to a rose</p>
-                <p>Now I'm in full bloom</p>
+        <div class="lyrics-section" id="lyrics-section">
+            <h3 class="subsection-title" id="lyrics-title">Flower - Jisoo</h3>
+            <div class="lyrics-box" id="lyrics-box">
+                <!-- Loaded dynamically -->
             </div>
         </div>
     </div>
 
     <!-- Premium Custom Music Player -->
     <div class="music-player-panel">
-        <audio id="bp-audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+        <div id="bp-youtube-player" style="position:absolute;width:0;height:0;overflow:hidden;opacity:0;pointer-events:none;" aria-hidden="true"></div>
         <div class="player-vinyl-container">
             <div class="player-vinyl" id="player-vinyl">
                 <img src="img/pink.webp" alt="Vinyl Cover" class="player-vinyl-cover" id="player-vinyl-cover">
                 <div class="player-vinyl-center"></div>
             </div>
+            <div class="player-tonearm" id="player-tonearm"></div>
         </div>
         <div class="player-info-controls">
             <div class="player-track-info">
@@ -495,7 +470,7 @@
                 </div>
 
                 <div class="player-volume-container">
-                    <button class="player-btn" id="player-mute" style="width:30px; height:30px; font-size:1rem; border:none; background:transparent;" aria-label="Mute">
+                    <button class="player-btn player-mute-btn" id="player-mute" aria-label="Mute">
                         <i class="bx bx-volume-full" id="mute-icon"></i>
                     </button>
                     <div class="player-volume-slider" id="player-volume-slider">
@@ -548,7 +523,7 @@
     </div>
 
     <!-- BTS -->
-    <div class="video-tab-content" id="bts-videos" style="display:none;">
+    <div class="video-tab-content hidden" id="bts-videos">
         <div class="video-grid" id="bts-videos-grid">
             <div class="video-card" role="button" tabindex="0" data-action="open-video-modal" data-video-id="pDP9SEP7vCo">
                 <div class="video-thumbnail">
@@ -568,7 +543,7 @@
     </div>
 
     <!-- Live -->
-    <div class="video-tab-content" id="live-videos" style="display:none;">
+    <div class="video-tab-content hidden" id="live-videos">
         <div class="video-grid" id="live-videos-grid">
             <div class="video-card" role="button" tabindex="0" data-action="open-video-modal" data-video-id="z9tifvQSu-g">
                 <div class="video-thumbnail">
@@ -663,7 +638,7 @@
         </form>
         
         <!-- Success Message -->
-        <div class="success-message" id="successMessage" style="display:none; text-align:center; padding:1rem; background:rgba(255,105,180,0.1); border-radius:8px; margin-top:1rem;">
+        <div class="success-message hidden" id="successMessage">
             ✅ ¡Bienvenida, <span id="user-name"></span>! Eres la BLINK #<span id="blink-number"></span>. Revisa tu correo.
         </div>
         
@@ -755,6 +730,16 @@
                         </div>
                     </div>
 
+                    <div class="vip-theme-selector">
+                        <span class="vip-theme-label">ESTILO DEL VIP PASS:</span>
+                        <div class="theme-buttons-container">
+                            <button type="button" class="theme-btn theme-pink active" data-theme="pink-venom">Pink Venom</button>
+                            <button type="button" class="theme-btn theme-born" data-theme="born-pink">Born Pink</button>
+                            <button type="button" class="theme-btn theme-chrome" data-theme="chrome-cyber">Chrome Cyber</button>
+                            <button type="button" class="theme-btn theme-midnight" data-theme="midnight-velvet">Midnight Gold</button>
+                        </div>
+                    </div>
+
                     <div class="quiz-result-buttons">
                         <button class="btn btn-primary" id="btn-download-pass"><i class="bx bx-download"></i> Descargar VIP Pass</button>
                         <button class="btn btn-secondary" id="btn-restart-quiz">Volver a Jugar</button>
@@ -795,8 +780,8 @@
     </div>
     <a href="https://www.ygfamily.com/artist/main.htm?ACT_ID=49" class="btn btn-primary tour-tickets-btn" target="_blank" rel="noopener">ENTRADAS OFICIALES</a>
     
-    <div class="tour-map-container" style="margin-top:2rem;">
-        <div id="tour-map-leaflet" style="height:300px; border-radius:12px; overflow:hidden;"></div>
+    <div class="tour-map-container">
+        <div id="tour-map-leaflet" class="tour-map-leaflet"></div>
     </div>
 </section>
 
@@ -816,64 +801,7 @@
 
 </main>
 
-<!-- MOBILE MENU: Hamburger Menu CSS -->
-<style>
-/* Hamburger Menu Overlay */
-.mobile-menu-overlay {
-  position: fixed;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.95);
-  z-index: 999;
-  transition: left 0.3s ease-in-out;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-}
 
-.mobile-menu-overlay.active {
-  left: 0;
-}
-
-.mobile-menu-links {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  text-align: center;
-}
-
-.mobile-menu-links li {
-  margin: 1.5rem 0;
-}
-
-.mobile-menu-links a {
-  color: white;
-  font-size: 1.5rem;
-  text-decoration: none;
-  font-weight: bold;
-  letter-spacing: 1px;
-  transition: color 0.3s;
-}
-
-.mobile-menu-links a:hover {
-  color: #ff69b4;
-}
-
-.close-menu-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: 2rem;
-  cursor: pointer;
-}
-</style>
 
 <!-- Mobile Menu Overlay HTML -->
 <div class="mobile-menu-overlay" id="mobileMenu">
@@ -907,16 +835,82 @@
 </div>
 
 <!-- Video Modal -->
-<div id="video-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:2000;" aria-labelledby="video-modal-title" role="dialog" aria-modal="true">
-  <div style="position:relative; max-width:800px; margin:5% auto; padding:1rem;">
-    <button data-action="close-video-modal" aria-label="Cerrar video" style="position:absolute; top:-10px; right:10px; background:none; border:none; color:#ff69b4; font-size:2rem; cursor:pointer; z-index:2001;">×</button>
+<div id="video-modal" aria-labelledby="video-modal-title" role="dialog" aria-modal="true">
+  <div class="video-modal-inner">
+    <button data-action="close-video-modal" aria-label="Cerrar video" class="video-modal-close">×</button>
     <h2 id="video-modal-title" class="sr-only">Reproductor de video</h2>
     <iframe id="youtube-player" width="100%" height="450" src="" title="Reproductor de YouTube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <p style="text-align:center; margin-top:1rem;">
+    <p class="video-modal-link-wrapper">
       <a href="" id="youtube-link" target="_blank" rel="noopener" class="youtube-modal-link">Ver en YouTube →</a>
     </p>
   </div>
 </div>
+
+<!-- Booking Modal -->
+<div id="booking-modal" aria-labelledby="booking-modal-title" role="dialog" aria-modal="true">
+  <div class="booking-modal-content">
+    <button data-action="close-booking-modal" aria-label="Cerrar reserva" class="booking-modal-close">&times;</button>
+    
+    <h2 id="booking-modal-title" class="booking-modal-title">Born Pink Ticket Reservation</h2>
+    <p id="booking-details-title" class="booking-details-title">SEOUL, SOUTH KOREA</p>
+
+    <!-- Arena Seating Map (Interactive SVG) -->
+    <div class="booking-arena-container">
+      <svg id="arena-svg" viewBox="0 0 400 240" class="booking-arena-svg">
+        <!-- STAGE -->
+        <rect x="120" y="10" width="160" height="30" rx="5" fill="#ff6b9d" opacity="0.8"/>
+        <text x="200" y="30" fill="#000" font-family="Outfit" font-size="12" font-weight="bold" text-anchor="middle">STAGE / ESCENARIO</text>
+        
+        <!-- SECTIONS -->
+        <!-- VIP STANDING (Close to stage) -->
+        <path d="M 80,70 L 320,70 L 300,120 L 100,120 Z" class="arena-section" data-zone="VIP Standing" data-price="350" fill="rgba(255, 107, 157, 0.15)" stroke="#ff6b9d" stroke-width="1.5"/>
+        <text x="200" y="100" fill="#fff" font-family="Outfit" font-size="11" font-weight="600" text-anchor="middle" pointer-events="none">VIP STANDING ($350)</text>
+
+        <!-- PLATINUM SEATS (Sides) -->
+        <path d="M 30,70 L 70,70 L 90,130 L 40,150 Z" class="arena-section" data-zone="Platinum A" data-price="220" fill="rgba(0, 243, 255, 0.1)" stroke="#00f3ff" stroke-width="1.5"/>
+        <text x="50" y="110" fill="#fff" font-family="Outfit" font-size="9" text-anchor="middle" transform="rotate(-15 50 110)" pointer-events="none">PLATINUM A ($220)</text>
+
+        <path d="M 370,70 L 330,70 L 310,130 L 360,150 Z" class="arena-section" data-zone="Platinum B" data-price="220" fill="rgba(0, 243, 255, 0.1)" stroke="#00f3ff" stroke-width="1.5"/>
+        <text x="350" y="110" fill="#fff" font-family="Outfit" font-size="9" text-anchor="middle" transform="rotate(15 350 110)" pointer-events="none">PLATINUM B ($220)</text>
+
+        <!-- GOLD SEATS (Center back) -->
+        <path d="M 110,130 L 290,130 L 270,190 L 130,190 Z" class="arena-section" data-zone="Gold Seats" data-price="150" fill="rgba(212, 175, 55, 0.1)" stroke="#d4af37" stroke-width="1.5"/>
+        <text x="200" y="165" fill="#fff" font-family="Outfit" font-size="10" text-anchor="middle" pointer-events="none">GOLD SEATS ($150)</text>
+
+        <!-- GENERAL ADMISSION (Far back) -->
+        <path d="M 50,200 L 350,200 L 330,230 L 70,230 Z" class="arena-section" data-zone="General Admission" data-price="85" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1.5"/>
+        <text x="200" y="220" fill="#fff" font-family="Outfit" font-size="9" text-anchor="middle" pointer-events="none">GENERAL ADMISSION ($85)</text>
+      </svg>
+    </div>
+
+    <!-- Booking details / Input form -->
+    <div class="booking-selection-details">
+      <div class="booking-selection-row">
+        <span class="booking-selection-label">Zona Seleccionada:</span>
+        <strong id="selected-zone-name" class="booking-selection-value">(Selecciona en el mapa)</strong>
+      </div>
+      <div class="booking-selection-row">
+        <span class="booking-selection-label">Precio del Ticket:</span>
+        <strong id="selected-zone-price" class="booking-selection-price">$0</strong>
+      </div>
+      <div class="booking-selection-row">
+        <span class="booking-selection-label">Asiento Asignado:</span>
+        <strong id="assigned-seat-number" class="booking-selection-seat">-</strong>
+      </div>
+      
+      <div class="booking-name-section">
+        <label for="booking-guest-name" class="booking-name-label">NOMBRE DEL TITULAR BLINK:</label>
+        <input type="text" id="booking-guest-name" placeholder="Ingresa tu nombre completo" maxlength="20" class="booking-name-input" autocomplete="off">
+      </div>
+    </div>
+
+    <div class="booking-actions">
+      <button class="btn btn-primary" id="btn-generate-ticket" disabled><i class="bx bx-download"></i> GENERAR TICKET VIP</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
 
 <!-- Leaflet Map -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"

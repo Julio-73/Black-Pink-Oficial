@@ -1,0 +1,156 @@
+#booking-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: var(--z-modal);
+    overflow-y: auto;
+}
+
+#booking-modal[style*="display: block"] {
+    display: block;
+}
+
+.booking-modal-content {
+    position: relative;
+    max-width: 650px;
+    margin: 2rem auto;
+    background: rgba(15,15,15,0.95);
+    border: 1px solid rgba(255, 107, 157, 0.3);
+    border-radius: 24px;
+    padding: 2rem;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+}
+
+.booking-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--pink-primary);
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: calc(var(--z-modal) + 1);
+}
+
+.booking-modal-title {
+    font-family: 'Playfair Display', serif;
+    color: #fff;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.booking-details-title {
+    text-align: center;
+    color: var(--pink-primary);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.booking-arena-container {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.booking-arena-svg {
+    width: 100%;
+    max-width: 450px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 1rem;
+}
+
+#btn-generate-ticket:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    padding: 0.8rem 2rem;
+    font-size: 0.75rem;
+    width: 100%;
+}
+
+.booking-selection-details {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 16px;
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.booking-selection-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.booking-selection-label {
+    color: #aaa;
+}
+
+.booking-selection-value {
+    color: #fff;
+}
+
+.booking-selection-price {
+    color: var(--pink-primary);
+}
+
+.booking-selection-seat {
+    color: #00f3ff;
+}
+
+.booking-name-section {
+    margin-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 1rem;
+}
+
+.booking-name-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-bottom: 0.4rem;
+}
+
+.booking-name-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+}
+
+.booking-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.arena-section {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.arena-section:hover {
+    fill-opacity: 0.35;
+}
+
+.arena-section.selected {
+    fill-opacity: 0.65;
+    stroke-width: 3px;
+    filter: drop-shadow(0 0 8px currentColor);
+}

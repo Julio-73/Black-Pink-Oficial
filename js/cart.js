@@ -32,6 +32,8 @@ function loadMoreProducts() {
 
 export function init() { /* no-op */ }
 
+export function destroy() { /* no-op */ }
+
 export const actions = {
     'add-to-cart': (el) => addToCart(el.dataset.product, el.dataset.price),
     'load-more-products': () => loadMoreProducts()

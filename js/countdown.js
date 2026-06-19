@@ -47,3 +47,7 @@ export function init() {
     tick();
     intervalId = setInterval(tick, 1000);
 }
+
+export function destroy() {
+    if (intervalId) { clearInterval(intervalId); intervalId = null; }
+}

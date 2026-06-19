@@ -3,42 +3,55 @@ const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').mat
 
 // ---------- Reveal on scroll ----------
 function setupReveal() {
-    const revealEls = document.querySelectorAll(
-        '.members-grid, .music-container, .video-container, .subscribe-card, .section-title, .quiz-container'
-    );
-    const observer = new IntersectionObserver((entries) => {
+    _observer = new IntersectionObserver((entries) => {
         for (const entry of entries) {
-            if (entry.isIntersecting) entry.target.classList.add('active');
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
         }
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-    revealEls.forEach(el => {
+    document.querySelectorAll(
+        '.members-grid, .music-container, .video-container, .subscribe-card, .section-title, .quiz-container'
+    ).forEach(el => {
         el.classList.add('reveal');
-        observer.observe(el);
+        _observer.observe(el);
     });
 
     document.querySelectorAll('.member-card').forEach((card, i) => {
         card.classList.add('reveal', `reveal-delay-${(i % 4) + 1}`);
-        observer.observe(card);
+        _observer.observe(card);
     });
 }
+
+let _scrollRafId = null;
+let _resizeHandler = null;
+let _scrollHandler = null;
+let _parallaxTicking = false;
+let _observer = null;
+let _particleRafId = null;
+let _particleResizeHandler = null;
+let _heroMouseHandler = null;
+let _heroLeaveHandler = null;
+let _heroParticleHandler = null;
 
 // ---------- Parallax hero ----------
 function setupParallax() {
     if (REDUCED_MOTION) return;
-    let ticking = false;
-    window.addEventListener('scroll', () => {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(() => {
+    _parallaxTicking = false;
+    _scrollHandler = () => {
+        if (_parallaxTicking) return;
+        _parallaxTicking = true;
+        _scrollRafId = requestAnimationFrame(() => {
             const scrolled = window.pageYOffset;
             const heroBg = document.querySelector('.hero-bg');
             const heroVideo = document.querySelector('.hero-video-bg');
             if (heroBg) heroBg.style.transform = `translateY(${scrolled * 0.15}px)`;
-            if (heroVideo) heroVideo.style.transform = `translateY(${scrolled * 0.12}px)`;
-            ticking = false;
+            if (heroVideo) heroVideo.style.transform = `translateY(${scrolled * 0.1}px)`;
+            _parallaxTicking = false;
         });
-    }, { passive: true });
+    };
+    window.addEventListener('scroll', _scrollHandler, { passive: true });
 }
 
 // ---------- Hero mouse follow ----------
@@ -46,15 +59,17 @@ function setupHeroHover() {
     if (REDUCED_MOTION) return;
     const heroContent = document.querySelector('.hero-content');
     if (!heroContent) return;
-    heroContent.addEventListener('mousemove', (e) => {
+    _heroMouseHandler = (e) => {
         const rect = heroContent.getBoundingClientRect();
         const x = (e.clientX - rect.left) / rect.width - 0.5;
         const y = (e.clientY - rect.top) / rect.height - 0.5;
         heroContent.style.transform = `translate(${x * 12}px, ${y * 12}px)`;
-    });
-    heroContent.addEventListener('mouseleave', () => {
+    };
+    _heroLeaveHandler = () => {
         heroContent.style.transform = 'translate(0, 0)';
-    });
+    };
+    heroContent.addEventListener('mousemove', _heroMouseHandler);
+    heroContent.addEventListener('mouseleave', _heroLeaveHandler);
 }
 
 // ---------- Button hover micro-particles ----------
@@ -130,50 +145,56 @@ class Particle {
     }
 }
 
+let _heroParticles = [];
+let _heroSec = null;
+let _canvas = null;
+
 function setupHeroParticles() {
     if (REDUCED_MOTION) return;
-    const heroSec = document.getElementById('home');
-    const canvas = document.getElementById('hero-particles-canvas');
-    if (!heroSec || !canvas) return;
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    let rafId = null;
+    _heroSec = document.getElementById('home');
+    _canvas = document.getElementById('hero-particles-canvas');
+    if (!_heroSec || !_canvas) return;
+    const ctx = _canvas.getContext('2d');
 
-    function resize() {
-        canvas.width = heroSec.clientWidth;
-        canvas.height = heroSec.clientHeight;
-    }
-    window.addEventListener('resize', resize);
-    resize();
+    _particleResizeHandler = () => {
+        _canvas.width = _heroSec.clientWidth;
+        _canvas.height = _heroSec.clientHeight;
+    };
+    window.addEventListener('resize', _particleResizeHandler);
+    _particleResizeHandler();
 
     function loop() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (let i = 0; i < particles.length; i++) {
-            particles[i].update();
-            particles[i].draw(ctx);
-            if (particles[i].alpha <= 0) {
-                particles.splice(i, 1);
+        ctx.clearRect(0, 0, _canvas.width, _canvas.height);
+        for (let i = 0; i < _heroParticles.length; i++) {
+            _heroParticles[i].update();
+            _heroParticles[i].draw(ctx);
+            if (_heroParticles[i].alpha <= 0) {
+                _heroParticles.splice(i, 1);
                 i--;
             }
         }
-        if (particles.length > 0) rafId = requestAnimationFrame(loop);
-        else rafId = null;
+        if (_heroParticles.length > 0) _particleRafId = requestAnimationFrame(loop);
+        else _particleRafId = null;
     }
 
-    heroSec.addEventListener('mousemove', (e) => {
-        const rect = heroSec.getBoundingClientRect();
+    _heroParticleHandler = (e) => {
+        const rect = _heroSec.getBoundingClientRect();
         const mx = e.clientX - rect.left;
         const my = e.clientY - rect.top;
-        for (let i = 0; i < 2; i++) particles.push(new Particle(mx, my));
-        if (!rafId) rafId = requestAnimationFrame(loop);
-    });
+        for (let i = 0; i < 2; i++) _heroParticles.push(new Particle(mx, my));
+        if (!_particleRafId) _particleRafId = requestAnimationFrame(loop);
+    };
+    _heroSec.addEventListener('mousemove', _heroParticleHandler);
 }
+
+let _tiltCards = [];
 
 // ---------- 3D tilt with glare ----------
 function setupTilt() {
     if (REDUCED_MOTION) return;
+    _tiltCards = [];
     document.querySelectorAll('.member-card, .product-card').forEach(card => {
-        card.addEventListener('mousemove', function(e) {
+        const moveHandler = function(e) {
             const rect = this.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
@@ -184,12 +205,15 @@ function setupTilt() {
             this.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) scale3d(1.03, 1.03, 1.03)`;
             this.style.setProperty('--glare-x', `${(x / rect.width) * 100}%`);
             this.style.setProperty('--glare-y', `${(y / rect.height) * 100}%`);
-        });
-        card.addEventListener('mouseleave', function() {
+        };
+        const leaveHandler = function() {
             this.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
             this.style.setProperty('--glare-x', '50%');
             this.style.setProperty('--glare-y', '50%');
-        });
+        };
+        card.addEventListener('mousemove', moveHandler);
+        card.addEventListener('mouseleave', leaveHandler);
+        _tiltCards.push({ el: card, move: moveHandler, leave: leaveHandler });
     });
 }
 
@@ -234,4 +258,27 @@ export function init() {
     setupButtonParticles();
     setupHeroParticles();
     setupTilt();
+}
+
+export function destroy() {
+    if (_observer) _observer.disconnect();
+    if (_scrollHandler) window.removeEventListener('scroll', _scrollHandler);
+    if (_particleResizeHandler) window.removeEventListener('resize', _particleResizeHandler);
+    if (_particleRafId) cancelAnimationFrame(_particleRafId);
+    if (_scrollRafId) cancelAnimationFrame(_scrollRafId);
+
+    const heroContent = document.querySelector('.hero-content');
+    if (heroContent && _heroMouseHandler) {
+        heroContent.removeEventListener('mousemove', _heroMouseHandler);
+        heroContent.removeEventListener('mouseleave', _heroLeaveHandler);
+    }
+    if (_heroSec && _heroParticleHandler) {
+        _heroSec.removeEventListener('mousemove', _heroParticleHandler);
+    }
+    _tiltCards.forEach(({ el, move, leave }) => {
+        el.removeEventListener('mousemove', move);
+        el.removeEventListener('mouseleave', leave);
+    });
+    _tiltCards = [];
+    _heroParticles = [];
 }

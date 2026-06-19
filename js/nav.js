@@ -2,6 +2,11 @@
 let header;
 let menuToggle;
 let mobileMenu;
+let _headerScrollHandler = null;
+let _progressScrollHandler = null;
+let _menuClickHandler = null;
+let _anchorListeners = [];
+let _progressBar = null;
 
 function openMobileMenu() {
     if (!mobileMenu) return;
@@ -47,11 +52,11 @@ function setupSmoothScroll() {
 }
 
 function setupScrollProgress() {
-    let progressBar = document.querySelector('.scroll-progress');
-    if (!progressBar) {
-        progressBar = document.createElement('div');
-        progressBar.className = 'scroll-progress';
-        progressBar.style.cssText = `
+    _progressBar = document.querySelector('.scroll-progress');
+    if (!_progressBar) {
+        _progressBar = document.createElement('div');
+        _progressBar.className = 'scroll-progress';
+        _progressBar.style.cssText = `
             position: fixed;
             top: 0;
             left: 0;
@@ -61,14 +66,15 @@ function setupScrollProgress() {
             width: 0%;
             transition: width 0.08s linear;
         `;
-        document.body.appendChild(progressBar);
+        document.body.appendChild(_progressBar);
     }
-    window.addEventListener('scroll', () => {
+    _progressScrollHandler = () => {
         const scrollTop = window.pageYOffset;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
         const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-        progressBar.style.width = `${pct}%`;
-    }, { passive: true });
+        _progressBar.style.width = `${pct}%`;
+    };
+    window.addEventListener('scroll', _progressScrollHandler, { passive: true });
 }
 
 export function init() {
@@ -77,21 +83,32 @@ export function init() {
     mobileMenu = document.getElementById('mobileMenu');
 
     setupFooterYear();
-    window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+    _headerScrollHandler = handleHeaderScroll;
+    window.addEventListener('scroll', _headerScrollHandler, { passive: true });
     handleHeaderScroll();
 
     if (menuToggle) {
         menuToggle.setAttribute('aria-expanded', 'false');
         menuToggle.setAttribute('aria-controls', 'mobileMenu');
-        menuToggle.addEventListener('click', (e) => {
+        _menuClickHandler = (e) => {
             e.stopPropagation();
             if (mobileMenu?.classList.contains('active')) closeMobileMenu();
             else openMobileMenu();
-        });
+        };
+        menuToggle.addEventListener('click', _menuClickHandler);
     }
 
     setupSmoothScroll();
     setupScrollProgress();
+}
+
+export function destroy() {
+    if (_headerScrollHandler) window.removeEventListener('scroll', _headerScrollHandler);
+    if (_progressScrollHandler) window.removeEventListener('scroll', _progressScrollHandler);
+    if (menuToggle && _menuClickHandler) menuToggle.removeEventListener('click', _menuClickHandler);
+    _anchorListeners.forEach(({ el, fn }) => el.removeEventListener('click', fn));
+    _anchorListeners = [];
+    if (_progressBar && _progressBar.parentNode) _progressBar.parentNode.removeChild(_progressBar);
 }
 
 export const actions = {

@@ -1,31 +1,136 @@
 // Music player: main panel + mini player + procedural visualizer
+// Uses YouTube Iframe API for real BLACKPINK audio
 const PLAYLIST = [
-    { title: 'DDu-Du DDu-Du',     url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', cover: 'https://img.youtube.com/vi/bwmSjveZ3n8/hqdefault.jpg' },
-    { title: 'Kill This Love',    url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3', cover: 'https://img.youtube.com/vi/2S24-y0Y3pE/hqdefault.jpg' },
-    { title: 'How You Like That', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3', cover: 'https://img.youtube.com/vi/IHdVIe785wQ/hqdefault.jpg' },
-    { title: 'Lovesick Girls',    url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3', cover: 'https://img.youtube.com/vi/dyRsYk0LyA8/hqdefault.jpg' },
-    { title: 'Shut Down',         url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3', cover: 'https://img.youtube.com/vi/POe9SOEKotk/hqdefault.jpg' }
+    {
+        title: 'DDu-Du DDu-Du',
+        videoId: 'bwmSjveZ3n8',
+        cover: 'https://img.youtube.com/vi/bwmSjveZ3n8/hqdefault.jpg',
+        lyrics: [
+            { time: 0, text: '[Instrumental Intro]' },
+            { time: 5, text: 'BLACKPINK!' },
+            { time: 7, text: 'Ah yeah, ah yeah!' },
+            { time: 10, text: 'BLACKPINK IN YOUR AREA!' },
+            { time: 15, text: '착한 얼굴에 그렇지 못한 태도' },
+            { time: 19, text: '가녀린 몸매 속 가려진 double volume' },
+            { time: 24, text: '거침없이 직진 굳이 보지 않지 눈치' },
+            { time: 29, text: 'Black에서 Pink, 우린 예쁘장한 savage' },
+            { time: 34, text: '원할 땐 대놓고 뺏지' },
+            { time: 37, text: '넌 뭘 해도 칼로 물 베기' },
+            { time: 40, text: '두 손엔 가득한 fat check' },
+            { time: 43, text: '궁금하면 해봐 fact check' }
+        ]
+    },
+    {
+        title: 'Kill This Love',
+        videoId: '2S24-y0Y3pE',
+        cover: 'https://img.youtube.com/vi/2S24-y0Y3pE/hqdefault.jpg',
+        lyrics: [
+            { time: 0, text: '[Trumpet Intro]' },
+            { time: 4, text: 'BLACKPINK in your area!' },
+            { time: 8, text: '천사 같은 hi 끝엔 악마 같은 bye' },
+            { time: 12, text: '매번 미칠듯한 high 뒤엔 뱉어야 하는 price' },
+            { time: 17, text: '이건 답이 없는 test 매번 속더라도 yes' },
+            { time: 21, text: '딱한 감정의 노예' },
+            { time: 25, text: '얼어 죽을 사랑해' },
+            { time: 29, text: "Let's kill this love! Yeah, yeah, yeah!" }
+        ]
+    },
+    {
+        title: 'How You Like That',
+        videoId: 'IHdVIe785wQ',
+        cover: 'https://img.youtube.com/vi/IHdVIe785wQ/hqdefault.jpg',
+        lyrics: [
+            { time: 0, text: '[Dramatic Intro]' },
+            { time: 5, text: 'BLACKPINK in your area!' },
+            { time: 8, text: '보란 듯이 무너졌어' },
+            { time: 12, text: '바닥을 뚫고 저 지하까지' },
+            { time: 16, text: '옷자락 잡겠다고' },
+            { time: 20, text: '저 높i 두 손을 뻗어봐도' },
+            { time: 24, text: '다시 캄캄한 이곳에 light up the sky' },
+            { time: 29, text: "네 눈을 보며 I'll kiss you goodbye" },
+            { time: 33, text: 'How you like that? (Uh!)' }
+        ]
+    },
+    {
+        title: 'Lovesick Girls',
+        videoId: 'dyRsYk0LyA8',
+        cover: 'https://img.youtube.com/vi/dyRsYk0LyA8/hqdefault.jpg',
+        lyrics: [
+            { time: 0, text: '[Acoustic Guitar Intro]' },
+            { time: 5, text: '영원한 밤' },
+            { time: 8, text: '창문 없는 방에 우릴 가둔 love' },
+            { time: 12, text: 'What can we say?' },
+            { time: 15, text: '매번 아파도 외치는 love' },
+            { time: 20, text: '다치고 망가져도 나 뭘 믿고 버티는 거야' },
+            { time: 25, text: '어차피 떠나면 상처뿐인 상태로' },
+            { time: 30, text: 'We are the lovesick girls!' }
+        ]
+    },
+    {
+        title: 'Shut Down',
+        videoId: 'POe9SOEKotk',
+        cover: 'https://img.youtube.com/vi/POe9SOEKotk/hqdefault.jpg',
+        lyrics: [
+            { time: 0, text: '[La Campanella Violin Sample]' },
+            { time: 5, text: 'BLACKPINK in your area!' },
+            { time: 8, text: '컴백이 아냐 떠난 적 없으니까' },
+            { time: 12, text: '머리 위 대들의 목이 꺾인 지 오래' },
+            { time: 16, text: '가만히 있어도 알아서 기어' },
+            { time: 20, text: '초록빛 분홍빛 불을 켜' },
+            { time: 24, text: '가라앉지 않는 인기' },
+            { time: 28, text: '휩쓸고 간 자리엔' },
+            { time: 32, text: 'Keep watching me shut you down!' }
+        ]
+    }
 ];
 
-let audioEl, playPauseBtn, playPauseIcon, vinylEl, vinylCoverEl, trackTitleEl;
+let ytPlayer = null;
+let ytReady = false;
+let playPauseBtn, playPauseIcon, vinylEl, vinylCoverEl, trackTitleEl;
 let prevBtn, nextBtn, progressBarContainer, progressFill, currentTimeEl, durationEl;
 let muteBtn, muteIcon, volumeSlider, volumeFill;
 let miniPlayer, mainPlayerPanel, miniVinyl, miniVinylCover, miniTrackTitle, miniPlayPause, miniPlayPauseIcon, miniNext;
-let visualizerCanvas;
+let visualizerCanvas, tonearmEl;
+let lyricsTitleEl, lyricsBoxEl;
 
 let currentSongIndex = 0;
 let isMuted = false;
-let preMuteVolume = 0.8;
+let preMuteVolume = 80;
 let visualizerStarted = false;
+let _visualizerRaf = null;
+let _scrollMiniHandler = null;
+let _progressInterval = null;
+let _isPlaying = false;
+
+function renderLyrics(song) {
+    if (!lyricsBoxEl) return;
+    lyricsBoxEl.innerHTML = '';
+    if (!song.lyrics || song.lyrics.length === 0) {
+        lyricsBoxEl.innerHTML = '<p class="no-lyrics">No lyrics available</p>';
+        return;
+    }
+    song.lyrics.forEach((line, i) => {
+        const p = document.createElement('p');
+        p.textContent = line.text;
+        p.dataset.time = line.time;
+        p.id = `lyric-line-${i}`;
+        lyricsBoxEl.appendChild(p);
+    });
+    lyricsBoxEl.scrollTop = 0;
+}
 
 function loadSong(index) {
     currentSongIndex = index;
     const song = PLAYLIST[index];
-    if (audioEl) { audioEl.src = song.url; audioEl.load(); }
+    if (ytReady && ytPlayer) {
+        ytPlayer.loadVideoById(song.videoId);
+        ytPlayer.seekTo(0);
+    }
     if (trackTitleEl) trackTitleEl.textContent = song.title;
     if (vinylCoverEl) vinylCoverEl.src = song.cover;
+    if (lyricsTitleEl) lyricsTitleEl.textContent = `${song.title} - BLACKPINK`;
+    renderLyrics(song);
     syncMiniPlayerInfo();
-
     document.querySelectorAll('.song-item').forEach(row => {
         row.classList.remove('playing-now');
         const t = row.querySelector('.song-title')?.textContent.trim().toLowerCase();
@@ -33,25 +138,48 @@ function loadSong(index) {
     });
 }
 
+function setPlayUI(playing) {
+    _isPlaying = playing;
+    const icon = playing ? 'bx bx-pause' : 'bx bx-play';
+    if (playPauseIcon) playPauseIcon.className = icon;
+    if (miniPlayPauseIcon) miniPlayPauseIcon.className = icon;
+    vinylEl?.classList.toggle('playing', playing);
+    tonearmEl?.classList.toggle('playing', playing);
+    miniVinyl?.classList.toggle('playing', playing);
+    document.getElementById('player-equalizer')?.classList.toggle('active', playing);
+}
+
 function togglePlayPause() {
-    if (!audioEl) return;
-    if (audioEl.paused) audioEl.play().catch(() => {});
-    else audioEl.pause();
+    if (!ytReady || !ytPlayer) return;
+    if (_isPlaying) {
+        ytPlayer.pauseVideo();
+        setPlayUI(false);
+    } else {
+        ytPlayer.playVideo();
+        setPlayUI(true);
+        setupVisualizer();
+    }
 }
 
 function next() {
-    loadSong((currentSongIndex + 1) % PLAYLIST.length);
-    audioEl?.play().catch(() => {});
+    const idx = (currentSongIndex + 1) % PLAYLIST.length;
+    loadSong(idx);
+    if (_isPlaying && ytReady && ytPlayer) {
+        ytPlayer.playVideo();
+    }
 }
 
 function prev() {
     let i = currentSongIndex - 1;
     if (i < 0) i = PLAYLIST.length - 1;
     loadSong(i);
-    audioEl?.play().catch(() => {});
+    if (_isPlaying && ytReady && ytPlayer) {
+        ytPlayer.playVideo();
+    }
 }
 
 function formatTime(secs) {
+    if (isNaN(secs) || !isFinite(secs)) return '0:00';
     const m = Math.floor(secs / 60);
     const s = Math.floor(secs % 60);
     return `${m}:${String(s).padStart(2, '0')}`;
@@ -60,7 +188,7 @@ function formatTime(secs) {
 function updateVolumeIcon(vol) {
     if (!muteIcon) return;
     if (vol === 0) muteIcon.className = 'bx bx-volume-mute';
-    else if (vol < 0.4) muteIcon.className = 'bx bx-volume';
+    else if (vol < 40) muteIcon.className = 'bx bx-volume';
     else muteIcon.className = 'bx bx-volume-full';
 }
 
@@ -70,10 +198,51 @@ function syncMiniPlayerInfo() {
     if (miniVinylCover) miniVinylCover.src = song.cover;
 }
 
+function startProgressPolling() {
+    if (_progressInterval) return;
+    _progressInterval = setInterval(() => {
+        if (!ytReady || !ytPlayer || !_isPlaying) return;
+        const ct = ytPlayer.getCurrentTime();
+        const dur = ytPlayer.getDuration();
+        if (dur && dur > 0) {
+            const pct = (ct / dur) * 100;
+            if (progressFill) progressFill.style.width = `${Math.min(pct, 100)}%`;
+            if (currentTimeEl) currentTimeEl.textContent = formatTime(ct);
+            if (durationEl) durationEl.textContent = formatTime(dur);
+        }
+        syncLyrics(ct);
+    }, 250);
+}
+
+function syncLyrics(ct) {
+    if (!lyricsBoxEl || !PLAYLIST[currentSongIndex].lyrics) return;
+    const lyrics = PLAYLIST[currentSongIndex].lyrics;
+    let activeIndex = -1;
+    for (let i = 0; i < lyrics.length; i++) {
+        if (ct >= lyrics[i].time) activeIndex = i;
+        else break;
+    }
+    if (activeIndex !== -1) {
+        const lines = lyricsBoxEl.querySelectorAll('p');
+        lines.forEach((line, idx) => {
+            line.className = idx === activeIndex ? 'lyrics-highlight' : '';
+        });
+        const active = lines[activeIndex];
+        if (active) {
+            const boxHeight = lyricsBoxEl.clientHeight;
+            const lineTop = active.offsetTop;
+            const lineHeight = active.clientHeight;
+            lyricsBoxEl.scrollTo({
+                top: lineTop - boxHeight / 2 + lineHeight / 2,
+                behavior: 'smooth'
+            });
+        }
+    }
+}
+
 function setupVisualizer() {
     if (!visualizerCanvas || visualizerStarted) return;
     visualizerStarted = true;
-
     const vCtx = visualizerCanvas.getContext('2d');
     const width = visualizerCanvas.width;
     const height = visualizerCanvas.height;
@@ -81,9 +250,8 @@ function setupVisualizer() {
     const dataArray = new Uint8Array(bufferLength);
 
     function renderLoop() {
-        requestAnimationFrame(renderLoop);
-
-        if (audioEl && !audioEl.paused) {
+        _visualizerRaf = requestAnimationFrame(renderLoop);
+        if (_isPlaying) {
             const t = Date.now() * 0.005;
             for (let i = 0; i < bufferLength; i++) {
                 const bass = Math.sin(t * 0.85) * 0.4 + 0.6;
@@ -100,11 +268,9 @@ function setupVisualizer() {
                 dataArray[i] = Math.max(0, dataArray[i] - 5);
             }
         }
-
         vCtx.clearRect(0, 0, width, height);
         vCtx.fillStyle = 'rgba(15, 15, 15, 0.1)';
         vCtx.fillRect(0, 0, width, height);
-
         const barWidth = (width / bufferLength) * 1.55;
         let x = 0;
         for (let i = 0; i < bufferLength; i++) {
@@ -125,12 +291,53 @@ function setupVisualizer() {
             x += barWidth;
         }
     }
-
     renderLoop();
 }
 
+function initYouTube() {
+    if (ytReady || !window.YT) return;
+    ytPlayer = new YT.Player('bp-youtube-player', {
+        height: 0,
+        width: 0,
+        videoId: PLAYLIST[0].videoId,
+        playerVars: {
+            autoplay: 0,
+            controls: 0,
+            disablekb: 1,
+            enablejsapi: 1,
+            fs: 0,
+            modestbranding: 1,
+            playsinline: 1,
+            rel: 0
+        },
+        events: {
+            onReady: () => {
+                ytReady = true;
+                ytPlayer.setVolume(preMuteVolume);
+                loadSong(0);
+                startProgressPolling();
+            },
+            onStateChange: (e) => {
+                if (e.data === YT.PlayerState.PLAYING) {
+                    setPlayUI(true);
+                    setupVisualizer();
+                } else if (e.data === YT.PlayerState.PAUSED) {
+                    setPlayUI(false);
+                } else if (e.data === YT.PlayerState.ENDED) {
+                    setPlayUI(false);
+                    next();
+                } else if (e.data === YT.PlayerState.CUED) {
+                    if (durationEl) durationEl.textContent = formatTime(ytPlayer.getDuration());
+                }
+            },
+            onError: () => {
+                setPlayUI(false);
+            }
+        }
+    });
+}
+
 export function init() {
-    audioEl = document.getElementById('bp-audio');
     playPauseBtn = document.getElementById('player-play-pause');
     playPauseIcon = document.getElementById('play-pause-icon');
     vinylEl = document.getElementById('player-vinyl');
@@ -147,7 +354,9 @@ export function init() {
     volumeSlider = document.getElementById('player-volume-slider');
     volumeFill = document.getElementById('player-volume-fill');
     visualizerCanvas = document.getElementById('player-visualizer-canvas');
-
+    tonearmEl = document.getElementById('player-tonearm');
+    lyricsTitleEl = document.getElementById('lyrics-title');
+    lyricsBoxEl = document.getElementById('lyrics-box');
     miniPlayer = document.getElementById('mini-player-floating');
     mainPlayerPanel = document.querySelector('.music-player-panel');
     miniVinyl = document.getElementById('mini-vinyl');
@@ -157,75 +366,46 @@ export function init() {
     miniPlayPauseIcon = document.getElementById('mini-play-pause-icon');
     miniNext = document.getElementById('mini-next');
 
-    if (!audioEl) return;
-
     playPauseBtn?.addEventListener('click', togglePlayPause);
     nextBtn?.addEventListener('click', next);
     prevBtn?.addEventListener('click', prev);
 
-    audioEl.addEventListener('play', () => {
-        if (playPauseIcon) playPauseIcon.className = 'bx bx-pause';
-        vinylEl?.classList.add('playing');
-        document.getElementById('player-equalizer')?.classList.add('active');
-        if (miniPlayPauseIcon) miniPlayPauseIcon.className = 'bx bx-pause';
-        miniVinyl?.classList.add('playing');
-        setupVisualizer();
-    });
-
-    audioEl.addEventListener('pause', () => {
-        if (playPauseIcon) playPauseIcon.className = 'bx bx-play';
-        vinylEl?.classList.remove('playing');
-        document.getElementById('player-equalizer')?.classList.remove('active');
-        if (miniPlayPauseIcon) miniPlayPauseIcon.className = 'bx bx-play';
-        miniVinyl?.classList.remove('playing');
-    });
-
-    audioEl.addEventListener('timeupdate', () => {
-        const ct = audioEl.currentTime;
-        const dur = audioEl.duration;
-        if (isNaN(dur)) return;
-        const pct = (ct / dur) * 100;
-        if (progressFill) progressFill.style.width = `${pct}%`;
-        if (currentTimeEl) currentTimeEl.textContent = formatTime(ct);
-        if (durationEl) durationEl.textContent = formatTime(dur);
-    });
-
-    audioEl.addEventListener('ended', next);
-    audioEl.addEventListener('loadstart', syncMiniPlayerInfo);
-
     progressBarContainer?.addEventListener('click', (e) => {
+        if (!ytReady || !ytPlayer) return;
         const w = progressBarContainer.clientWidth;
-        const dur = audioEl.duration;
+        const dur = ytPlayer.getDuration();
         if (isNaN(dur)) return;
-        audioEl.currentTime = (e.offsetX / w) * dur;
+        ytPlayer.seekTo((e.offsetX / w) * dur);
     });
 
     volumeSlider?.addEventListener('click', (e) => {
+        if (!ytReady || !ytPlayer) return;
         const w = volumeSlider.clientWidth;
-        let vol = e.offsetX / w;
-        if (vol < 0) vol = 0;
-        if (vol > 1) vol = 1;
-        audioEl.volume = vol;
-        if (volumeFill) volumeFill.style.width = `${vol * 100}%`;
+        let vol = Math.round((e.offsetX / w) * 100);
+        vol = Math.max(0, Math.min(100, vol));
+        ytPlayer.setVolume(vol);
+        if (volumeFill) volumeFill.style.width = `${vol}%`;
         isMuted = vol === 0;
         updateVolumeIcon(vol);
     });
 
     muteBtn?.addEventListener('click', () => {
+        if (!ytReady || !ytPlayer) return;
         if (isMuted) {
-            audioEl.volume = preMuteVolume;
+            ytPlayer.unMute();
+            ytPlayer.setVolume(preMuteVolume);
             isMuted = false;
-            if (volumeFill) volumeFill.style.width = `${preMuteVolume * 100}%`;
+            if (volumeFill) volumeFill.style.width = `${preMuteVolume}%`;
+            updateVolumeIcon(preMuteVolume);
         } else {
-            preMuteVolume = audioEl.volume;
-            audioEl.volume = 0;
+            preMuteVolume = ytPlayer.getVolume();
+            ytPlayer.mute();
             isMuted = true;
             if (volumeFill) volumeFill.style.width = '0%';
+            updateVolumeIcon(0);
         }
-        updateVolumeIcon(audioEl.volume);
     });
 
-    // Top songs click → load + play
     document.querySelectorAll('.song-row-link').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
@@ -234,24 +414,46 @@ export function init() {
             const idx = PLAYLIST.findIndex(s => s.title.toLowerCase() === title);
             if (idx !== -1) {
                 loadSong(idx);
-                audioEl.play().catch(() => {});
+                if (ytReady && ytPlayer) {
+                    ytPlayer.playVideo();
+                    setPlayUI(true);
+                }
                 mainPlayerPanel?.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         });
     });
 
-    // Mini player controls
     miniPlayPause?.addEventListener('click', (e) => { e.stopPropagation(); togglePlayPause(); });
     miniNext?.addEventListener('click', (e) => { e.stopPropagation(); next(); });
 
-    // Show mini player only when main panel is out of viewport
-    window.addEventListener('scroll', () => {
+    _scrollMiniHandler = () => {
         if (!miniPlayer || !mainPlayerPanel) return;
         const r = mainPlayerPanel.getBoundingClientRect();
-        const hidden = r.bottom < 0 || r.top > window.innerHeight;
-        miniPlayer.classList.toggle('visible', hidden);
-    }, { passive: true });
+        miniPlayer.classList.toggle('visible', r.bottom < 0 || r.top > window.innerHeight);
+    };
+    window.addEventListener('scroll', _scrollMiniHandler, { passive: true });
 
-    // Init with first song
-    loadSong(0);
+    // Init YouTube player if API ready, otherwise wait
+    if (window.YT && YT.loaded) {
+        initYouTube();
+    } else {
+        window.onYouTubeIframeAPIReady = initYouTube;
+    }
+
+    // Fallback: set initial track info
+    if (vinylCoverEl) vinylCoverEl.src = PLAYLIST[0].cover;
+    if (trackTitleEl) trackTitleEl.textContent = PLAYLIST[0].title;
+    if (lyricsTitleEl) lyricsTitleEl.textContent = `${PLAYLIST[0].title} - BLACKPINK`;
+    renderLyrics(PLAYLIST[0]);
+    syncMiniPlayerInfo();
+}
+
+export function destroy() {
+    if (_visualizerRaf) cancelAnimationFrame(_visualizerRaf);
+    if (_progressInterval) clearInterval(_progressInterval);
+    if (_scrollMiniHandler) window.removeEventListener('scroll', _scrollMiniHandler);
+    if (ytPlayer && ytPlayer.destroy) ytPlayer.destroy();
+    ytPlayer = null;
+    ytReady = false;
+    visualizerStarted = false;
 }

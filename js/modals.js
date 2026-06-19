@@ -99,27 +99,33 @@ function closeAllMemberModals() {
 }
 
 export function init() {
+    _modalOverlayHandlers = [];
+
     document.querySelectorAll('.modal-mobile').forEach(modal => {
         modal.setAttribute('role', 'dialog');
         modal.setAttribute('aria-modal', 'true');
         modal.setAttribute('aria-hidden', 'true');
-        modal.addEventListener('click', (e) => {
+        const handler = (e) => {
             if (e.target === modal) {
                 const id = modal.id.replace('-modal', '');
                 closeMemberModal(id);
             }
-        });
+        };
+        modal.addEventListener('click', handler);
+        _modalOverlayHandlers.push({ el: modal, fn: handler });
     });
 
     const videoModal = document.getElementById('video-modal');
     if (videoModal) {
         videoModal.setAttribute('aria-hidden', 'true');
-        videoModal.addEventListener('click', (e) => {
+        const handler = (e) => {
             if (e.target === videoModal) closeVideoModal();
-        });
+        };
+        videoModal.addEventListener('click', handler);
+        _modalOverlayHandlers.push({ el: videoModal, fn: handler });
     }
 
-    document.addEventListener('keydown', (e) => {
+    _escapeHandler = (e) => {
         if (e.key === 'Escape') {
             closeAllMemberModals();
             if (videoModal && videoModal.style.display === 'block') {
@@ -133,7 +139,8 @@ export function init() {
                 document.body.style.overflow = '';
             }
         }
-    });
+    };
+    document.addEventListener('keydown', _escapeHandler);
 }
 
 export const actions = {
@@ -142,3 +149,19 @@ export const actions = {
     'open-video-modal': (el) => openVideoModal(el.dataset.videoId),
     'close-video-modal': () => closeVideoModal()
 };
+
+let _modalOverlayHandlers = [];
+let _escapeHandler = null;
+
+export function destroy() {
+    document.querySelectorAll('.modal-mobile').forEach(modal => {
+        modal.style.display = 'none';
+    });
+    const videoModal = document.getElementById('video-modal');
+    if (videoModal) videoModal.style.display = 'none';
+    document.body.style.overflow = '';
+    if (_escapeHandler) document.removeEventListener('keydown', _escapeHandler);
+    _modalOverlayHandlers.forEach(({ el, fn }) => el.removeEventListener('click', fn));
+    _modalOverlayHandlers = [];
+    lastFocusedBeforeModal = null;
+}

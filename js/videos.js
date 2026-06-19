@@ -34,3 +34,5 @@ export function init() {
 export const actions = {
     'show-video-tab': (el) => showVideoTab(el.dataset.tab, el)
 };
+
+export function destroy() {}

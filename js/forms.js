@@ -74,3 +74,8 @@ export function init() {
 export const actions = {
     'select-lang': (el) => selectLang(el)
 };
+
+export function destroy() {
+    const form = document.querySelector('.join-form');
+    if (form) form.replaceWith(form.cloneNode(true));
+}

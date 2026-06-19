@@ -80,6 +80,9 @@ let vipUserNameInput, vipPassCard;
 
 let currentIndex = 0;
 let scores = { J: 0, E: 0, R: 0, L: 0 };
+let selectedTheme = 'pink-venom';
+let _quizThemeListeners = [];
+let _quizVipListeners = [];
 
 function generateNewSerial() {
     const el = document.getElementById('vip-serial-number');
@@ -178,16 +181,67 @@ function generateVIPPassPNG() {
     canvas.height = 860;
     const ctx = canvas.getContext('2d');
 
-    // 1. Background gradient
+    // 1. Theme Configuration
+    let bgStart = '#160810', bgMid = '#0a0a0a', bgEnd = '#1b0b14';
+    let borderColor = '#ff6b9d';
+    let subBorderColor = 'rgba(255, 107, 157, 0.25)';
+    let primaryTextColor = '#ff6b9d';
+    let secondaryTextColor = '#ffffff';
+    let labelColor = 'rgba(255, 255, 255, 0.45)';
+    let nameTextColor = '#ffcce0';
+    let dividerColor = 'rgba(255, 107, 157, 0.35)';
+    let lineOverlayColor = 'rgba(255, 107, 157, 0.035)';
+    let haloColor = 'rgba(255, 107, 157, 0.28)';
+    let barcodeColor = '#ffffff';
+
+    if (selectedTheme === 'born-pink') {
+        bgStart = '#faf5f5'; bgMid = '#ffffff'; bgEnd = '#faeded';
+        borderColor = '#000000';
+        subBorderColor = 'rgba(0, 0, 0, 0.15)';
+        primaryTextColor = '#000000';
+        secondaryTextColor = '#222222';
+        labelColor = '#666666';
+        nameTextColor = '#000000';
+        dividerColor = 'rgba(0, 0, 0, 0.25)';
+        lineOverlayColor = 'rgba(0, 0, 0, 0.01)';
+        haloColor = 'rgba(0, 0, 0, 0.05)';
+        barcodeColor = '#000000';
+    } else if (selectedTheme === 'chrome-cyber') {
+        bgStart = '#06060c'; bgMid = '#0c0a1a'; bgEnd = '#080812';
+        borderColor = '#00f3ff';
+        subBorderColor = 'rgba(255, 0, 127, 0.4)';
+        primaryTextColor = '#ff007f';
+        secondaryTextColor = '#ffffff';
+        labelColor = '#00f3ff';
+        nameTextColor = '#ffffff';
+        dividerColor = 'rgba(0, 243, 255, 0.35)';
+        lineOverlayColor = 'rgba(0, 243, 255, 0.03)';
+        haloColor = 'rgba(0, 243, 255, 0.25)';
+        barcodeColor = '#ffffff';
+    } else if (selectedTheme === 'midnight-velvet') {
+        bgStart = '#161616'; bgMid = '#0d0d0d'; bgEnd = '#121212';
+        borderColor = '#d4af37';
+        subBorderColor = 'rgba(212, 175, 55, 0.25)';
+        primaryTextColor = '#d4af37';
+        secondaryTextColor = '#ffffff';
+        labelColor = '#a89048';
+        nameTextColor = '#ffffff';
+        dividerColor = 'rgba(212, 175, 55, 0.35)';
+        lineOverlayColor = 'rgba(212, 175, 55, 0.02)';
+        haloColor = 'rgba(212, 175, 55, 0.15)';
+        barcodeColor = '#d4af37';
+    }
+
+    // 2. Background gradient
     const bg = ctx.createLinearGradient(0, 0, 0, 860);
-    bg.addColorStop(0, '#160810');
-    bg.addColorStop(0.5, '#0a0a0a');
-    bg.addColorStop(1, '#1b0b14');
+    bg.addColorStop(0, bgStart);
+    bg.addColorStop(0.5, bgMid);
+    bg.addColorStop(1, bgEnd);
     ctx.fillStyle = bg;
     ctx.fillRect(0, 0, 600, 860);
 
     // Tech lines overlay
-    ctx.strokeStyle = 'rgba(255, 107, 157, 0.035)';
+    ctx.strokeStyle = lineOverlayColor;
     ctx.lineWidth = 1;
     for (let i = -200; i < 1500; i += 18) {
         ctx.beginPath();
@@ -196,40 +250,49 @@ function generateVIPPassPNG() {
         ctx.stroke();
     }
 
-    // 2. Borders
-    ctx.strokeStyle = '#ff6b9d';
+    // 3. Borders
+    ctx.strokeStyle = borderColor;
     ctx.lineWidth = 4;
     ctx.strokeRect(18, 18, 564, 824);
-    ctx.strokeStyle = 'rgba(255, 107, 157, 0.25)';
+    ctx.strokeStyle = subBorderColor;
     ctx.lineWidth = 1;
     ctx.strokeRect(26, 26, 548, 808);
 
-    // 3. Header
-    if (logoEl && logoEl.complete) ctx.drawImage(logoEl, 48, 48, 140, 32);
-    else {
-        ctx.fillStyle = '#ff6b9d';
+    // 4. Header
+    if (selectedTheme === 'pink-venom' && logoEl && logoEl.complete) {
+        ctx.drawImage(logoEl, 48, 48, 140, 32);
+    } else {
+        ctx.fillStyle = primaryTextColor;
         ctx.font = 'bold 26px "Outfit", Arial';
         ctx.fillText('BLACKPINK', 48, 72);
     }
     ctx.textAlign = 'right';
-    ctx.fillStyle = '#ffffff';
+    ctx.fillStyle = secondaryTextColor;
     ctx.font = 'bold 15px "Outfit", Arial';
     ctx.fillText('VIP FAN ACCESS', 552, 70);
 
     // Divider
-    ctx.strokeStyle = 'rgba(255, 107, 157, 0.35)';
+    ctx.strokeStyle = dividerColor;
     ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.moveTo(35, 105);
     ctx.lineTo(565, 105);
     ctx.stroke();
 
-    // 4. Portrait
+    // 5. Portrait
     if (memberImgEl && memberImgEl.complete) {
         const size = 260, x = 170, y = 165;
         const halo = ctx.createRadialGradient(300, 295, 70, 300, 295, 160);
-        halo.addColorStop(0, 'rgba(255, 107, 157, 0.28)');
-        halo.addColorStop(1, 'rgba(255, 107, 157, 0)');
+        halo.addColorStop(0, haloColor);
+        if (selectedTheme === 'chrome-cyber') {
+            halo.addColorStop(1, 'rgba(0, 243, 255, 0)');
+        } else if (selectedTheme === 'midnight-velvet') {
+            halo.addColorStop(1, 'rgba(212, 175, 55, 0)');
+        } else if (selectedTheme === 'born-pink') {
+            halo.addColorStop(1, 'rgba(250, 245, 245, 0)');
+        } else {
+            halo.addColorStop(1, 'rgba(255, 107, 157, 0)');
+        }
         ctx.fillStyle = halo;
         ctx.beginPath();
         ctx.arc(300, 295, 160, 0, Math.PI * 2);
@@ -243,27 +306,37 @@ function generateVIPPassPNG() {
         ctx.drawImage(memberImgEl, x, y, size, size);
         ctx.restore();
 
-        ctx.strokeStyle = '#ff6b9d';
+        ctx.strokeStyle = borderColor;
         ctx.lineWidth = 3.5;
         ctx.beginPath();
         ctx.arc(300, 295, 130, 0, Math.PI * 2);
         ctx.stroke();
     }
 
-    // 5. Soulmate texts
+    // 6. Soulmate texts
     ctx.textAlign = 'center';
-    ctx.fillStyle = '#ff6b9d';
+    ctx.fillStyle = primaryTextColor;
     ctx.font = 'bold 13px "Outfit", Arial';
     ctx.fillText('YOUR BLINK SOULMATE', 300, 485);
-    ctx.fillStyle = '#ffffff';
+
+    // Member Name (with Chrome Cyber gradient check)
+    if (selectedTheme === 'chrome-cyber') {
+        const nameGrad = ctx.createLinearGradient(200, 0, 400, 0);
+        nameGrad.addColorStop(0, '#00f3ff');
+        nameGrad.addColorStop(1, '#ff007f');
+        ctx.fillStyle = nameGrad;
+    } else {
+        ctx.fillStyle = secondaryTextColor;
+    }
     ctx.font = 'bold 44px "Outfit", Arial';
     ctx.fillText(memberName.toUpperCase(), 300, 538);
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.72)';
+
+    ctx.fillStyle = selectedTheme === 'born-pink' ? '#444444' : 'rgba(255, 255, 255, 0.72)';
     ctx.font = '17px "Outfit", Arial';
     ctx.fillText(memberRole, 300, 574);
 
     // Dashed ticket cut
-    ctx.strokeStyle = 'rgba(255, 107, 157, 0.22)';
+    ctx.strokeStyle = dividerColor;
     ctx.lineWidth = 1;
     ctx.setLineDash([8, 6]);
     ctx.beginPath();
@@ -272,25 +345,25 @@ function generateVIPPassPNG() {
     ctx.stroke();
     ctx.setLineDash([]);
 
-    // 6. Pass info
+    // 7. Pass info
     ctx.textAlign = 'left';
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.45)';
+    ctx.fillStyle = labelColor;
     ctx.font = '11px "Outfit", Arial';
     ctx.fillText('PASS HOLDER', 60, 658);
-    ctx.fillStyle = '#ffcce0';
+    ctx.fillStyle = nameTextColor;
     ctx.font = 'bold 24px "Outfit", Arial';
     ctx.fillText(userName.toUpperCase(), 60, 693);
 
     ctx.textAlign = 'right';
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.45)';
+    ctx.fillStyle = labelColor;
     ctx.font = '11px "Outfit", Arial';
     ctx.fillText('CARD SERIAL', 540, 658);
-    ctx.fillStyle = '#ffffff';
+    ctx.fillStyle = secondaryTextColor;
     ctx.font = 'bold 18px "Outfit", Arial';
     ctx.fillText(serialId, 540, 693);
 
-    // 7. Procedural Barcode
-    ctx.fillStyle = '#ffffff';
+    // 8. Procedural Barcode
+    ctx.fillStyle = barcodeColor;
     const startBarX = 60, barY = 735, barH = 45, maxBarW = 480;
     let curX = startBarX;
     let seed = 12948;
@@ -306,14 +379,14 @@ function generateVIPPassPNG() {
     }
 
     ctx.textAlign = 'center';
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.35)';
+    ctx.fillStyle = selectedTheme === 'born-pink' ? 'rgba(0, 0, 0, 0.4)' : 'rgba(255, 255, 255, 0.35)';
     ctx.font = '10px "Outfit", Arial';
     ctx.fillText('*' + serialId + '*', 300, 800);
 
     try {
         const dataUrl = canvas.toDataURL('image/png');
         const link = document.createElement('a');
-        link.download = `${userName.replace(/\s+/g, '_')}_BLINK_VIP_Pass.png`;
+        link.download = `${userName.replace(/\s+/g, '_')}_BLINK_${selectedTheme.toUpperCase()}_Pass.png`;
         link.href = dataUrl;
         document.body.appendChild(link);
         link.click();
@@ -348,14 +421,71 @@ export function init() {
 
     generateNewSerial();
 
+    if (vipPassCard) {
+        vipPassCard.className = 'blink-vip-pass theme-pink-venom';
+    }
+
+    // Theme selector click actions
+    _quizThemeListeners = [];
+    document.querySelectorAll('.vip-theme-selector .theme-btn').forEach(btn => {
+        const themeFn = (e) => {
+            const theme = e.currentTarget.dataset.theme;
+            selectedTheme = theme;
+
+            document.querySelectorAll('.vip-theme-selector .theme-btn').forEach(b => {
+                b.classList.remove('active');
+                b.style.borderColor = 'transparent';
+            });
+            e.currentTarget.classList.add('active');
+
+            if (theme === 'pink-venom' || theme === 'born-pink') {
+                e.currentTarget.style.borderColor = '#ff6b9d';
+            } else if (theme === 'chrome-cyber') {
+                e.currentTarget.style.borderColor = '#00f3ff';
+            } else if (theme === 'midnight-velvet') {
+                e.currentTarget.style.borderColor = '#d4af37';
+            }
+
+            if (vipPassCard) {
+                vipPassCard.className = `blink-vip-pass theme-${theme}`;
+            }
+        };
+        btn.addEventListener('click', themeFn);
+        _quizThemeListeners.push({ el: btn, fn: themeFn });
+    });
+
     if (vipUserNameInput && vipPassCard) {
-        vipUserNameInput.addEventListener('focus', () => {
-            vipPassCard.style.boxShadow = '0 20px 50px rgba(255, 107, 157, 0.35), 0 0 35px rgba(255, 107, 157, 0.25)';
-            vipPassCard.style.borderColor = '#ff6b9d';
-        });
-        vipUserNameInput.addEventListener('blur', () => {
+        const focusFn = () => {
+            if (selectedTheme === 'pink-venom') {
+                vipPassCard.style.boxShadow = '0 20px 50px rgba(255, 107, 157, 0.35), 0 0 35px rgba(255, 107, 157, 0.25)';
+                vipPassCard.style.borderColor = '#ff6b9d';
+            } else if (selectedTheme === 'born-pink') {
+                vipPassCard.style.boxShadow = '0 20px 50px rgba(0, 0, 0, 0.15)';
+                vipPassCard.style.borderColor = '#000000';
+            } else if (selectedTheme === 'chrome-cyber') {
+                vipPassCard.style.boxShadow = '0 20px 50px rgba(0, 243, 255, 0.4), 0 0 35px rgba(255, 0, 127, 0.3)';
+                vipPassCard.style.borderColor = '#00f3ff';
+            } else if (selectedTheme === 'midnight-velvet') {
+                vipPassCard.style.boxShadow = '0 20px 50px rgba(212, 175, 55, 0.35), 0 0 35px rgba(212, 175, 55, 0.25)';
+                vipPassCard.style.borderColor = '#d4af37';
+            }
+        };
+        const blurFn = () => {
             vipPassCard.style.boxShadow = '';
             vipPassCard.style.borderColor = '';
-        });
+        };
+        vipUserNameInput.addEventListener('focus', focusFn);
+        vipUserNameInput.addEventListener('blur', blurFn);
+        _quizVipListeners = [
+            { el: vipUserNameInput, type: 'focus', fn: focusFn },
+            { el: vipUserNameInput, type: 'blur', fn: blurFn }
+        ];
     }
+}
+
+export function destroy() {
+    _quizThemeListeners?.forEach(({ el, fn }) => el.removeEventListener('click', fn));
+    _quizThemeListeners = [];
+    _quizVipListeners?.forEach(({ el, type, fn }) => el.removeEventListener(type, fn));
+    _quizVipListeners = [];
 }
