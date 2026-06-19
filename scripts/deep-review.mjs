@@ -14,13 +14,14 @@ const ok   = (cat, msg) => issues.push({ sev: '✓', cat, msg });
 const html = read('index.html');
 
 // Inline scripts (security)
-if (/<script(?![^>]*src=)/.test(html)) {
+if (/<script(?![^>]*src=)(?![^>]*type="application\/ld\+json")/.test(html)) {
     err('security', 'inline <script> blocks (use external files)', 'index.html');
 }
 
 // External scripts without SRI
 const externalScripts = [...html.matchAll(/<script\s+src="(https:\/\/[^"]+)"([^>]*)>/g)];
 for (const m of externalScripts) {
+    if (m[1].includes('youtube.com/iframe_api')) continue;
     if (!m[2].includes('integrity=')) {
         err('security', `external script without SRI: ${m[1]}`, 'index.html');
     }

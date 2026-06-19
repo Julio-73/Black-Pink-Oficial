@@ -25,13 +25,16 @@ async function ensureDir(p) {
 function fmtKB(bytes) { return `${(bytes / 1024).toFixed(1)} KB`; }
 
 async function processOne(target) {
-    const srcPath = path.join(ROOT, target.file);
+    let srcPath = path.join(ROOT, target.file);
+    if (!existsSync(srcPath)) {
+        srcPath = path.join(BACKUP, target.file);
+    }
     if (!existsSync(srcPath)) {
         console.warn(`  [skip] ${target.file} not found`);
         return { saved: 0, generated: 0 };
     }
     const original = await stat(srcPath);
-    const baseName = path.basename(target.file, path.extname(target.file));
+    const baseName = path.basename(srcPath, path.extname(srcPath));
     let totalGenerated = 0;
     let totalNew = 0;
 
