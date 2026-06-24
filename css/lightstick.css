@@ -12,6 +12,12 @@
     right: 24px;
     z-index: 10001; /* Above toast notifications (10000) */
     font-family: 'Outfit', sans-serif;
+    transition: bottom 0.3s ease;
+}
+
+/* Avoid overlap when mini-player is visible */
+.mini-player-floating.visible ~ .lightstick-widget {
+    bottom: 100px;
 }
 
 /* Floating toggle button */

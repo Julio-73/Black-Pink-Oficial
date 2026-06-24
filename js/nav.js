@@ -1,4 +1,3 @@
-// Header scroll effect, mobile menu, smooth scroll, footer year, scroll progress
 let header;
 let menuToggle;
 let mobileMenu;
@@ -26,8 +25,8 @@ function closeMobileMenu() {
 
 function handleHeaderScroll() {
     if (!header) return;
-    if (window.pageYOffset > 50) header.classList.add('scrolled');
-    else header.classList.remove('scrolled');
+    const scrolled = window.pageYOffset > 50;
+    header.classList.toggle('scrolled', scrolled);
 }
 
 function setupFooterYear() {
@@ -35,9 +34,28 @@ function setupFooterYear() {
     if (el) el.textContent = new Date().getFullYear();
 }
 
+function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+}
+
+function animateScroll(targetY, duration) {
+    const startY = window.pageYOffset;
+    const diff = targetY - startY;
+    const startTime = performance.now();
+
+    function step(now) {
+        const elapsed = now - startTime;
+        const pct = Math.min(elapsed / duration, 1);
+        const eased = easeInOutCubic(pct);
+        window.scrollTo(0, startY + diff * eased);
+        if (pct < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+}
+
 function setupSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        const fn = function(e) {
             const targetId = this.getAttribute('href');
             if (targetId === '#' || targetId.length < 2) return;
             const target = document.querySelector(targetId);
@@ -45,9 +63,13 @@ function setupSmoothScroll() {
             e.preventDefault();
             const headerHeight = header ? header.offsetHeight : 64;
             const top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-            window.scrollTo({ top, behavior: 'smooth' });
+            const dist = Math.abs(top - window.pageYOffset);
+            const duration = Math.min(Math.max(dist * 0.6, 400), 1200);
+            animateScroll(top, duration);
             closeMobileMenu();
-        });
+        };
+        anchor.addEventListener('click', fn);
+        _anchorListeners.push({ el: anchor, fn });
     });
 }
 
@@ -61,10 +83,11 @@ function setupScrollProgress() {
             top: 0;
             left: 0;
             height: 3px;
-            background: linear-gradient(90deg, #c94b7c, #ff6b9d);
+            background: linear-gradient(90deg, #c94b7c, #ff6b9d, #ffcce0);
             z-index: 9999;
             width: 0%;
-            transition: width 0.08s linear;
+            transition: width 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 0 8px rgba(255, 107, 157, 0.3);
         `;
         document.body.appendChild(_progressBar);
     }
@@ -116,7 +139,13 @@ export const actions = {
     'close-mobile-menu': () => closeMobileMenu(),
     'scroll-to': (el) => {
         const target = document.querySelector(el.dataset.target);
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
+        if (target) {
+            const headerHeight = header ? header.offsetHeight : 64;
+            const top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            const dist = Math.abs(top - window.pageYOffset);
+            const duration = Math.min(Math.max(dist * 0.6, 400), 1200);
+            animateScroll(top, duration);
+        }
     }
 };
 

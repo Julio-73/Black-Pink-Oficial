@@ -1,7 +1,18 @@
-// Visual effects: reveal-on-scroll, parallax, hero hover, particles, 3D tilt, button particles
 const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// ---------- Reveal on scroll ----------
+let _scrollRafId = null;
+let _resizeHandler = null;
+let _scrollHandler = null;
+let _parallaxTicking = false;
+let _observer = null;
+let _sectionObserver = null;
+let _particleRafId = null;
+let _particleResizeHandler = null;
+let _heroMouseHandler = null;
+let _heroLeaveHandler = null;
+let _heroParticleHandler = null;
+let _bgScrollHandler = null;
+
 function setupReveal() {
     _observer = new IntersectionObserver((entries) => {
         for (const entry of entries) {
@@ -9,7 +20,7 @@ function setupReveal() {
                 entry.target.classList.add('active');
             }
         }
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
     document.querySelectorAll(
         '.members-grid, .music-container, .video-container, .subscribe-card, .section-title, .quiz-container'
@@ -22,20 +33,39 @@ function setupReveal() {
         card.classList.add('reveal', `reveal-delay-${(i % 4) + 1}`);
         _observer.observe(card);
     });
+
+    document.querySelectorAll('.album-card-link').forEach((el, i) => {
+        el.classList.add('reveal-scale', `reveal-delay-${(i % 4) + 1}`);
+        _observer.observe(el);
+    });
+
+    document.querySelectorAll('.product-card').forEach((el, i) => {
+        el.classList.add('reveal-scale', `reveal-delay-${(i % 4) + 1}`);
+        _observer.observe(el);
+    });
+
+    document.querySelectorAll('.video-card').forEach((el, i) => {
+        el.classList.add(i % 2 === 0 ? 'reveal-glide' : 'reveal-glide-right', `reveal-delay-${(i % 4) + 1}`);
+        _observer.observe(el);
+    });
 }
 
-let _scrollRafId = null;
-let _resizeHandler = null;
-let _scrollHandler = null;
-let _parallaxTicking = false;
-let _observer = null;
-let _particleRafId = null;
-let _particleResizeHandler = null;
-let _heroMouseHandler = null;
-let _heroLeaveHandler = null;
-let _heroParticleHandler = null;
+function setupSectionGlow() {
+    if (REDUCED_MOTION) return;
+    _sectionObserver = new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('section-glow-active');
+            }
+        }
+    }, { threshold: 0.15 });
 
-// ---------- Parallax hero ----------
+    document.querySelectorAll('section').forEach(section => {
+        section.classList.add('section-glow');
+        _sectionObserver.observe(section);
+    });
+}
+
 function setupParallax() {
     if (REDUCED_MOTION) return;
     _parallaxTicking = false;
@@ -44,17 +74,39 @@ function setupParallax() {
         _parallaxTicking = true;
         _scrollRafId = requestAnimationFrame(() => {
             const scrolled = window.pageYOffset;
+            const viewportH = window.innerHeight;
+
             const heroBg = document.querySelector('.hero-bg');
             const heroVideo = document.querySelector('.hero-video-bg');
             if (heroBg) heroBg.style.transform = `translateY(${scrolled * 0.15}px)`;
             if (heroVideo) heroVideo.style.transform = `translateY(${scrolled * 0.1}px)`;
+
+            document.querySelectorAll('.member-card').forEach((card, i) => {
+                const rect = card.getBoundingClientRect();
+                if (rect.top < viewportH && rect.bottom > 0) {
+                    const offset = (viewportH - rect.top) * 0.03;
+                    card.style.setProperty('--float-offset', `${Math.min(offset, 20)}px`);
+                }
+            });
+
             _parallaxTicking = false;
         });
     };
     window.addEventListener('scroll', _scrollHandler, { passive: true });
 }
 
-// ---------- Hero mouse follow ----------
+function setupScrollGradient() {
+    if (REDUCED_MOTION) return;
+    _bgScrollHandler = () => {
+        const scrolled = window.pageYOffset;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docHeight > 0 ? scrolled / docHeight : 0;
+        document.documentElement.style.setProperty('--scroll-pct', pct);
+    };
+    window.addEventListener('scroll', _bgScrollHandler, { passive: true });
+    _bgScrollHandler();
+}
+
 function setupHeroHover() {
     if (REDUCED_MOTION) return;
     const heroContent = document.querySelector('.hero-content');
@@ -72,7 +124,6 @@ function setupHeroHover() {
     heroContent.addEventListener('mouseleave', _heroLeaveHandler);
 }
 
-// ---------- Button hover micro-particles ----------
 function setupButtonParticles() {
     if (REDUCED_MOTION) return;
     document.querySelectorAll('.btn').forEach(btn => {
@@ -108,7 +159,6 @@ function createBtnParticles(button) {
     }
 }
 
-// ---------- Hero particles canvas ----------
 class Particle {
     constructor(x, y) {
         this.x = x;
@@ -189,7 +239,6 @@ function setupHeroParticles() {
 
 let _tiltCards = [];
 
-// ---------- 3D tilt with glare ----------
 function setupTilt() {
     if (REDUCED_MOTION) return;
     _tiltCards = [];
@@ -257,7 +306,9 @@ export function triggerConfetti(container) {
 
 export function init() {
     setupReveal();
+    setupSectionGlow();
     setupParallax();
+    setupScrollGradient();
     setupHeroHover();
     setupButtonParticles();
     setupHeroParticles();
@@ -266,7 +317,9 @@ export function init() {
 
 export function destroy() {
     if (_observer) _observer.disconnect();
+    if (_sectionObserver) _sectionObserver.disconnect();
     if (_scrollHandler) window.removeEventListener('scroll', _scrollHandler);
+    if (_bgScrollHandler) window.removeEventListener('scroll', _bgScrollHandler);
     if (_particleResizeHandler) window.removeEventListener('resize', _particleResizeHandler);
     if (_particleRafId) cancelAnimationFrame(_particleRafId);
     if (_scrollRafId) cancelAnimationFrame(_scrollRafId);

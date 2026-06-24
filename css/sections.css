@@ -1,6 +1,26 @@
 section {
     padding: 120px 2rem;
     position: relative;
+    transition: box-shadow 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.section-glow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 900px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 107, 157, 0.15), transparent);
+    opacity: 0;
+    transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+}
+
+.section-glow.section-glow-active::after {
+    opacity: 1;
 }
 
 .section-title {
@@ -66,6 +86,7 @@ section {
     border: 1px solid var(--glass-border);
     position: relative;
     overflow: hidden;
+    transform: translateY(var(--float-offset, 0px));
 }
 
 .member-card::before {
@@ -417,20 +438,22 @@ section {
 
 .reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(50px);
+    transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1), filter 0.8s ease;
     will-change: transform, opacity;
+    filter: blur(2px);
 }
 
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
 }
 
 .section-title.reveal {
-    transform: translateY(30px) scale(0.97);
-    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1), filter 1s ease;
-    filter: blur(4px);
+    transform: translateY(40px) scale(0.95);
+    transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1), filter 1s ease;
+    filter: blur(6px);
 }
 
 .section-title.reveal.active {
@@ -438,10 +461,42 @@ section {
     filter: blur(0);
 }
 
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-1 { transition-delay: 0.12s; }
+.reveal-delay-2 { transition-delay: 0.24s; }
+.reveal-delay-3 { transition-delay: 0.36s; }
+.reveal-delay-4 { transition-delay: 0.48s; }
+
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1), filter 1s ease;
+    filter: blur(4px);
+}
+.reveal-scale.active {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+}
+
+.reveal-glide {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-glide.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-glide-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-glide-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
 
 .merch-section {
     background: var(--black-soft);
