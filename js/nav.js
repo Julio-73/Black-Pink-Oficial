@@ -38,7 +38,7 @@ function easeInOutCubic(t) {
     return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 }
 
-function animateScroll(targetY, duration) {
+function animateScroll(targetY, duration, onComplete) {
     const startY = window.pageYOffset;
     const diff = targetY - startY;
     const startTime = performance.now();
@@ -48,7 +48,11 @@ function animateScroll(targetY, duration) {
         const pct = Math.min(elapsed / duration, 1);
         const eased = easeInOutCubic(pct);
         window.scrollTo(0, startY + diff * eased);
-        if (pct < 1) requestAnimationFrame(step);
+        if (pct < 1) {
+            requestAnimationFrame(step);
+        } else if (onComplete) {
+            onComplete();
+        }
     }
     requestAnimationFrame(step);
 }
@@ -65,8 +69,16 @@ function setupSmoothScroll() {
             const top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
             const dist = Math.abs(top - window.pageYOffset);
             const duration = Math.min(Math.max(dist * 0.6, 400), 1200);
-            animateScroll(top, duration);
-            closeMobileMenu();
+
+            if (mobileMenu?.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                menuToggle?.classList.remove('active');
+                menuToggle?.setAttribute('aria-expanded', 'false');
+            }
+            e.stopPropagation();
+            animateScroll(top, duration, () => {
+                document.body.style.overflow = '';
+            });
         };
         anchor.addEventListener('click', fn);
         _anchorListeners.push({ el: anchor, fn });

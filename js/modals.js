@@ -62,7 +62,7 @@ function openVideoModal(videoId) {
     const link = document.getElementById('youtube-link');
     if (!modal || !player) return;
     lastFocusedBeforeModal = document.activeElement;
-    player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+    player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1&origin=${encodeURIComponent(location.origin)}`;
     if (link) link.href = `https://www.youtube.com/watch?v=${videoId}`;
     modal.style.display = 'block';
     modal.setAttribute('aria-hidden', 'false');
