@@ -599,12 +599,6 @@ section {
 }
 
 .tour-map-leaflet {
-    height: 300px;
-    border-radius: 12px;
-    overflow: hidden;
-}
-
-#tour-map {
     height: 400px;
     border-radius: 20px;
     overflow: hidden;

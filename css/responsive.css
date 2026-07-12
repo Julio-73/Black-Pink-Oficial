@@ -377,7 +377,7 @@
         font-size: 0.6rem;
     }
 
-    #tour-map {
+    .tour-map-leaflet {
         height: 300px;
     }
 

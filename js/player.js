@@ -3,8 +3,8 @@
 const PLAYLIST = [
     {
         title: 'DDu-Du DDu-Du',
-        videoId: 'bwmSjveZ3n8',
-        cover: 'https://img.youtube.com/vi/bwmSjveZ3n8/hqdefault.jpg',
+        videoId: 'IHNzOHi8sJs',
+        cover: 'https://img.youtube.com/vi/IHNzOHi8sJs/hqdefault.jpg',
         lyrics: [
             { time: 0, text: '[Instrumental Intro]' },
             { time: 5, text: 'BLACKPINK!' },
@@ -37,8 +37,8 @@ const PLAYLIST = [
     },
     {
         title: 'How You Like That',
-        videoId: 'IHdVIe785wQ',
-        cover: 'https://img.youtube.com/vi/IHdVIe785wQ/hqdefault.jpg',
+        videoId: 'ioNng23DkIM',
+        cover: 'https://img.youtube.com/vi/ioNng23DkIM/hqdefault.jpg',
         lyrics: [
             { time: 0, text: '[Dramatic Intro]' },
             { time: 5, text: 'BLACKPINK in your area!' },

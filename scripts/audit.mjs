@@ -26,15 +26,16 @@ const headers = (s) => `\n${'='.repeat(60)}\n${s}\n${'='.repeat(60)}`;
 
 console.log(headers('1. FILE SIZES (shipped assets)'));
 const indexSize = fileSize(join(ROOT, 'index.html'));
-const cssSize = fileSize(join(ROOT, 'page.css'));
+const cssFiles = walk(join(ROOT, 'css'), ['.css']);
+const cssSize = cssFiles.reduce((a, f) => a + fileSize(f), 0);
 const manifestSize = fileSize(join(ROOT, 'manifest.json'));
 const swSize = fileSize(join(ROOT, 'sw.js'));
 
 const jsFiles = walk(join(ROOT, 'js'), ['.js']);
 const jsTotal = jsFiles.reduce((a, f) => a + fileSize(f), 0);
 console.log(`  index.html      ${fmtBytes(indexSize)}`);
-console.log(`  page.css        ${fmtBytes(cssSize)}`);
-console.log(`  js/ (12 files)  ${fmtBytes(jsTotal)}`);
+console.log(`  css/ (${cssFiles.length} files)  ${fmtBytes(cssSize)}`);
+console.log(`  js/ (${jsFiles.length} files)  ${fmtBytes(jsTotal)}`);
 console.log(`  manifest.json   ${fmtBytes(manifestSize)}`);
 console.log(`  sw.js           ${fmtBytes(swSize)}`);
 
@@ -55,10 +56,10 @@ console.log(`\n  TOTAL SHIPPED:  ${fmtBytes(totalShipped)}`);
 
 console.log(headers('2. GZIP ESTIMATION'));
 const htmlGz = gzipSync(readFileSync(join(ROOT, 'index.html'))).length;
-const cssGz = gzipSync(readFileSync(join(ROOT, 'page.css'))).length;
+const cssGz = cssFiles.reduce((a, f) => a + gzipSync(readFileSync(f)).length, 0);
 const jsGzTotal = jsFiles.reduce((a, f) => a + gzipSync(readFileSync(f)).length, 0);
 console.log(`  index.html   ${fmtBytes(htmlGz)}  (${Math.round(htmlGz / indexSize * 100)}% of raw)`);
-console.log(`  page.css     ${fmtBytes(cssGz)}  (${Math.round(cssGz / cssSize * 100)}% of raw)`);
+console.log(`  css/ total   ${fmtBytes(cssGz)}  (${Math.round(cssGz / cssSize * 100)}% of raw)`);
 console.log(`  js/ total    ${fmtBytes(jsGzTotal)}  (${Math.round(jsGzTotal / jsTotal * 100)}% of raw)`);
 const firstLoadGz = htmlGz + cssGz + jsGzTotal + manifestSize + swSize;
 console.log(`  First-load (gz): ${fmtBytes(firstLoadGz)}`);
@@ -116,7 +117,7 @@ const seoChecks = [
 seoChecks.forEach(([name, ok]) => console.log(`  ${ok ? '✓' : '✗'} ${name}`));
 
 console.log(headers('6. INLINE CRAP'));
-const cssText = readFileSync(join(ROOT, 'page.css'), 'utf8');
+const cssText = cssFiles.map(f => readFileSync(f, 'utf8')).join('\n');
 const outlineNone = (cssText.match(/outline:\s*none/g) || []).length;
 const consoleLog = ['js'].reduce((a, _d) => {
     for (const f of jsFiles) {

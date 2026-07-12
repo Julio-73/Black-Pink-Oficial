@@ -1,5 +1,5 @@
 // Deep code review: finds real issues a linter would catch
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
 const ROOT = process.cwd();
@@ -92,37 +92,38 @@ if (!/charset=/.test(html)) err('a11y', 'missing charset', 'index.html');
 if (!/viewport/.test(html)) err('a11y', 'missing viewport meta', 'index.html');
 
 // ===== 2. CSS =====
-const css = read('page.css');
+const cssDir = join(ROOT, 'css');
+const cssFiles = readdirSync(cssDir).filter(f => f.endsWith('.css'));
+const css = cssFiles.map(f => readFileSync(join(cssDir, f), 'utf8')).join('\n');
 
 // outline:none usage
 const outlineNone = [...css.matchAll(/outline:\s*none/g)];
 if (outlineNone.length > 0) {
-    warn('a11y', `${outlineNone.length} "outline: none" found in CSS (verify intentional)`, 'page.css');
+    warn('a11y', `${outlineNone.length} "outline: none" found in CSS (verify intentional)`, 'css/');
 }
 
 // z-index confusion
 const zIndexes = [...css.matchAll(/z-index:\s*(\d+)/g)].map(m => +m[1]);
 const maxZ = Math.max(...zIndexes, 0);
-if (maxZ > 9999) warn('css', `unusually high z-index: ${maxZ}`, 'page.css');
+if (maxZ > 9999) warn('css', `unusually high z-index: ${maxZ}`, 'css/');
 
 // !important overuse
 const important = (css.match(/!important/g) || []).length;
-if (important > 30) warn('css', `${important} !important declarations (review for over-specification)`, 'page.css');
+if (important > 30) warn('css', `${important} !important declarations (review for over-specification)`, 'css/');
 
 // Animation performance: animating expensive properties
 const badAnims = (css.match(/@keyframes/g) || []).length;
-if (badAnims > 50) warn('perf', `${badAnims} @keyframes (consider reducing for low-end devices)`, 'page.css');
+if (badAnims > 50) warn('perf', `${badAnims} @keyframes (consider reducing for low-end devices)`, 'css/');
 
 // Check for missing vendor prefixes on critical properties
 const needsPrefix = ['backdrop-filter', 'user-select', 'background-clip'];
 needsPrefix.forEach(prop => {
     if (css.includes(prop) && !css.includes(`-webkit-${prop}`)) {
-        warn('compat', `${prop} used without -webkit- prefix (Safari may fail)`, 'page.css');
+        warn('compat', `${prop} used without -webkit- prefix (Safari may fail)`, 'css/');
     }
 });
 
 // ===== 3. JS =====
-import { readdirSync } from 'node:fs';
 const jsFiles = readdirSync(join(ROOT, 'js')).filter(f => f.endsWith('.js'));
 let totalConsole = 0;
 let totalAlert = 0;
@@ -158,8 +159,8 @@ const videoCount = (html.match(/<video/g) || []).length;
 const autoplayVideos = (html.match(/<video[^>]+autoplay/g) || []).length;
 if (autoplayVideos > 2) warn('perf', `${autoplayVideos} autoplay videos (mobile data)`, 'index.html');
 
-const cssSize = read('page.css').length;
-if (cssSize > 100 * 1024) warn('perf', `CSS is ${Math.round(cssSize/1024)}KB (consider code-splitting or critical CSS)`, 'page.css');
+const cssSize = css.length;
+if (cssSize > 100 * 1024) warn('perf', `CSS is ${Math.round(cssSize/1024)}KB (consider code-splitting or critical CSS)`, 'css/');
 
 // ===== 7. Browser compat =====
 // Viewport-fit not used
